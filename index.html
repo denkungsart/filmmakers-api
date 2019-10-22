@@ -232,6 +232,14 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#talent-agencies" class="toc-h1 toc-link" data-title="Talent agencies">Talent agencies</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-talent-agency-data" class="toc-h2 toc-link" data-title="Get talent agency data">Get talent agency data</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://www.castupload.com'>&larr; back to Castupload</a></li>
@@ -417,6 +425,49 @@ You must replace <code>API_KEY</code> with your personal API key.
 <td>Translates attributes with closed lists, free text fields are only available in the entry language. Possible values are: <code>en</code>, <code>de</code></td>
 </tr>
 </tbody></table>
+<h1 id='talent-agencies'>Talent agencies</h1><h2 id='get-talent-agency-data'>Get talent agency data</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/talent_agencies/123"</span>
+  -H <span class="s2">"Authorization: Token token=API_KEY"</span>
+</code></pre>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example agency"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"homepage_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"imdb_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pro.imdb.com/company/co0000001"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"showreel_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/showreel"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"twitter_handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@example_agency"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"public_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.castupload.com/example.png"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mainz"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DE"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wallstr. 11"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49613163691950"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55122"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+<p>This endpoint retrieves a specific talent agency.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://www.castupload.com/api/v1/talent_agencies/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the talent agency to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='response-fields-2'>Response fields</h3>
+<p>See example response to the right for an overview of included fields.</p>
 
       </div>
       <div class="dark-box">
