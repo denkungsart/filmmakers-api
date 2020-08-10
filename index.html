@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>API Reference</title>
 
-    <style>
+    <style media="screen">
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
 .highlight .gh {
@@ -42,7 +42,7 @@
 .highlight .cs {
   color: #75715e;
 }
-.highlight .c, .highlight .cd {
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
   color: #75715e;
 }
 .highlight .err {
@@ -126,7 +126,7 @@
 .highlight .s1 {
   color: #e6db74;
 }
-.highlight .s {
+.highlight .s, .highlight .sa, .highlight .dl {
   color: #e6db74;
 }
 .highlight .na {
@@ -141,16 +141,13 @@
 .highlight .ne {
   color: #a6e22e;
 }
-.highlight .nf {
+.highlight .nf, .highlight .fm {
   color: #a6e22e;
 }
 .highlight .vc {
   color: #ffffff;
 }
 .highlight .nn {
-  color: #ffffff;
-}
-.highlight .nl {
   color: #ffffff;
 }
 .highlight .ni {
@@ -165,7 +162,7 @@
 .highlight .vi {
   color: #ffffff;
 }
-.highlight .nv {
+.highlight .nv, .highlight .vm {
   color: #ffffff;
 }
 .highlight .w {
@@ -176,6 +173,9 @@
 }
 .highlight .n, .highlight .py, .highlight .nx {
   color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
 }
 .highlight .ow {
   color: #f92672;
@@ -196,20 +196,107 @@
   color: #f92672;
 }
     </style>
-    <link href="stylesheets/screen-a1ce949a.css" rel="stylesheet" media="screen" />
-    <link href="stylesheets/print-bccf8c07.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-c5541673.js"></script>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sa, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-e9bde216.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
   </head>
 
   <body class="index" data-languages="[&quot;shell&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar-cad8cdcb.png" alt="Navbar" />
+        <img src="images/navbar-cad8cdcb.png" alt="" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-873b2905.png" class="logo" alt="Logo" />
+      <img src="images/logo-873b2905.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -220,6 +307,9 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+          </li>
+          <li>
+            <a href="#rate-limits" class="toc-h1 toc-link" data-title="Rate limits">Rate limits</a>
           </li>
           <li>
             <a href="#actor-profiles" class="toc-h1 toc-link" data-title="Actor profiles">Actor profiles</a>
@@ -252,9 +342,9 @@
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<pre class="highlight shell tab-shell"><code>curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: Token token=API_KEY"</span>
-</code></pre>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api_endpoint_here"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
+</code></pre></div>
 <p>Castupload uses API keys to allow access to the API. You can request an API key with <a href="http://www.castupload.com/contact/new">our support</a>.</p>
 
 <p>Castupload expects the API key to be included in all API requests to the server in a header that looks like the following:</p>
@@ -264,25 +354,37 @@
 <aside class="notice">
 You must replace <code>API_KEY</code> with your personal API key.
 </aside>
-<h1 id='actor-profiles'>Actor profiles</h1><h2 id='get-all-actor-profiles'>Get all actor profiles</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/actor_profiles"</span>
-  -H <span class="s2">"Authorization: Token token=API_KEY"</span>
-</code></pre>
+<h1 id='rate-limits'>Rate limits</h1>
+<p>Rate limits are enforced on a per IP address basis. Currently we allow up to 300 requests within a 5 minute period. If this quota is exceeded your IP will be throttled for the remainder of this period. In this case the API will return an error responses that shows up as status code <code>429</code>.</p>
+
+<p>Along with the status code the following <code>RateLimit</code> response header fields will be returned:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>Ratelimit-Limit: 300
+Ratelimit-Remaining: 0
+Ratelimit-Reset: 1597048500
+</code></pre></div>
+<ul>
+<li><code>Ratelimit-Limit</code>: the request-quota associated to your client (defaults to 300)</li>
+<li><code>Ratelimit-Reset</code>: the timestamp when the quota resets</li>
+</ul>
+<h1 id='actor-profiles'>Actor profiles</h1><h2 id='get-all-actor-profiles'>Get all actor profiles</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/actor_profiles"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m"</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f"</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint retrieves all actor profiles available with the access rights of the API key. Most of the time it is scoped to a talent agency.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://www.castupload.com/api/v1/actor_profiles</code></p>
@@ -374,23 +476,23 @@ You must replace <code>API_KEY</code> with your personal API key.
 <td>profile picture url of specified version</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-actor-profile'>Get a specific actor profile</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/actor_profiles/123"</span>
-  -H <span class="s2">"Authorization: Token token=API_KEY"</span>
-</code></pre>
+<h2 id='get-a-specific-actor-profile'>Get a specific actor profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/actor_profiles/123"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">268</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"castupload_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.castupload.com/actors/john-doe"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"acting_age_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"acting_age_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">38</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"year_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1985</span><span class="p">,</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">268</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"castupload_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.castupload.com/actors/john-doe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"acting_age_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"acting_age_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">38</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"year_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1985</span><span class="p">,</span><span class="w">
   </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint retrieves a specific actor profile.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://www.castupload.com/api/v1/actor_profiles/&lt;ID&gt;</code></p>
@@ -425,32 +527,32 @@ You must replace <code>API_KEY</code> with your personal API key.
 <td>Translates attributes with closed lists, free text fields are only available in the entry language. Possible values are: <code>en</code>, <code>de</code></td>
 </tr>
 </tbody></table>
-<h1 id='talent-agencies'>Talent agencies</h1><h2 id='get-talent-agency-data'>Get talent agency data</h2><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/talent_agencies/123"</span>
-  -H <span class="s2">"Authorization: Token token=API_KEY"</span>
-</code></pre>
+<h1 id='talent-agencies'>Talent agencies</h1><h2 id='get-talent-agency-data'>Get talent agency data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/talent_agencies/123"</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-<pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="s2">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example agency"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"homepage_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"imdb_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pro.imdb.com/company/co0000001"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"showreel_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/showreel"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"twitter_handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@example_agency"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"public_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.castupload.com/example.png"</span><span class="p">,</span><span class="w">
-  </span><span class="s2">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="s2">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mainz"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DE"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wallstr. 11"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49613163691950"</span><span class="p">,</span><span class="w">
-    </span><span class="s2">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55122"</span><span class="w">
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example agency"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"homepage_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"imdb_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pro.imdb.com/company/co0000001"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"showreel_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/showreel"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"twitter_handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@example_agency"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"public_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.castupload.com/example.png"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mainz"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DE"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"fax"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"line1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Wallstr. 11"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49613163691950"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55122"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
+</span></code></pre></div>
 <p>This endpoint retrieves a specific talent agency.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://www.castupload.com/api/v1/talent_agencies/&lt;ID&gt;</code></p>
