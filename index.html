@@ -281,7 +281,7 @@
     </style>
     <link href="stylesheets/screen-c9d8fa83.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
-      <script src="javascripts/all-e9bde216.js"></script>
+      <script src="javascripts/all-e033bdd3.js"></script>
 
     <script>
       $(function() { setupCodeCopy(); });
@@ -342,7 +342,7 @@
 <blockquote>
 <p>To authorize, use this code:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api_endpoint_here"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
 </code></pre></div>
 <p>Castupload uses API keys to allow access to the API. You can request an API key with <a href="http://www.castupload.com/contact/new">our support</a>.</p>
@@ -443,7 +443,7 @@ Ratelimit-Reset: 1597048500
 <tr>
 <td>gender</td>
 <td>string</td>
-<td><code>f</code> for female, <code>m</code> for male, <code>i</code> for intersex</td>
+<td><code>f</code> for female, <code>m</code> for male, <code>i</code> for diverse</td>
 </tr>
 <tr>
 <td>name</td>
@@ -476,7 +476,7 @@ Ratelimit-Reset: 1597048500
 <td>profile picture url of specified version</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-actor-profile'>Get a specific actor profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/actor_profiles/123"</span>
+<h2 id='get-a-specific-actor-profile'>Get a specific actor profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/actor_profiles/123"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
 </code></pre></div>
 <blockquote>
@@ -527,7 +527,7 @@ Ratelimit-Reset: 1597048500
 <td>Translates attributes with closed lists, free text fields are only available in the entry language. Possible values are: <code>en</code>, <code>de</code></td>
 </tr>
 </tbody></table>
-<h1 id='talent-agencies'>Talent agencies</h1><h2 id='get-talent-agency-data'>Get talent agency data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/talent_agencies/123"</span>
+<h1 id='talent-agencies'>Talent agencies</h1><h2 id='get-talent-agency-data'>Get talent agency data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/talent_agencies/123"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
 </code></pre></div>
 <blockquote>
