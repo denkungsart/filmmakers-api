@@ -389,6 +389,10 @@ Ratelimit-Reset: 1597048500
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves all actor profiles available with the access rights of the API key. Most of the time it is scoped to a talent agency.</p>
+<h3 id='pagination'>Pagination</h3>
+<p>This API endpoint is paginated, following the proposed <a href="https://tools.ietf.org/html/rfc8288">RFC-8288</a> standard for Web linking.</p>
+
+<p>The pagination information is included in response HTTP headers, namely <code>Total</code> (total entries), <code>Per-Page</code> (entries per page) and <code>Link</code> (containing links to corresponding pages). The current page can be set using the <code>page</code>-parameter.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://www.castupload.com/api/v1/actor_profiles</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -399,6 +403,11 @@ Ratelimit-Reset: 1597048500
 <th>Description</th>
 </tr>
 </thead><tbody>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>Page to display - see &quot;Pagination&quot; above</td>
+</tr>
 <tr>
 <td>include_picture</td>
 <td>false</td>
