@@ -531,12 +531,12 @@ Ratelimit-Reset: 1597048500
 <tr>
 <td>enum</td>
 <td>null</td>
-<td>If set to <code>translate</code> attributes are translated if possible (eg. gender will be <code>male</code> or <code>männlich</code> instead of <code>m</code>).</td>
+<td>If set to <code>translate</code> attributes are translated if possible (eg. gender will be <code>male</code> or <code>männlich</code> instead of <code>m</code>). <em>Note that hash and array attributes (eg. dances / sports) will be joined to a comma-separated string when translating attributes.</em></td>
 </tr>
 <tr>
 <td>locale</td>
 <td>en</td>
-<td>Translates attributes with closed lists, free text fields are only available in the entry language. Possible values are: <code>en</code>, <code>de</code>, <code>fr</code>, <code>it</code>, <code>es</code>, <code>pl</code>, <code>ro</code>, <code>ru</code>, <code>tr</code></td>
+<td>Translates attributes with closed lists, free text fields are only available in the entry language. Possible values are: <code>en</code>, <code>de</code>, <code>fr</code>, <code>it</code>, <code>es</code>, <code>pl</code>, <code>ro</code>, <code>ru</code>, <code>tr</code>. <em>This parameter only has an effect when <code>enum</code> is set to <code>translate</code>.</em></td>
 </tr>
 </tbody></table>
 <h1 id='talent-agencies'>Talent agencies</h1><h2 id='get-talent-agency-data'>Get talent agency data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/talent_agencies/123"</span> <span class="se">\</span>
