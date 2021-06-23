@@ -349,6 +349,11 @@ curl "https://www.castupload.com/api/v1/actor_profiles/123" \
 
 This endpoint retrieves a specific actor profile.
 
+#### Notes:
+- It is not guaranteed that the example above is complete. Additional fields may be added without notice.
+- The field `external_showreel` is still supported but deprecated.
+It is recommended to use the array of `external_showreels` instead.
+
 ### HTTP Request
 
 `GET https://www.castupload.com/api/v1/actor_profiles/<ID>`
