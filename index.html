@@ -312,6 +312,9 @@
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
+            <a href="#cross-origin-resource-sharing" class="toc-h1 toc-link" data-title="Cross origin resource sharing">Cross origin resource sharing</a>
+          </li>
+          <li>
             <a href="#rate-limits" class="toc-h1 toc-link" data-title="Rate limits">Rate limits</a>
           </li>
           <li>
@@ -357,7 +360,14 @@
 <aside class="notice">
 You must replace <code>API_KEY</code> with your personal API key.
 </aside>
-<h1 id='rate-limits'>Rate limits</h1>
+<h1 id='cross-origin-resource-sharing'>Cross origin resource sharing</h1>
+<p>The API supports Cross Origin Resource Sharing (CORS) for AJAX requests from any origin.</p>
+
+<p>Here&#39;s a sample request sent from a browser hitting <a href="https://www.example.com/">https://www.example.com/</a>:</p>
+<div class="highlight"><pre class="highlight plaintext"><code>$ curl -I https://www.castupload.com/api/v1/actor_profiles -H "Origin: https://www.example.com"
+Access-Control-Allow-Origin: *
+Access-Control-Allow-Methods: GET
+</code></pre></div><h1 id='rate-limits'>Rate limits</h1>
 <p>Rate limits are enforced on a per IP address basis. Currently we allow up to 300 requests within a 5 minute period. If this quota is exceeded your IP will be throttled for the remainder of this period. In this case the API will return an error responses that shows up as status code <code>429</code>.</p>
 
 <p>Along with the status code the following <code>RateLimit</code> response header fields will be returned:</p>
@@ -495,17 +505,227 @@ Ratelimit-Reset: 1597048500
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">268</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">162</span><span class="p">,</span><span class="w">
   </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"castupload_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.castupload.com/actors/john-doe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"acting_age_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">32</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"acting_age_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">38</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"year_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1985</span><span class="p">,</span><span class="w">
-  </span><span class="err">//</span><span class="w"> </span><span class="err">...</span><span class="w">
+  </span><span class="nl">"acting_age_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"acting_age_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"year_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1980</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"age"</span><span class="p">:</span><span class="w"> </span><span class="mi">41</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"height"</span><span class="p">:</span><span class="w"> </span><span class="mi">170</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"weight"</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DE-RP"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"accommodation_options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Berlin"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Frankfurt"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Köln"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"homepage_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"imdb_link"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"facebook_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Castupload"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"twitter_handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Castupload"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instagram_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"castupload"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"filmmakers_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"sv_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"talent_agency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-22T16:14:11.519+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"native_dialect"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rheinisch"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"place_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Darmstadt"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mainz"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"eye_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"braun"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"hair_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"braun"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"hair_length"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mittel"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ethnic_appearances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"mitteleuropaisch"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"figure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pitch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bariton"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"nationalities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"DE"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"deutsch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"muttersprachlich"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"englisch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fliessend"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"dialects"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"hessisch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kann"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"rheinisch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kann"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"accents"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"osterreichisch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"kann"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"instruments"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"gitarre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gut"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"sports"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"buhnenkampf"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"dances"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"freestyle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gut"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"professions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"schauspieler"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"singing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"jazz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"grundkenntnisse"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"drivers_licenses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"pkw-klasse-b-be"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"licenses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"fallschirmspringer-lizenz"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DE-RP"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pictures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"copyright"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-21T16:18:41.087+02:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.castupload.com/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"versions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.castupload.com/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"large"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d205pfv3qf1itp.cloudfront.net/s3/castupload-com/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png/755095922e94f912e6691c63f7aef9887d069f13c5dc84b581bbabea6761f7d5/c_limit,f_jpg,h_1200,q_80,w_1200"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d205pfv3qf1itp.cloudfront.net/s3/castupload-com/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png/8cbb163eb48e440b5e9715e0c551180817f76c7072fd205df3c320bae08548e8/c_crop,f_jpg,h_370,q_80,w_370,x_0,y_0/c_fill,g_North,h_190,w_190"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"square"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">370</span><span class="p">,</span><span class="w">
+        </span><span class="mi">370</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"crop_coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"w"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"h"</span><span class="p">:</span><span class="w"> </span><span class="mi">500</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"main_picture"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"recorded_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-06-22T11:51:51.363+02:00"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">141</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"copyright"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-21T16:18:47.460+02:00"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.castupload.com/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"versions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.castupload.com/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"large"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d205pfv3qf1itp.cloudfront.net/s3/castupload-com/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png/c323525480481e940c6b95eced100afa1b3c23ef2af4431df592b0e492de2211/c_limit,f_jpg,h_1200,q_80,w_1200"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d205pfv3qf1itp.cloudfront.net/s3/castupload-com/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png/e63279986f8a8b40f0d1a99bb14c69918a749a34750248578a95ee17fdc58da7/c_fill,f_jpg,g_North,h_190,q_80,w_190"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"landscape"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="mi">365</span><span class="p">,</span><span class="w">
+        </span><span class="mi">360</span><span class="w">
+      </span><span class="p">],</span><span class="w">
+      </span><span class="nl">"main_picture"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2021</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"recorded_at"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"external_showreel"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.youtube.com/watch?v=xxxx"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"external_showreels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"https://www.youtube.com/watch?v=xxxx"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"https://vimeo.com/xxxx"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"showreels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Showreel 2021"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.castupload.com/actors/john-doe/showreels/15"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Showreel 2020"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.castupload.com/actors/john-doe/showreels/16"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Audioreel 2021"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://www.castupload.com/actors/john-doe/showreels/17"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"audio"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"vita"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"primary_education"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ABC School"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">2012</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"award"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Avanca Film Festival - Best Performance"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">2017</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">2017</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"award_nominated"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"education"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"123 School"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">2013</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">2014</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"film"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Schneeflöckchen"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">2019</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">2020</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jack"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"supporting"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"distributor"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"director"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Adolfo Kolmerer"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"producer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"caster"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Harmonica "</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">2018</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">2018</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Felix"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"leading"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"distributor"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"director"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"producer"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Deutsche Film- und Fernsehakademie Berlin"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"caster"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"television"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"info"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mord mit Aussicht"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">2015</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">2016</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"role_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"misc"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"distributor"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"director"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"producer"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"caster"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"theatre"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"audio"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"other"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"internet"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"commercial"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a specific actor profile.</p>
+<h4 id='notes'>Notes:</h4>
+<ul>
+<li>It is not guaranteed that the exemplary JSON structure shown is complete. Additional fields may be added without notice.</li>
+<li>The field <code>external_showreel</code> is still supported but deprecated.
+It is recommended to use the array of <code>external_showreels</code> instead.</li>
+</ul>
 <h3 id='http-request-2'>HTTP Request</h3>
 <p><code>GET https://www.castupload.com/api/v1/actor_profiles/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
