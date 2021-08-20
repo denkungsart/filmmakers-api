@@ -497,6 +497,16 @@ Ratelimit-Reset: 1597048500
 <td>string</td>
 <td>profile picture url of specified version</td>
 </tr>
+<tr>
+<td>castupload_url</td>
+<td>string</td>
+<td>url of the profile on castupload</td>
+</tr>
+<tr>
+<td>castupload_professional_url</td>
+<td>string</td>
+<td>url of the profile on castupload professional (only available when connected)</td>
+</tr>
 </tbody></table>
 <h2 id='get-a-specific-actor-profile'>Get a specific actor profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/actor_profiles/123"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
@@ -509,6 +519,7 @@ Ratelimit-Reset: 1597048500
   </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"castupload_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.castupload.com/actors/john-doe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"castupload_professional_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.pro.castupload.com/profil/castupload/162"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"acting_age_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
   </span><span class="nl">"acting_age_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
   </span><span class="nl">"year_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1980</span><span class="p">,</span><span class="w">
