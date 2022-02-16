@@ -322,6 +322,17 @@
             <a href="#rate-limits" class="toc-h1 toc-link" data-title="Rate limits">Rate limits</a>
           </li>
           <li>
+            <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#2022-01-26" class="toc-h2 toc-link" data-title="2022-01-26">2022-01-26</a>
+                  </li>
+                  <li>
+                    <a href="#2022-01-12" class="toc-h2 toc-link" data-title="2022-01-12">2022-01-12</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#actor-profiles" class="toc-h1 toc-link" data-title="Actor profiles">Actor profiles</a>
               <ul class="toc-list-h2">
                   <li>
@@ -382,6 +393,14 @@ Ratelimit-Reset: 1597048500
 <ul>
 <li><code>Ratelimit-Limit</code>: the request-quota associated to your client (defaults to 300)</li>
 <li><code>Ratelimit-Reset</code>: the timestamp when the quota resets</li>
+</ul>
+<h1 id='changelog'>Changelog</h1><h2 id='2022-01-26'>2022-01-26</h2>
+<ul>
+<li> <strong>ActorProfile#show</strong>: Add <code>pitches</code>, <code>figures</code>, <code>native_dialects</code>, <code>sport_skills</code>, <code>special_skills</code></li>
+</ul>
+<h2 id='2022-01-12'>2022-01-12</h2>
+<ul>
+<li><strong>ActorProfile#show</strong>: Add new fields <code>station</code> / <code>theatre</code> / <code>writer</code> to Vita</li>
 </ul>
 <h1 id='actor-profiles'>Actor profiles</h1><h2 id='get-all-actor-profiles'>Get all actor profiles</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/actor_profiles"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
