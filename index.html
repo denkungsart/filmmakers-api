@@ -776,7 +776,10 @@ Ratelimit-Reset: 1597048500
 
 <ul>
 <li>It is not guaranteed that the exemplary JSON structure shown is complete. Additional fields may be added without notice.</li>
-<li>The field <code>external_showreel</code> is still supported but deprecated. It is recommended to use the array of <code>external_showreels</code> instead.</li>
+<li><strong>Deprecation</strong>: <code>external_showreel</code> is deprecated. Use <code>external_showreels</code> instead.</li>
+<li><strong>Deprecation</strong>: <code>pitch</code> is deprecated. Use <code>pitches</code> instead.</li>
+<li><strong>Deprecation</strong>: <code>figure</code> is deprecated. Use <code>figures</code> instead.</li>
+<li><strong>Deprecation</strong>: <code>native_dialect</code> is deprecated. Use <code>native_dialects</code> instead.</li>
 </ul>
 <h1 id='talent-agencies'>Talent agencies</h1><h2 id='get-talent-agency-data'>Get talent agency data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/talent_agencies/123"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
