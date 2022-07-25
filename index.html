@@ -313,6 +313,9 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
@@ -351,15 +354,13 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='authentication'>Authentication</h1>
-<blockquote>
-<p>To authorize, use this code:</p>
-</blockquote>
+        <h1 id='introduction'>Introduction</h1>
+<p>Castupload provides a RESTful JSON API with token-based authentication. You can request an API key with <a href="https://www.castupload.com/contact/new">our support</a>. The permission scope of the API key varies depending on the use case, so when contacting us be sure to specify the desired use case (e.g. you plan on using Castupload data for a website).</p>
+<h1 id='authentication'>Authentication</h1>
+<p>Once you have been issued an API key you can use the following code to authorize requests:</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
 </code></pre></div>
-<p>Castupload uses API keys to allow access to the API. You can request an API key with <a href="http://www.castupload.com/contact/new">our support</a>.</p>
-
 <p>Castupload expects the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
 <p><code>Authorization: Token token=API_KEY</code></p>
