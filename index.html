@@ -303,7 +303,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-873b2905.png" class="logo" alt="" />
+      <img src="images/logo-fec0bd8c.svg" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -348,20 +348,20 @@
           </li>
       </ul>
         <ul class="toc-footer">
-            <li><a href='https://www.castupload.com'>&larr; back to Castupload</a></li>
+            <li><a href='https://www.filmmakers.eu'>&larr; back to Filmmakers</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Castupload provides a RESTful JSON API with token-based authentication. You can request an API key with <a href="https://www.castupload.com/contact/new">our support</a>. The permission scope of the API key varies depending on the use case, so when contacting us be sure to specify the desired use case (e.g. you plan on using Castupload data for a website).</p>
+<p>Filmmakers provides a RESTful JSON API with token-based authentication. You can request an API key with <a href="https://www.filmmakers.eu/contact/new">our support</a>. The permission scope of the API key varies depending on the use case, so when contacting us be sure to specify the desired use case (e.g. you plan on using Filmmakers data for a website).</p>
 <h1 id='authentication'>Authentication</h1>
 <p>Once you have been issued an API key you can use the following code to authorize requests:</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
 </code></pre></div>
-<p>Castupload expects the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<p>Filmmakers expects the API key to be included in all API requests to the server in a header that looks like the following:</p>
 
 <p><code>Authorization: Token token=API_KEY</code></p>
 
@@ -372,7 +372,7 @@ You must replace <code>API_KEY</code> with your personal API key.
 <p>The API supports Cross Origin Resource Sharing (CORS) for AJAX requests from any origin.</p>
 
 <p>Here&#39;s a sample request sent from a browser hitting <a href="https://www.example.com/">https://www.example.com/</a>:</p>
-<div class="highlight"><pre class="highlight plaintext"><code>$ curl -I https://www.castupload.com/api/v1/actor_profiles -H "Origin: https://www.example.com"
+<div class="highlight"><pre class="highlight plaintext"><code>$ curl -I https://www.filmmakers.eu/api/v1/actor_profiles -H "Origin: https://www.example.com"
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: GET
 </code></pre></div><h1 id='rate-limits'>Rate limits</h1>
@@ -394,7 +394,7 @@ Ratelimit-Reset: 1597048500
 <li>(2022-01-26) <strong>ActorProfile#show</strong>: Add <code>pitches</code>, <code>figures</code>, <code>native_dialects</code>, <code>sport_skills</code>, <code>special_skills</code></li>
 <li>(2022-01-12) <strong>ActorProfile#show</strong>: Add new fields <code>station</code> / <code>theatre</code> / <code>writer</code> to Vita</li>
 </ul>
-<h1 id='actor-profiles'>Actor profiles</h1><h2 id='get-all-actor-profiles'>Get all actor profiles</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/actor_profiles"</span> <span class="se">\</span>
+<h1 id='actor-profiles'>Actor profiles</h1><h2 id='get-all-actor-profiles'>Get all actor profiles</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/actor_profiles"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
 </code></pre></div>
 <blockquote>
@@ -419,7 +419,7 @@ Ratelimit-Reset: 1597048500
 
 <p>The pagination information is included in response HTTP headers, namely <code>Total</code> (total entries), <code>Per-Page</code> (entries per page) and <code>Link</code> (containing links to corresponding pages). The current page can be set using the <code>page</code>-parameter.</p>
 <h3 id='http-request'>HTTP Request</h3>
-<p><code>GET https://www.castupload.com/api/v1/actor_profiles</code></p>
+<p><code>GET https://www.filmmakers.eu/api/v1/actor_profiles</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
@@ -515,15 +515,15 @@ Ratelimit-Reset: 1597048500
 <tr>
 <td>castupload_url</td>
 <td>string</td>
-<td>url of the profile on castupload</td>
+<td>url of the profile on Filmmakers</td>
 </tr>
 <tr>
 <td>castupload_professional_url</td>
 <td>string</td>
-<td>url of the profile on castupload professional (only available when connected)</td>
+<td>url of the profile on Filmmakers for casting directors (only available when connected)</td>
 </tr>
 </tbody></table>
-<h2 id='get-a-specific-actor-profile'>Get a specific actor profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/actor_profiles/123"</span> <span class="se">\</span>
+<h2 id='get-a-specific-actor-profile'>Get a specific actor profile</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/actor_profiles/123"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
 </code></pre></div>
 <blockquote>
@@ -533,8 +533,8 @@ Ratelimit-Reset: 1597048500
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">162</span><span class="p">,</span><span class="w">
   </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"castupload_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.castupload.com/actors/john-doe"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"castupload_professional_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.pro.castupload.com/profil/castupload/162"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"castupload_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.filmmakers.eu/actors/john-doe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"castupload_professional_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://cd.filmmakers.eu/profil/castupload/162"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"acting_age_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
   </span><span class="nl">"acting_age_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">45</span><span class="p">,</span><span class="w">
   </span><span class="nl">"year_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1980</span><span class="p">,</span><span class="w">
@@ -550,8 +550,8 @@ Ratelimit-Reset: 1597048500
   </span><span class="nl">"homepage_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"www.example.com"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"imdb_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.imdb.com/name/nm0000001"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"imdb_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nm0000001"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"facebook_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Castupload"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"twitter_handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Castupload"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"facebook_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filmmakers"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"twitter_handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Filmmakers"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"instagram_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"castupload"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"filmmakers_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
   </span><span class="nl">"sv_url"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -619,9 +619,9 @@ Ratelimit-Reset: 1597048500
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w">
       </span><span class="nl">"copyright"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-21T16:18:41.087+02:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.castupload.com/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.filmmakers.eu/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"versions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.castupload.com/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.filmmakers.eu/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"large"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d205pfv3qf1itp.cloudfront.net/s3/castupload-com/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png/755095922e94f912e6691c63f7aef9887d069f13c5dc84b581bbabea6761f7d5/c_limit,f_jpg,h_1200,q_80,w_1200"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d205pfv3qf1itp.cloudfront.net/s3/castupload-com/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png/8cbb163eb48e440b5e9715e0c551180817f76c7072fd205df3c320bae08548e8/c_crop,f_jpg,h_370,q_80,w_370,x_0,y_0/c_fill,g_North,h_190,w_190"</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -644,9 +644,9 @@ Ratelimit-Reset: 1597048500
       </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">141</span><span class="p">,</span><span class="w">
       </span><span class="nl">"copyright"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
       </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-21T16:18:47.460+02:00"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.castupload.com/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.filmmakers.eu/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"versions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nl">"original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.castupload.com/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.filmmakers.eu/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"large"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d205pfv3qf1itp.cloudfront.net/s3/castupload-com/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png/c323525480481e940c6b95eced100afa1b3c23ef2af4431df592b0e492de2211/c_limit,f_jpg,h_1200,q_80,w_1200"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d205pfv3qf1itp.cloudfront.net/s3/castupload-com/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png/e63279986f8a8b40f0d1a99bb14c69918a749a34750248578a95ee17fdc58da7/c_fill,f_jpg,g_North,h_190,q_80,w_190"</span><span class="w">
       </span><span class="p">},</span><span class="w">
@@ -668,17 +668,17 @@ Ratelimit-Reset: 1597048500
   </span><span class="nl">"showreels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Showreel 2021"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.castupload.com/actors/john-doe/showreels/15"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.filmmakers.eu/actors/john-doe/showreels/15"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Showreel 2020"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.castupload.com/actors/john-doe/showreels/16"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.filmmakers.eu/actors/john-doe/showreels/16"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Audioreel 2021"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://www.castupload.com/actors/john-doe/showreels/17"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="s2">"https://www.filmmakers.eu/actors/john-doe/showreels/17"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"audio"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
@@ -756,7 +756,7 @@ Ratelimit-Reset: 1597048500
 </span></code></pre></div>
 <p>This endpoint retrieves a specific actor profile.</p>
 <h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET https://www.castupload.com/api/v1/actor_profiles/&lt;ID&gt;</code></p>
+<p><code>GET https://www.filmmakers.eu/api/v1/actor_profiles/&lt;ID&gt;</code></p>
 <h3 id='url-parameters'>URL Parameters</h3>
 <table><thead>
 <tr>
@@ -798,7 +798,7 @@ Ratelimit-Reset: 1597048500
 <li><strong>Deprecation</strong>: <code>figure</code> is deprecated. Use <code>figures</code> instead.</li>
 <li><strong>Deprecation</strong>: <code>native_dialect</code> is deprecated. Use <code>native_dialects</code> instead.</li>
 </ul>
-<h1 id='talent-agencies'>Talent agencies</h1><h2 id='get-talent-agency-data'>Get talent agency data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.castupload.com/api/v1/talent_agencies/123"</span> <span class="se">\</span>
+<h1 id='talent-agencies'>Talent agencies</h1><h2 id='get-talent-agency-data'>Get talent agency data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/talent_agencies/123"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
 </code></pre></div>
 <blockquote>
@@ -813,7 +813,7 @@ Ratelimit-Reset: 1597048500
   </span><span class="nl">"showreel_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/showreel"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"twitter_handle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@example_agency"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"public_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.castupload.com/example.png"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.filmmakers.eu/example.png"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mainz"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DE"</span><span class="p">,</span><span class="w">
@@ -827,7 +827,7 @@ Ratelimit-Reset: 1597048500
 </span></code></pre></div>
 <p>This endpoint retrieves a specific talent agency.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
-<p><code>GET https://www.castupload.com/api/v1/talent_agencies/&lt;ID&gt;</code></p>
+<p><code>GET https://www.filmmakers.eu/api/v1/talent_agencies/&lt;ID&gt;</code></p>
 <h3 id='url-parameters-2'>URL Parameters</h3>
 <table><thead>
 <tr>
