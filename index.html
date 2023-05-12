@@ -349,6 +349,17 @@
                   </li>
               </ul>
           </li>
+          <li>
+            <a href="#attributes" class="toc-h1 toc-link" data-title="Attributes">Attributes</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-attributes" class="toc-h2 toc-link" data-title="Get all attributes">Get all attributes</a>
+                  </li>
+                  <li>
+                    <a href="#get-key-value-pairs-for-attributes" class="toc-h2 toc-link" data-title="Get key/value pairs for attributes">Get key/value pairs for attributes</a>
+                  </li>
+              </ul>
+          </li>
       </ul>
         <ul class="toc-footer">
             <li><a href='https://www.filmmakers.eu'>&larr; back to Filmmakers</a></li>
@@ -899,6 +910,46 @@ Signatures are generated using a hash-based message authentication code (HMAC) w
 </tbody></table>
 <h3 id='response-fields-3'>Response fields</h3>
 <p>See example response to the right for an overview of included fields.</p>
+<h1 id='attributes'>Attributes</h1><h2 id='get-all-attributes'>Get all attributes</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/attributes/"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns an Array structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="s2">"accent_skill"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"accents"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dances"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dialect_skill"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"dialects"</span><span class="p">,</span><span class="w">
+  </span><span class="s2">"drivers_licenses"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all possible profile attributes that are closed lists like languages or nationalities as well as attributes for credits/vita.</p>
+
+<p>For countries ISO 3166-1 alpha-2 codes are used <a href="https://en.wikipedia.org/wiki/ISO_3166-2">https://en.wikipedia.org/wiki/ISO_3166-2</a>. For federal states (states/subdivisions) ISO 3166-2 are used, e.g. for Germany: <a href="https://en.wikipedia.org/wiki/ISO_3166-2:DE">https://en.wikipedia.org/wiki/ISO_3166-2:DE</a>. Since the ISO lists are standardized (and extensive), they are not present in this endpoint for the time being.</p>
+<h2 id='get-key-value-pairs-for-attributes'>Get key/value pairs for attributes</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/attributes/xxx"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"AD"</span><span class="p">:</span><span class="s2">"Andorran"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"AE"</span><span class="p">:</span><span class="s2">"United Arab Emirates"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"AF"</span><span class="p">:</span><span class="s2">"Afghan"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"AG"</span><span class="p">:</span><span class="s2">"Antigua and Barbuda"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"AL"</span><span class="p">:</span><span class="s2">"Albanian"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"AM"</span><span class="p">:</span><span class="s2">"Armenian"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"AO"</span><span class="p">:</span><span class="s2">"Angolan"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"AR"</span><span class="p">:</span><span class="s2">"Argentinean"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"AT"</span><span class="p">:</span><span class="s2">"Austrian"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"AU"</span><span class="p">:</span><span class="s2">"Australian"</span><span class="p">,</span><span class="w">
+  </span><span class="err">...</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>This endpoint retrieves all possible key/value pair for one of the attributes. Pass one of the supported locales (see above) as param to retrieve localized values.</p>
 
       </div>
       <div class="dark-box">
