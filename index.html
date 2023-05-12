@@ -325,6 +325,9 @@
             <a href="#rate-limits" class="toc-h1 toc-link" data-title="Rate limits">Rate limits</a>
           </li>
           <li>
+            <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
+          </li>
+          <li>
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
           </li>
           <li>
@@ -387,8 +390,60 @@ Ratelimit-Reset: 1597048500
 <li><code>Ratelimit-Limit</code>: the request-quota associated to your client (defaults to 300)</li>
 <li><code>Ratelimit-Reset</code>: the timestamp when the quota resets</li>
 </ul>
+<h1 id='webhooks'>Webhooks</h1>
+<p>A webhook is an endpoint on your server that receives requests from Filmmakers, notifying you about events for actor profiles such as a profile edit. This requires a new endpoint on your server such as https://www.example.com/webhooks/castupload which should be publicly accessible and allow unauthenticated POST requests.</p>
+
+<p><strong>Read the event data</strong></p>
+
+<p>Filmmakers sends the event data in the request body. Each event is structured as an Event object with a type, timestamp, and related Filmmakers resource nested under data (currently only an actor profile id - see example on the right)</p>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"actor_profile.updated"</span><span class="w">
+  </span><span class="nl">"created"</span><span class="p">:</span><span class="w"> </span><span class="mi">1633887337</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<p>There are currently two event types: <code>actor_profile.updated</code> and <code>actor_profile.deleted</code>. Note that update events are grouped if they occur within a reasonable timeframe, e.g. you might only receive 1 webhook if an actor profile is updated several times within a short timeframe.</p>
+
+<p><strong>Return a 200 response</strong></p>
+
+<p>Send a successful 200 response to Filmmakers as quickly as possible because Filmmakers retries the event with an exponential back off if a response isn&#39;t sent within a reasonable time. This means that you should write any long-running processes as code that can run asynchronously outside the webhook endpoint.</p>
+
+<p><strong>Verify requests are sent by Filmmakers</strong></p>
+<div class="highlight"><pre class="highlight plaintext"><code>X-Signature: t=1492774577, v1=5257a869e7ecebeda32affa62cdca3fa51cad7e77a0e56ff536d0ce8e108d8bd
+</code></pre></div>
+<p>Filmmakers signs all webhook events by including a signature in each event&#39;s header. This allows you to verify that the events were sent by Filmmakers, not by a third party. The same Api key that you use to send Api requests is also used as secret to sign webhook events.
+Signatures are generated using a hash-based message authentication code (HMAC) with SHA-256.</p>
+
+<p>The <code>X-Signature</code> header included in each signed event contains a timestamp and one signature. The timestamp is prefixed by <code>t=</code>, and the signature is prefixed by a scheme. Schemes start with <code>v</code>, followed by an integer. Currently, the only valid live signature scheme is <code>v1</code>.</p>
+
+<p>You can verify the signature on your side as follows (see example on the right in Ruby):</p>
+<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="c1"># Step 1: Extract the timestamp and signatures from the header</span>
+<span class="n">signature</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">headers</span><span class="p">[</span><span class="s2">"X-Signature"</span><span class="p">]</span>
+  <span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s2">","</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">map</span> <span class="p">{</span> <span class="o">|</span><span class="n">part</span><span class="o">|</span> <span class="n">part</span><span class="p">.</span><span class="nf">split</span><span class="p">(</span><span class="s2">"="</span><span class="p">)</span> <span class="p">}</span>
+  <span class="p">.</span><span class="nf">to_h</span>
+<span class="c1"># (this returns a hash like { "t" =&gt; 1492774577, "v1" =&gt; "5257a86..." })</span>
+
+<span class="c1"># Step 2: Prepare the signed_payload string</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="n">request</span><span class="p">.</span><span class="nf">body</span><span class="p">.</span><span class="nf">read</span>
+<span class="n">signed_payload</span> <span class="o">=</span> <span class="s2">"</span><span class="si">#{</span><span class="n">signature</span><span class="p">[</span><span class="s1">'t'</span><span class="p">]</span><span class="si">}</span><span class="s2">.</span><span class="si">#{</span><span class="n">payload</span><span class="si">}</span><span class="s2">"</span>
+
+<span class="c1"># Step 3: Determine the expected signature</span>
+<span class="n">expected_signature</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="p">.</span><span class="nf">hexdigest</span><span class="p">(</span>
+  <span class="no">OpenSSL</span><span class="o">::</span><span class="no">Digest</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s2">"sha256"</span><span class="p">),</span>
+  <span class="s2">"YOUR_FILMMAKERS_API_KEY"</span><span class="p">,</span>
+  <span class="n">signed_payload</span>
+<span class="p">)</span>
+
+<span class="c1"># Step 4: Compare the signatures</span>
+<span class="n">expected_signature</span> <span class="o">==</span> <span class="n">signature</span><span class="p">[</span><span class="s2">"v1"</span><span class="p">]</span>
+</code></pre></div>
+<p><strong>⚠ Webhooks are not yet generally available. If you are interested in using them please contact our support</strong></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>(2023-04-26) <strong>ActorProfile#show</strong>: Add <code>filmmakers_url</code> and <code>filmmakers_cd_url</code> (formerly <code>castupload_url</code> and <code>castupload_professional_url</code>)</li>
 <li>(2022-12-06) <strong>ActorProfile#show</strong>: Add <code>unions</code></li>
 <li>(2022-09-09) <strong>ActorProfile#index</strong>: Add <code>updated_at</code> as selectable field</li>
 <li>(2022-01-26) <strong>ActorProfile#show</strong>: Add <code>pitches</code>, <code>figures</code>, <code>native_dialects</code>, <code>sport_skills</code>, <code>special_skills</code></li>
@@ -797,6 +852,8 @@ Ratelimit-Reset: 1597048500
 <li><strong>Deprecation</strong>: <code>pitch</code> is deprecated. Use <code>pitches</code> instead.</li>
 <li><strong>Deprecation</strong>: <code>figure</code> is deprecated. Use <code>figures</code> instead.</li>
 <li><strong>Deprecation</strong>: <code>native_dialect</code> is deprecated. Use <code>native_dialects</code> instead.</li>
+<li><strong>Deprecation</strong>: <code>castupload_url</code> is deprecated. Use <code>filmmakers_url</code> instead.</li>
+<li><strong>Deprecation</strong>: <code>castupload_professional_url</code> is deprecated. Use <code>filmmakers_cd_url</code> instead.</li>
 </ul>
 <h1 id='talent-agencies'>Talent agencies</h1><h2 id='get-talent-agency-data'>Get talent agency data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/talent_agencies/123"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
