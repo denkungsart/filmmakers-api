@@ -453,6 +453,7 @@ Ratelimit-Reset: 1597048500
 <p><strong>⚠ Webhooks are not yet generally available. If you are interested in using them please contact our support</strong></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>(2023-08-17) <strong>ActorProfile#index</strong>: Added possibility to filter by <code>updated_at</code></li>
 <li>(2023-05-31) <strong>ActorProfile#index</strong>:
 
 <ul>
@@ -528,6 +529,11 @@ Ratelimit-Reset: 1597048500
 <td>gender</td>
 <td>null</td>
 <td>Allows filtering by gender. Possible values are: <code>m</code>, <code>f</code>, <code>i</code>.</td>
+</tr>
+<tr>
+<td>updated_at[gte]</td>
+<td>null</td>
+<td>Allows filtering for profiles updated since the passed timestamp. Passed as an integer Unix timestamp.</td>
 </tr>
 </tbody></table>
 <h3 id='response-fields'>Response fields</h3>
