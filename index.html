@@ -900,6 +900,7 @@ Ratelimit-Reset: 1597048500
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Example agency"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"short_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Agency"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"homepage_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"imdb_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pro.imdb.com/company/co0000001"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"imdb_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"co0000001"</span><span class="p">,</span><span class="w">
@@ -915,7 +916,18 @@ Ratelimit-Reset: 1597048500
     </span><span class="nl">"line2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
     </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49613163691950"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"zipcode"</span><span class="p">:</span><span class="w"> </span><span class="s2">"55122"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"employees"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49613163691950"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@example.com"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"role"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.filmmakers.eu/example.png"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a specific talent agency.</p>
