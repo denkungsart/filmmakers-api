@@ -127,6 +127,7 @@ expected_signature == signature["v1"]
 
 
 # Changelog
+- (2023-10-01) **ActorProfile#show**: Add `professional_associations` (formerly `unions`)
 - (2023-08-17) **ActorProfile#index**: Added possibility to filter by `updated_at`
 - (2023-05-31) **ActorProfile#index**:
   - Also emit `picture_copyright` if `include_picture` is specified
@@ -304,6 +305,9 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
   "unions": [
     "bffs"
   ],
+  "professional_associations": [
+    "bffs"
+  ],
   "pictures": [
     {
       "id": 140,
@@ -475,6 +479,7 @@ See example response to the right for an overview of included fields. Please not
 - **Deprecation**: `native_dialect` is deprecated. Use `native_dialects` instead.
 - **Deprecation**: `castupload_url` is deprecated. Use `filmmakers_url` instead.
 - **Deprecation**: `castupload_professional_url` is deprecated. Use `filmmakers_cd_url` instead.
+- **Deprecation**: `unions` is deprecated. Use `professional_associations` instead.
 
 # Talent agencies
 
