@@ -311,9 +311,9 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
       "created_at": "2021-06-21T16:18:41.087+02:00",
       "url": "https://static.filmmakers.eu/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png",
       "versions": {
-        "original": "https://static.filmmakers.eu/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png",
-        "large": "https://d205pfv3qf1itp.cloudfront.net/s3/castupload-com/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png/755095922e94f912e6691c63f7aef9887d069f13c5dc84b581bbabea6761f7d5/c_limit,f_jpg,h_1200,q_80,w_1200",
-        "thumb": "https://d205pfv3qf1itp.cloudfront.net/s3/castupload-com/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png/8cbb163eb48e440b5e9715e0c551180817f76c7072fd205df3c320bae08548e8/c_crop,f_jpg,h_370,q_80,w_370,x_0,y_0/c_fill,g_North,h_190,w_190"
+        "original": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:3840/h:2160/f:jpg/ZS5qcGVn",
+        "large": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:1200/h:1200/f:jpg/ZS5qcGVn",
+        "thumb": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fill/el:1/c:528:528:nowe:250:0/w:190/h:190/g:no/f:jpg/ZS5qcGVn"
       },
       "orientation": "square",
       "dimensions": [
@@ -336,9 +336,9 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
       "created_at": "2021-06-21T16:18:47.460+02:00",
       "url": "https://static.filmmakers.eu/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png",
       "versions": {
-        "original": "https://static.filmmakers.eu/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png",
-        "large": "https://d205pfv3qf1itp.cloudfront.net/s3/castupload-com/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png/c323525480481e940c6b95eced100afa1b3c23ef2af4431df592b0e492de2211/c_limit,f_jpg,h_1200,q_80,w_1200",
-        "thumb": "https://d205pfv3qf1itp.cloudfront.net/s3/castupload-com/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png/e63279986f8a8b40f0d1a99bb14c69918a749a34750248578a95ee17fdc58da7/c_fill,f_jpg,g_North,h_190,q_80,w_190"
+        "original": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:3840/h:2160/f:jpg/ZS5qcGVn",
+        "large": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:1200/h:1200/f:jpg/ZS5qcGVn",
+        "thumb": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fill/el:1/c:528:528:nowe:250:0/w:190/h:190/g:no/f:jpg/ZS5qcGVn"
       },
       "orientation": "landscape",
       "dimensions": [
