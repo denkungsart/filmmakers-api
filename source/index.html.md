@@ -64,6 +64,14 @@ Ratelimit-Reset: 1597048500
 * `Ratelimit-Limit`: the request-quota associated to your client (defaults to 300)
 * `Ratelimit-Reset`: the timestamp when the quota resets
 
+# Pagination
+
+This API supports pagination, following the proposed [RFC-8288](https://tools.ietf.org/html/rfc8288) standard for Web linking.
+
+The pagination information is included in response HTTP headers, namely `Total` (total entries), `Per-Page` (entries per page) and `Link` (containing links to corresponding pages).
+
+The current page can be set using the `page` parameter, and the number of entries per page can be specified with the optional `per_page` parameter. The default value for `per_page` is 250, and the maximum allowed value for `per_page` is 1000. If this limit is exceeded, a `400 Bad Request` error code will be returned.
+
 # Webhooks
 
 A webhook is an endpoint on your server that receives requests from Filmmakers, notifying you about events for actor profiles such as a profile edit. This requires a new endpoint on your server such as <https://www.example.com/webhooks/filmmakers> which should be publicly accessible and allow unauthenticated POST requests. Note that HTTPS URLs are required for all webhook endpoints.
@@ -165,12 +173,6 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles" \
 
 This endpoint retrieves all actor profiles available with the access rights of the API key. Most of the time it is scoped to a talent agency.
 
-### Pagination
-
-This API endpoint is paginated, following the proposed [RFC-8288](https://tools.ietf.org/html/rfc8288) standard for Web linking.
-
-The pagination information is included in response HTTP headers, namely `Total` (total entries), `Per-Page` (entries per page) and `Link` (containing links to corresponding pages). The current page can be set using the `page`-parameter.
-
 ### HTTP Request
 
 `GET https://www.filmmakers.eu/api/v1/actor_profiles`
@@ -179,7 +181,8 @@ The pagination information is included in response HTTP headers, namely `Total` 
 
 Parameter | Default | Description
 --------- | ------- | -----------
-page | 1 | Page to display - see "Pagination" above
+page | 1 | Page to display - see "Pagination" section
+per_page | 250 | Items per page - see "Pagination" section
 include_picture | false | If set to true, the result will include the profile picture thumbnail in a field named `main_picture_url_tile`.
 picture_version | null | Can be set to `original`, `large` or `thumb` to change the included picture version. The picture will be included in a field named `picture_url`. _(Only applies if `include_picture` is true)_
 fields | name,gender | Can be used to modify the fields included in the response. Possible values are: `age`, `gender`, `first_name`, `last_name`, `name`, `professions`, `languages`, `representative`, `updated_at`.
@@ -537,6 +540,125 @@ ID | The ID of the talent agency to retrieve
 ### Response fields
 
 See example response to the right for an overview of included fields.
+
+# Blog posts
+
+## Get all blog posts
+
+```shell
+curl "https://www.filmmakers.eu/api/v1/blog_posts" \
+  -H "Authorization: Token token=API_KEY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+[
+  {
+    "id": 36,
+    "title": "Blog post title"
+  },
+  {
+    "id": 35,
+    "title": "Blog post title"
+  }
+]
+
+```
+
+This endpoint retrieves all blog posts available with the access rights of the API key.
+
+### HTTP Request
+
+`GET https://www.filmmakers.eu/api/v1/blog_posts`
+
+### Query Parameters
+
+Parameter | Default | Description
+--------- | ------- | -----------
+page | 1 | Page to display - see "Pagination" section
+per_page | 250 | Items per page - see "Pagination" section
+
+### Response fields
+
+Field | Type | Description
+--------- | ------- | -----------
+id | number | Unique ID of the blog post
+title | string | Title of the blog post
+
+## Get a specific blog post
+
+```shell
+curl "https://www.filmmakers.eu/api/v1/blog_posts/123" \
+  -H "Authorization: Token token=API_KEY"
+```
+
+> The above command returns JSON structured like this:
+
+```json
+{
+  "id": 123,
+  "title": "Blog post title",
+  "note": "Blog post note",
+  "publication_date": "2019-09-02T12:44:19.776+02:00",
+  "source": null,
+  "tags": [
+    {
+      "id": 3,
+      "name": "News"
+    },
+    {
+      "id": 4,
+      "name": "Premiere"
+    }
+  ],
+  "body": "Blog post body",
+  "body_html": "<div>Blog post body<figure class=\"attachment attachment--preview attachment--jpg\"><div class=\"image-wrapper\"><img src=\"https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpeg\"><div class=\"image-caption\"><span title=\"© Acme inc\">© Acme inc</span></div></div></figure></div>",
+  "images": [
+    {
+      "url": "https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpeg",
+      "copyright": "Acme inc"
+    },
+    {
+      "url": "https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpeg",
+      "copyright": "Abc inc"
+    }
+  ]
+}
+
+```
+
+This endpoint retrieves a specific blog post.
+
+### HTTP Request
+
+`GET https://www.filmmakers.eu/api/v1/blog_posts/<ID>`
+
+### URL Parameters
+
+Parameter | Description
+--------- | -----------
+ID | The ID of the blog post to retrieve
+
+### Response fields
+
+See example response to the right for an overview of included fields
+
+Field | Type | Description
+--------- | ------- | -----------
+title | string | title of the blog post
+note | string | optional comment on the post
+body | string | plain text representation of the blog post body with line breaks, **but no HTML markup**
+body_html | string |  blog post body with **HTML markup**, includes images with copyright information. Allowed HTML tags are `a, br, div, em, figcaption, figure, h1, img, li, ol, strong, ul`. Following example CSS can be used to show copyright over the image at the top left corner: `.image-wrapper { position: relative; } .image-caption { position: absolute; top: 0; left: 0; z-index: 1; }`
+publication_date | datetime | publication date of this post
+source | string | original source of the post - e.g. a newspaper in case an article was shared from an external url. Will be null in case of internal posts, i.e. posts written by the entity themselves.
+source.url | string | url of the source article
+source.publication_date | datetime | date of publication of original (may be null if source date cannot be determined)
+tags | array | array of tags applied to the blog post, each containing two key-value pairs: "id" and "name". Available tag names are: "News", "Premiere", "Awards", and "Press"
+images[].url | string | image url
+images[].cover | boolean | true if image is a cover image; default: `false`
+images[].copyright | string | image copyright
+
 
 # Attributes
 
