@@ -325,6 +325,9 @@
             <a href="#rate-limits" class="toc-h1 toc-link" data-title="Rate limits">Rate limits</a>
           </li>
           <li>
+            <a href="#pagination" class="toc-h1 toc-link" data-title="Pagination">Pagination</a>
+          </li>
+          <li>
             <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
           </li>
           <li>
@@ -346,6 +349,17 @@
               <ul class="toc-list-h2">
                   <li>
                     <a href="#get-talent-agency-data" class="toc-h2 toc-link" data-title="Get talent agency data">Get talent agency data</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#blog-posts" class="toc-h1 toc-link" data-title="Blog posts">Blog posts</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-blog-posts" class="toc-h2 toc-link" data-title="Get all blog posts">Get all blog posts</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-blog-post" class="toc-h2 toc-link" data-title="Get a specific blog post">Get a specific blog post</a>
                   </li>
               </ul>
           </li>
@@ -401,6 +415,12 @@ Ratelimit-Reset: 1597048500
 <li><code>Ratelimit-Limit</code>: the request-quota associated to your client (defaults to 300)</li>
 <li><code>Ratelimit-Reset</code>: the timestamp when the quota resets</li>
 </ul>
+<h1 id='pagination'>Pagination</h1>
+<p>This API supports pagination, following the proposed <a href="https://tools.ietf.org/html/rfc8288">RFC-8288</a> standard for Web linking.</p>
+
+<p>The pagination information is included in response HTTP headers, namely <code>Total</code> (total entries), <code>Per-Page</code> (entries per page) and <code>Link</code> (containing links to corresponding pages).</p>
+
+<p>The current page can be set using the <code>page</code> parameter, and the number of entries per page can be specified with the optional <code>per_page</code> parameter. The default value for <code>per_page</code> is 250, and the maximum allowed value for <code>per_page</code> is 1000. If this limit is exceeded, a <code>400 Bad Request</code> error code will be returned.</p>
 <h1 id='webhooks'>Webhooks</h1>
 <p>A webhook is an endpoint on your server that receives requests from Filmmakers, notifying you about events for actor profiles such as a profile edit. This requires a new endpoint on your server such as <a href="https://www.example.com/webhooks/filmmakers">https://www.example.com/webhooks/filmmakers</a> which should be publicly accessible and allow unauthenticated POST requests. Note that HTTPS URLs are required for all webhook endpoints.</p>
 
@@ -486,10 +506,6 @@ Ratelimit-Reset: 1597048500
 </span><span class="p">]</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves all actor profiles available with the access rights of the API key. Most of the time it is scoped to a talent agency.</p>
-<h3 id='pagination'>Pagination</h3>
-<p>This API endpoint is paginated, following the proposed <a href="https://tools.ietf.org/html/rfc8288">RFC-8288</a> standard for Web linking.</p>
-
-<p>The pagination information is included in response HTTP headers, namely <code>Total</code> (total entries), <code>Per-Page</code> (entries per page) and <code>Link</code> (containing links to corresponding pages). The current page can be set using the <code>page</code>-parameter.</p>
 <h3 id='http-request'>HTTP Request</h3>
 <p><code>GET https://www.filmmakers.eu/api/v1/actor_profiles</code></p>
 <h3 id='query-parameters'>Query Parameters</h3>
@@ -503,7 +519,12 @@ Ratelimit-Reset: 1597048500
 <tr>
 <td>page</td>
 <td>1</td>
-<td>Page to display - see &quot;Pagination&quot; above</td>
+<td>Page to display - see &quot;Pagination&quot; section</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>250</td>
+<td>Items per page - see &quot;Pagination&quot; section</td>
 </tr>
 <tr>
 <td>include_picture</td>
@@ -947,6 +968,188 @@ Ratelimit-Reset: 1597048500
 </tbody></table>
 <h3 id='response-fields-3'>Response fields</h3>
 <p>See example response to the right for an overview of included fields.</p>
+<h1 id='blog-posts'>Blog posts</h1><h2 id='get-all-blog-posts'>Get all blog posts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/blog_posts"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blog post title"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blog post title"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+
+</span></code></pre></div>
+<p>This endpoint retrieves all blog posts available with the access rights of the API key.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://www.filmmakers.eu/api/v1/blog_posts</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>Page to display - see &quot;Pagination&quot; section</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>250</td>
+<td>Items per page - see &quot;Pagination&quot; section</td>
+</tr>
+</tbody></table>
+<h3 id='response-fields-4'>Response fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>Unique ID of the blog post</td>
+</tr>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>Title of the blog post</td>
+</tr>
+</tbody></table>
+<h2 id='get-a-specific-blog-post'>Get a specific blog post</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/blog_posts/123"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blog post title"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"note"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blog post note"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"publication_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2019-09-02T12:44:19.776+02:00"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"source"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"News"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Premiere"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"body"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blog post body"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"body_html"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;div&gt;Blog post body&lt;figure class=</span><span class="se">\"</span><span class="s2">attachment attachment--preview attachment--jpg</span><span class="se">\"</span><span class="s2">&gt;&lt;div class=</span><span class="se">\"</span><span class="s2">image-wrapper</span><span class="se">\"</span><span class="s2">&gt;&lt;img src=</span><span class="se">\"</span><span class="s2">https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpeg</span><span class="se">\"</span><span class="s2">&gt;&lt;div class=</span><span class="se">\"</span><span class="s2">image-caption</span><span class="se">\"</span><span class="s2">&gt;&lt;span title=</span><span class="se">\"</span><span class="s2">© Acme inc</span><span class="se">\"</span><span class="s2">&gt;© Acme inc&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"images"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"copyright"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Acme inc"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpeg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"copyright"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abc inc"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>This endpoint retrieves a specific blog post.</p>
+<h3 id='http-request-5'>HTTP Request</h3>
+<p><code>GET https://www.filmmakers.eu/api/v1/blog_posts/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-3'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the blog post to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='response-fields-5'>Response fields</h3>
+<p>See example response to the right for an overview of included fields</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>title</td>
+<td>string</td>
+<td>title of the blog post</td>
+</tr>
+<tr>
+<td>note</td>
+<td>string</td>
+<td>optional comment on the post</td>
+</tr>
+<tr>
+<td>body</td>
+<td>string</td>
+<td>plain text representation of the blog post body with line breaks, <strong>but no HTML markup</strong></td>
+</tr>
+<tr>
+<td>body_html</td>
+<td>string</td>
+<td>blog post body with <strong>HTML markup</strong>, includes images with copyright information. Allowed HTML tags are <code>a, br, div, em, figcaption, figure, h1, img, li, ol, strong, ul</code>. Following example CSS can be used to show copyright over the image at the top left corner: <code>.image-wrapper { position: relative; } .image-caption { position: absolute; top: 0; left: 0; z-index: 1; }</code></td>
+</tr>
+<tr>
+<td>publication_date</td>
+<td>datetime</td>
+<td>publication date of this post</td>
+</tr>
+<tr>
+<td>source</td>
+<td>string</td>
+<td>original source of the post - e.g. a newspaper in case an article was shared from an external url. Will be null in case of internal posts, i.e. posts written by the entity themselves.</td>
+</tr>
+<tr>
+<td>source.url</td>
+<td>string</td>
+<td>url of the source article</td>
+</tr>
+<tr>
+<td>source.publication_date</td>
+<td>datetime</td>
+<td>date of publication of original (may be null if source date cannot be determined)</td>
+</tr>
+<tr>
+<td>tags</td>
+<td>array</td>
+<td>array of tags applied to the blog post, each containing two key-value pairs: &quot;id&quot; and &quot;name&quot;. Available tag names are: &quot;News&quot;, &quot;Premiere&quot;, &quot;Awards&quot;, and &quot;Press&quot;</td>
+</tr>
+<tr>
+<td>images[].url</td>
+<td>string</td>
+<td>image url</td>
+</tr>
+<tr>
+<td>images[].cover</td>
+<td>boolean</td>
+<td>true if image is a cover image; default: <code>false</code></td>
+</tr>
+<tr>
+<td>images[].copyright</td>
+<td>string</td>
+<td>image copyright</td>
+</tr>
+</tbody></table>
 <h1 id='attributes'>Attributes</h1><h2 id='get-all-attributes'>Get all attributes</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/attributes/"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
 </code></pre></div>
