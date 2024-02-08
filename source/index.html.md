@@ -371,7 +371,7 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
       "id": 140,
       "copyright": "Jane Doe",
       "created_at": "2021-06-21T16:18:41.087+02:00",
-      "url": "https://imgproxy.filmmakers.eu/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png",
+      "url": "https://imgproxy.filmmakers.eu/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.jpg",
       "versions": {
         "original": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:3840/h:2160/f:jpg/ZS5qcGVn",
         "large": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:1200/h:1200/f:jpg/ZS5qcGVn",
@@ -396,7 +396,7 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
       "id": 141,
       "copyright": "",
       "created_at": "2021-06-21T16:18:47.460+02:00",
-      "url": "https://imgproxy.filmmakers.eu/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png",
+      "url": "https://imgproxy.filmmakers.eu/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.jpg",
       "versions": {
         "original": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:3840/h:2160/f:jpg/ZS5qcGVn",
         "large": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:1200/h:1200/f:jpg/ZS5qcGVn",
@@ -715,14 +715,14 @@ curl "https://www.filmmakers.eu/api/v1/blog_posts/123" \
     }
   ],
   "body": "Blog post body",
-  "body_html": "<div>Blog post body<figure class=\"attachment attachment--preview attachment--jpg\"><div class=\"image-wrapper\"><img src=\"https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpeg\"><div class=\"image-caption\"><span title=\"© Acme inc\">© Acme inc</span></div></div></figure></div>",
+  "body_html": "<div>Blog post body<figure class=\"attachment attachment--preview attachment--jpg\"><div class=\"image-wrapper\"><img src=\"https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpg\"><div class=\"image-caption\"><span title=\"© Acme inc\">© Acme inc</span></div></div></figure></div>",
   "images": [
     {
-      "url": "https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpeg",
+      "url": "https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpg",
       "copyright": "Acme inc"
     },
     {
-      "url": "https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpeg",
+      "url": "https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpg",
       "copyright": "Abc inc"
     }
   ]
@@ -788,7 +788,7 @@ curl "https://www.filmmakers.eu/api/v1/showreels/100" \
     123459,
     123460
   ],
-  "poster": "https://imgproxy.filmmakers.eu/8f7c74be-c696-11ee-85a8-4781e0bae8b1.jpeg"
+  "poster": "https://imgproxy.filmmakers.eu/8f7c74be-c696-11ee-85a8-4781e0bae8b1.jpg"
 }
 
 ```
@@ -846,7 +846,7 @@ curl "https://www.filmmakers.eu/api/v1/showreel_media/123456" \
   ],
   "vita_entry_id": 300,
   "skill": "languages/deutsch",
-  "picture": "https://imgproxy.filmmakers.eu/8f7c74be-c696-11ee-85a8-4781e0bae8b1.jpeg",
+  "picture": "https://imgproxy.filmmakers.eu/8f7c74be-c696-11ee-85a8-4781e0bae8b1.jpg",
   "asset": null,
   "proxies": {
     "sd": "https://static.filmmakers.eu/production/0fd099dc-c698-11ee-93cb-cb381089a4e7.mp4",
