@@ -363,7 +363,7 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
       "id": 140,
       "copyright": "Jane Doe",
       "created_at": "2021-06-21T16:18:41.087+02:00",
-      "url": "https://static.filmmakers.eu/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png",
+      "url": "https://imgproxy.filmmakers.eu/production/b6ac24ef-7bbc-4486-bfc9-89fdce3a9fde.png",
       "versions": {
         "original": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:3840/h:2160/f:jpg/ZS5qcGVn",
         "large": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:1200/h:1200/f:jpg/ZS5qcGVn",
@@ -388,7 +388,7 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
       "id": 141,
       "copyright": "",
       "created_at": "2021-06-21T16:18:47.460+02:00",
-      "url": "https://static.filmmakers.eu/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png",
+      "url": "https://imgproxy.filmmakers.eu/production/5c5a1832-3ee4-495d-bfb0-03694dab0bd2.png",
       "versions": {
         "original": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:3840/h:2160/f:jpg/ZS5qcGVn",
         "large": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:1200/h:1200/f:jpg/ZS5qcGVn",
@@ -593,7 +593,7 @@ curl "https://www.filmmakers.eu/api/v1/talent_agencies/123" \
   "showreel_url": "https://www.example.com/showreel",
   "twitter_handle": "@example_agency",
   "public_email": "info@example.com",
-  "picture_url": "https://static.filmmakers.eu/example.png",
+  "picture_url": "https://imgproxy.filmmakers.eu/bf042068-c6ac-11ee-b970-a34dadd10171.jpg",
   "address": {
     "city": "Mainz",
     "country": "DE",
@@ -611,7 +611,7 @@ curl "https://www.filmmakers.eu/api/v1/talent_agencies/123" \
       "phone": "49613163691950",
       "email": "info@example.com",
       "role": "role",
-      "picture_url": "https://static.filmmakers.eu/example.png"
+      "picture_url": "https://imgproxy.filmmakers.eu/bfa9eb4c-c6ac-11ee-9015-f30db07efa43.jpg"
     }
   ]
 }
