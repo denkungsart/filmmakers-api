@@ -307,6 +307,50 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
   "unions": [
     "bffs"
   ],
+  "locations": [
+    {
+      "name": "Gdańsk",
+      "latitude": 54.35202520000001,
+      "longitude": 18.6466384,
+      "place_id": "ChIJb_rUFBxz_UYRjb63Y_H7uZs",
+      "type": "accommodation"
+    },
+    {
+      "name": "Munich",
+      "latitude": 48.1351253,
+      "longitude": 11.5819806,
+      "place_id": "ChIJ2V-Mo_l1nkcRfZixfUq4DAE",
+      "type": "accommodation"
+    },
+    {
+      "name": "Hamburg",
+      "latitude": 53.5510846,
+      "longitude": 9.9936818,
+      "place_id": "ChIJuRMYfoNhsUcRoDrWe_I9JgQ",
+      "type": "accommodation"
+    },
+    {
+      "name": "Cologne",
+      "latitude": 50.937531,
+      "longitude": 6.9602786,
+      "place_id": "ChIJ5S-raZElv0cR8HcqSvxgJwQ",
+      "type": "accommodation"
+    },
+    {
+      "name": "Berlin",
+      "latitude": 52.52000659999999,
+      "longitude": 13.404954,
+      "place_id": "ChIJAVkDPzdOqEcRcDteW0YgIQQ",
+      "type": "accommodation"
+    },
+    {
+      "name": "Berlin",
+      "latitude": 52.52000659999999,
+      "longitude": 13.404954,
+      "place_id": "ChIJAVkDPzdOqEcRcDteW0YgIQQ",
+      "type": "place"
+    }
+  ],
   "pictures": [
     {
       "id": 140,
