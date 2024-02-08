@@ -251,6 +251,14 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
     "id": 123,
     "name": "Jane Roe"
   },
+  "profile_visibility": "public",
+  "attribute_visibility": {
+    "age": "public",
+    "acting_age": "public",
+    "gender": "public",
+    "ethnic_appearances": "private",
+    "figures": "private"
+  },
   "talent_agency_connections": [
     {
       "talent_agency_id": 1,
@@ -570,6 +578,8 @@ agency_profile_url | string | actor profile url on the website of their agency *
 talent_agency_id | integer | id of the talent agency **Note** Please use talent_agency_connections[].talent_agency_id instead
 representative.id | integer | id of the talent agency employee **Note** Please use talent_agency_connections[].talent_agency_employee_id instead
 representative.name | string | name of the talent agency employee **Note** Please use talent_agency#employees.first_name/last_name instead
+attribute_visibility | hash | Indicates per attribute `age`, `acting_age`, `gender`, `ethnic_appearances` and `figures` whether these are publicly visible on Filmmakers (`public`) or only visible to verified casting professionals (`private`)
+profile_visibility | string | Visibility of the profile on Filmmakers (`public` or `private`)
 
 # Talent agencies
 
