@@ -790,7 +790,7 @@ position | integer | The position of the showreel on Filmmakers
 poster | string | Image url to the showreel poster/thumb
 poster_copyright | string | Copyright for the showreel poster/thumb
 download | boolean | Whether the download option is active on Filmmakers
-showreel_medium_ids| array | IDs of showreel media contained in the showreel (see `shoreel_media` endpoint below)
+showreel_medium_ids| array | IDs of showreel media contained in the showreel (see `showreel_media` endpoint below)
 
 # Showreel Media
 
