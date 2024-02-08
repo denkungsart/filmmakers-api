@@ -384,7 +384,7 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
     ],
     "award": [
       {
-        "info": "",
+        "info": null,
         "name": "Avanca Film Festival - Best Performance",
         "year_from": 2017,
         "year_to": 2017,
@@ -393,7 +393,7 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
     ],
     "education": [
       {
-        "info": "",
+        "info": null,
         "name": "123 School",
         "year_from": 2013,
         "year_to": 2014
@@ -401,45 +401,75 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
     ],
     "film": [
       {
-        "info": "",
+        "info": null,
         "name": "Schneeflöckchen",
         "year_from": 2019,
         "year_to": 2020,
         "role": "Jack",
         "role_type": "supporting",
-        "distributor": "",
+        "distributor": null,
         "director": "Adolfo Kolmerer",
-        "producer": "",
-        "caster": ""
+        "producer": null,
+        "caster": null,
+        "picture": {
+          "url": "https://imgproxy.filmmakers.eu/gqz46mqnA"
+        }
       },
       {
-        "info": "",
+        "info": null,
         "name": "The Harmonica ",
         "year_from": 2018,
         "year_to": 2018,
         "role": "Felix",
         "role_type": "leading",
-        "distributor": "",
-        "director": "",
+        "distributor": null,
+        "director": null,
         "producer": "Deutsche Film- und Fernsehakademie Berlin",
-        "caster": ""
+        "caster": null,
+        "picture": {
+          "url": null
+        }
       }
     ],
     "television": [
       {
-        "info": "",
+        "info": null,
         "name": "Mord mit Aussicht",
         "year_from": 2015,
         "year_to": 2016,
         "role": "Robert",
         "role_type": "misc",
-        "distributor": "",
-        "director": "",
-        "producer": "",
-        "caster": ""
+        "distributor": null,
+        "director": null,
+        "producer": null,
+        "caster": null,
+        "picture": {
+          "url": null
+        }
       }
     ],
-    "theatre": [],
+    "theatre": [
+      {
+        "info": null,
+        "name":"Das Dschungelbuch (Jungle Book)",
+        "year_from":2001,
+        "year_to":2002,
+        "type_genre": null,
+        "favorite":false,
+        "role":"Mowgli",
+        "role_type": null,
+        "director":"Robert Persche",
+        "producer": null,
+        "caster": null,
+        "writer": null,
+        "theater_name":"Stadttheater Klagenfurt",
+        "theater_engagement_type": null,
+        "picture": {
+          "url": null
+        },
+        "distributor":"Stadttheater Klagenfurt"
+      }
+    ],
     "audio": [],
     "other": [],
     "internet": [],
