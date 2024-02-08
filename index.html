@@ -364,6 +364,22 @@
               </ul>
           </li>
           <li>
+            <a href="#showreels" class="toc-h1 toc-link" data-title="Showreels">Showreels</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-a-specific-showreel" class="toc-h2 toc-link" data-title="Get a specific showreel">Get a specific showreel</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#showreel-media" class="toc-h1 toc-link" data-title="Showreel Media">Showreel Media</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-specific-showreel-media" class="toc-h2 toc-link" data-title="Get specific showreel media">Get specific showreel media</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#attributes" class="toc-h1 toc-link" data-title="Attributes">Attributes</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1222,6 +1238,222 @@ Ratelimit-Reset: 1597048500
 <td>images[].copyright</td>
 <td>string</td>
 <td>image copyright</td>
+</tr>
+</tbody></table>
+<h1 id='showreels'>Showreels</h1><h2 id='get-a-specific-showreel'>Get a specific showreel</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/showreels/100"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"showreel_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Showreel 2024"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"position"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"poster_copyright"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Photographer XYZ"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"download"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"showreel_medium_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+    </span><span class="mi">123457</span><span class="p">,</span><span class="w">
+    </span><span class="mi">123458</span><span class="p">,</span><span class="w">
+    </span><span class="mi">123459</span><span class="p">,</span><span class="w">
+    </span><span class="mi">123460</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"poster"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/8f7c74be-c696-11ee-85a8-4781e0bae8b1.jpeg"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>This endpoint retrieves a specific showreel.</p>
+<h3 id='http-request-6'>HTTP Request</h3>
+<p><code>GET https://www.filmmakers.eu/api/v1/showreels/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-4'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the showreel to retrieve (refer to the <code>showreel_ids</code> array field from actor_profiles endpoint to obtain these ids)</td>
+</tr>
+</tbody></table>
+<h3 id='response-fields-6'>Response fields</h3>
+<p>See example response to the right for an overview of included fields</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>ID of the showreel</td>
+</tr>
+<tr>
+<td>showreel_type</td>
+<td>string</td>
+<td>either <code>video</code> or <code>audio</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>name of the showreel</td>
+</tr>
+<tr>
+<td>position</td>
+<td>integer</td>
+<td>The position of the showreel on Filmmakers</td>
+</tr>
+<tr>
+<td>poster</td>
+<td>string</td>
+<td>Image url to the showreel poster/thumb</td>
+</tr>
+<tr>
+<td>poster_copyright</td>
+<td>string</td>
+<td>Copyright for the showreel poster/thumb</td>
+</tr>
+<tr>
+<td>download</td>
+<td>boolean</td>
+<td>Whether the download option is active on Filmmakers</td>
+</tr>
+<tr>
+<td>showreel_medium_ids</td>
+<td>array</td>
+<td>IDs of showreel media contained in the showreel (see <code>shoreel_media</code> endpoint below)</td>
+</tr>
+</tbody></table>
+<h1 id='showreel-media'>Showreel Media</h1><h2 id='get-specific-showreel-media'>Get specific showreel media</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/showreel_media/123456"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
+</code></pre></div>
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ShowreelVideo"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Faking Bullshit"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"director"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Alexander Schubert"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Rocky"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2019</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"download"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"duration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"171.6"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"skills"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"languages/deutsch"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"vita_entry_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"skill"</span><span class="p">:</span><span class="w"> </span><span class="s2">"languages/deutsch"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"picture"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/8f7c74be-c696-11ee-85a8-4781e0bae8b1.jpeg"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"asset"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"proxies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"sd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.filmmakers.eu/production/0fd099dc-c698-11ee-93cb-cb381089a4e7.mp4"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"hd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.filmmakers.eu/production/107a9e6e-c698-11ee-8895-f34d7095f1f5.mp4"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"full_hd"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://static.filmmakers.eu/production/109d0832-c698-11ee-b7b8-fb95fd1a375c.mp4"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre></div>
+<p>This endpoint retrieves specific showreel media.</p>
+<h3 id='http-request-7'>HTTP Request</h3>
+<p><code>GET https://www.filmmakers.eu/api/v1/showreel_media/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-5'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the showreel media to retrieve (refer to the <code>showreel_medium_ids</code> array field from showreels endpoint to obtain these ids)</td>
+</tr>
+</tbody></table>
+<h3 id='response-fields-7'>Response fields</h3>
+<p>See example response to the right for an overview of included fields</p>
+
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>integer</td>
+<td>ID of the video or audio</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+<td>either <code>ShowreelVideo</code> (for videos) or <code>ShowreelAudio</code> (for audios)</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Name of the video or audio</td>
+</tr>
+<tr>
+<td>director</td>
+<td>string</td>
+<td>Name of the director linked to the medium (if any)</td>
+</tr>
+<tr>
+<td>role</td>
+<td>string</td>
+<td>Name of the role linked to the medium (if any)</td>
+</tr>
+<tr>
+<td>year</td>
+<td>integer</td>
+<td>Year of the medium (if any)</td>
+</tr>
+<tr>
+<td>download</td>
+<td>boolean</td>
+<td>Whether the download option is active on Filmmakers</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>float</td>
+<td>Duration in seconds</td>
+</tr>
+<tr>
+<td>skills</td>
+<td>array</td>
+<td>Links to skills from actor profile attributes, in the format of <code>NAME#VALUE</code>, e.g. <code>languages#deutsch</code> or <code>dialects#berlinerisch</code></td>
+</tr>
+<tr>
+<td>skill</td>
+<td>string</td>
+<td>Deprecated, please use <code>skills</code></td>
+</tr>
+<tr>
+<td>vita_entry_id</td>
+<td>integer</td>
+<td>ID of vita entry (credit) if any</td>
+</tr>
+<tr>
+<td>picture</td>
+<td>string</td>
+<td>Image url to the thumb</td>
+</tr>
+<tr>
+<td>asset</td>
+<td>string</td>
+<td>Only filled in for type <code>ShowreelAudio</code>, may contain codecs <code>AAC</code> or <code>MP3</code></td>
+</tr>
+<tr>
+<td>proxies</td>
+<td>array</td>
+<td>Only filled in for type <code>ShowreelVideo</code>. Link to transcoded proxies (MP4, H.264). May contain up to three proxies: <code>sd</code> (480p), <code>hd</code> (720p) and <code>full_hd</code> (1080p). Depending on the quality of the source file only one <code>sd</code> and/or <code>hd</code> might be present.</td>
 </tr>
 </tbody></table>
 <h1 id='attributes'>Attributes</h1><h2 id='get-all-attributes'>Get all attributes</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/attributes/"</span> <span class="se">\</span>
