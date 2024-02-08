@@ -251,6 +251,13 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
     "id": 123,
     "name": "Jane Roe"
   },
+  "talent_agency_connections": [
+    {
+      "talent_agency_id": 1,
+      "talent_agency_employee_id": 123,
+      "agency_profile_url": "https://www.my-agency/my-profile"
+    }
+  ],
   "updated_at": "2021-06-22T16:14:11.519+02:00",
   "native_dialect": "rheinisch",
   "place_of_birth": "Darmstadt",
@@ -545,13 +552,24 @@ locale | en | Translates attributes with closed lists, free text fields are only
 
 See example response to the right for an overview of included fields. Please note:
 
-- It is not guaranteed that the exemplary JSON structure shown is complete. Additional fields may be added without notice.
 - **Deprecation**: `external_showreel` is deprecated. Use `external_showreels` instead.
 - **Deprecation**: `pitch` is deprecated. Use `pitches` instead.
 - **Deprecation**: `figure` is deprecated. Use `figures` instead.
 - **Deprecation**: `native_dialect` is deprecated. Use `native_dialects` instead.
 - **Deprecation**: `castupload_url` is deprecated. Use `filmmakers_url` instead.
 - **Deprecation**: `castupload_professional_url` is deprecated. Use `filmmakers_cd_url` instead.
+
+It is not guaranteed that the exemplary JSON structure shown is complete. Additional fields may be added without notice. The following table provides additional context for the individual fields visible in the exemplary JSON structure:
+
+Field | Type | Description
+--------- | ------- | -----------
+talent_agency_connections[].talent_agency_id | integer | id of the talent agency
+talent_agency_connections[].talent_agency_employee_id | integer | id of the talent agency employee
+talent_agency_connections[].agency_profile_url | string | actor profile url on the website of their agency
+agency_profile_url | string | actor profile url on the website of their agency **Note** Please use talent_agency_connections[].agency_profile_url instead
+talent_agency_id | integer | id of the talent agency **Note** Please use talent_agency_connections[].talent_agency_id instead
+representative.id | integer | id of the talent agency employee **Note** Please use talent_agency_connections[].talent_agency_employee_id instead
+representative.name | string | name of the talent agency employee **Note** Please use talent_agency#employees.first_name/last_name instead
 
 # Talent agencies
 
