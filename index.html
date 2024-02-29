@@ -869,6 +869,17 @@ Ratelimit-Reset: 1597048500
       </span><span class="nl">"type"</span><span class="p">:</span><span class="s2">"audio"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"showreel_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">12345</span><span class="p">,</span><span class="w">
+    </span><span class="mi">12346</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"showreel_medium_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">123456</span><span class="p">,</span><span class="w">
+    </span><span class="mi">123457</span><span class="p">,</span><span class="w">
+    </span><span class="mi">123458</span><span class="p">,</span><span class="w">
+    </span><span class="mi">123459</span><span class="p">,</span><span class="w">
+    </span><span class="mi">123460</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"vita"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"primary_education"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -1070,6 +1081,16 @@ Ratelimit-Reset: 1597048500
 <td>profile_visibility</td>
 <td>string</td>
 <td>Visibility of the profile on Filmmakers (<code>public</code> or <code>private</code>)</td>
+</tr>
+<tr>
+<td>showreel_ids</td>
+<td>Array</td>
+<td>Ids of showreels (see <code>showreels</code> endpoint)</td>
+</tr>
+<tr>
+<td>showreel_medium_ids</td>
+<td>Array</td>
+<td>Ids of showreel media that are either connected to a showreel or credits/skills (see also <code>showreel_media</code> endpoint)</td>
 </tr>
 </tbody></table>
 <h1 id='talent-agencies'>Talent agencies</h1><h2 id='get-talent-agency-data'>Get talent agency data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/talent_agencies/123"</span> <span class="se">\</span>
