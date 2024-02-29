@@ -434,6 +434,17 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
       "type":"audio"
     }
   ],
+  "showreel_ids": [
+    12345,
+    12346
+  ],
+  "showreel_medium_ids": [
+    123456,
+    123457,
+    123458,
+    123459,
+    123460
+  ],
   "vita": {
     "primary_education": [
       {
@@ -580,6 +591,8 @@ representative.id | integer | id of the talent agency employee **Note** Please u
 representative.name | string | name of the talent agency employee **Note** Please use talent_agency#employees.first_name/last_name instead
 attribute_visibility | hash | Indicates per attribute `age`, `acting_age`, `gender`, `ethnic_appearances` and `figures` whether these are publicly visible on Filmmakers (`public`) or only visible to verified casting professionals (`private`)
 profile_visibility | string | Visibility of the profile on Filmmakers (`public` or `private`)
+showreel_ids | Array | Ids of showreels (see `showreels` endpoint)
+showreel_medium_ids | Array | Ids of showreel media that are either connected to a showreel or credits/skills (see also `showreel_media` endpoint)
 
 # Talent agencies
 
