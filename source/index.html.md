@@ -693,6 +693,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 page | 1 | Page to display - see "Pagination" section
 per_page | 250 | Items per page - see "Pagination" section
+tags[id] | null | Filter items by tags - allows passing multiple tag ids using array form of the param eg. `tags[id][]=1&tags[id][]=5`
 
 ### Response fields
 
