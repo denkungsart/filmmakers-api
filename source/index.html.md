@@ -691,6 +691,7 @@ This endpoint retrieves all blog posts available with the access rights of the A
 
 Parameter | Default | Description
 --------- | ------- | -----------
+blog_id | id | Limit blog posts to specific blog id (e.g. `blog_id` from actor profile)
 page | 1 | Page to display - see "Pagination" section
 per_page | 250 | Items per page - see "Pagination" section
 
