@@ -611,6 +611,7 @@ curl "https://www.filmmakers.eu/api/v1/talent_agencies/123" \
   "name": "Example agency",
   "short_name": "Agency",
   "homepage_url": "https://www.example.com",
+  "filmmakers_url": "https://www.filmmakers.eu/agents/example-agency",
   "imdb_link": "https://pro.imdb.com/company/co0000001",
   "imdb_id": "co0000001",
   "showreel_url": "https://www.example.com/showreel",
