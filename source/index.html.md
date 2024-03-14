@@ -626,6 +626,7 @@ curl "https://www.filmmakers.eu/api/v1/talent_agencies/123" \
     "phone": "49613163691950",
     "zipcode": "55122"
   },
+  "filmmakers_url":"https://www.filmmakers.eu/agents/example-agency",
   "employees": [
     {
       "id": 1,
