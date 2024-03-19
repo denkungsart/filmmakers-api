@@ -505,10 +505,11 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
       {
         "info": null,
         "name": "Mord mit Aussicht",
+        "episode_name": "Sophie kommet doch all",
         "year_from": 2015,
         "year_to": 2016,
         "role": "Robert",
-        "role_type": "misc",
+        "role_type": "episode_featured_part",
         "distributor": null,
         "director": null,
         "producer": null,
