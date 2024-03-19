@@ -509,6 +509,7 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
         "episode_name": "Sophie kommet doch all",
         "year_from": 2015,
         "year_to": 2016,
+        "type_genre": "series",
         "role": "Robert",
         "role_type": "episode_featured_part",
         "distributor": null,
