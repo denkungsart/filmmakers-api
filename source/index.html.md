@@ -135,6 +135,7 @@ expected_signature == signature["v1"]
 
 
 # Changelog
+- (2024-03-19) **ActorProfile#show**: Add new field `episode_name` to Vita
 - (2023-08-17) **ActorProfile#index**: Added possibility to filter by `updated_at`
 - (2023-05-31) **ActorProfile#index**:
   - Also emit `picture_copyright` if `include_picture` is specified
