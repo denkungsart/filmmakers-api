@@ -190,6 +190,7 @@ fields | name,gender | Can be used to modify the fields included in the response
 order | id | Changes the order of returned results. Possible values are: `id`, `name`, `last_name`
 gender | null | Allows filtering by gender. Possible values are: `m`, `f`, `i`.
 updated_at[gte] | null | Allows filtering for profiles updated since the passed timestamp. Passed as an integer Unix timestamp.
+q | null | Allows filtering by name. Uses trigram, so allows fuzzy & partial matches
 
 ### Response fields
 
