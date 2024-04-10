@@ -316,6 +316,9 @@
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
           </li>
           <li>
+            <a href="#api-updates-and-backwards-compatibility" class="toc-h1 toc-link" data-title="API updates and backwards compatibility">API updates and backwards compatibility</a>
+          </li>
+          <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
           </li>
           <li>
@@ -400,6 +403,19 @@
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
 <p>Filmmakers provides a RESTful JSON API with token-based authentication. You can request an API key with <a href="https://www.filmmakers.eu/contact/new">our support</a>. The permission scope of the API key varies depending on the use case, so when contacting us be sure to specify the desired use case (e.g. you plan on using Filmmakers data for a website).</p>
+<h1 id='api-updates-and-backwards-compatibility'>API updates and backwards compatibility</h1>
+<p>While we won&#39;t be introducing any major changes, we do plan to add new features and endpoints over time. This is a list of changes that we consider to be backwards compatible:</p>
+
+<ul>
+<li>Adding new fields or links to responses</li>
+<li>Adding new resources or endpoints</li>
+<li>Adding of new (optional) query parameters</li>
+<li>Changes to the default page length for paginated resources</li>
+</ul>
+
+<p>Please bear this in mind when programming against our API, and try to ensure that these non-breaking changes don&#39;t break your code.</p>
+
+<p>If we do introduce a breaking change, we will create new endpoints with a new version prefix in the URI.</p>
 <h1 id='authentication'>Authentication</h1>
 <p>Once you have been issued an API key you can use the following code to authorize requests:</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
