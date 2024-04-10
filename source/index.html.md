@@ -20,6 +20,19 @@ meta:
 
 Filmmakers provides a RESTful JSON API with token-based authentication. You can request an API key with [our support](https://www.filmmakers.eu/contact/new). The permission scope of the API key varies depending on the use case, so when contacting us be sure to specify the desired use case (e.g. you plan on using Filmmakers data for a website).
 
+# API updates and backwards compatibility
+
+While we won't be introducing any major changes, we do plan to add new features and endpoints over time. This is a list of changes that we consider to be backwards compatible:
+
+* Adding new fields or links to responses
+* Adding new resources or endpoints
+* Adding of new (optional) query parameters
+* Changes to the default page length for paginated resources
+
+Please bear this in mind when programming against our API, and try to ensure that these non-breaking changes don't break your code.
+
+If we do introduce a breaking change, we will create new endpoints with a new version prefix in the URI.
+
 # Authentication
 
 Once you have been issued an API key you can use the following code to authorize requests:
