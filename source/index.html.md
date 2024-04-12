@@ -148,6 +148,8 @@ expected_signature == signature["v1"]
 
 
 # Changelog
+- (2024-04-12) **ActorProfile#show**: Add new fields `main_profession` and `specializations`<br>
+**ActorProfile#index**: Add new field `main_profession`
 - (2024-03-19) **ActorProfile#show**: Add new field `episode_name` to Vita
 - (2023-08-17) **ActorProfile#index**: Added possibility to filter by `updated_at`
 - (2023-05-31) **ActorProfile#index**:
@@ -199,7 +201,7 @@ page | 1 | Page to display - see "Pagination" section
 per_page | 250 | Items per page - see "Pagination" section
 include_picture | false | If set to true, the result will include the profile picture thumbnail in a field named `main_picture_url_tile`.
 picture_version | null | Can be set to `original`, `large` or `thumb` to change the included picture version. The picture will be included in a field named `picture_url`. _(Only applies if `include_picture` is true)_
-fields | name,gender | Can be used to modify the fields included in the response. Possible values are: `age`, `gender`, `first_name`, `last_name`, `name`, `professions`, `languages`, `representative`, `updated_at`.
+fields | name,gender | Can be used to modify the fields included in the response. Possible values are: `age`, `gender`, `first_name`, `last_name`, `name`, `main_profession`, `professions`, `languages`, `representative`, `updated_at`.
 order | id | Changes the order of returned results. Possible values are: `id`, `name`, `last_name`
 gender | null | Allows filtering by gender. Possible values are: `m`, `f`, `i`.
 updated_at[gte] | null | Allows filtering for profiles updated since the passed timestamp. Passed as an integer Unix timestamp.
@@ -215,7 +217,8 @@ gender | string | `f` for female, `m` for male, `i` for diverse
 name | string | Full name (ie. first & last name) _name can be retrieved separately by using the fields parameter_
 first_name | string |
 last_name | string |
-professions | array of strings | list of professions, eg. `["schauspieler", "synchronsprecher"]`
+main_profession | string | main profession of the actor profile
+professions | array of strings | list of professions, eg. `["schauspieler", "synchronsprecher"]` _this includes the main_profession "schauspieler" or "nachwuchsdarsteller" when given_
 languages | JSON Object | format `{ "language": "skill level" }`
 updated_at | string | format ISO 8601
 main_picture_url_tile | string | profile picture url (thumbnail version)
@@ -317,8 +320,13 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
   "dances": {
     "freestyle": "gut"
   },
+  "main_profession": "actor",
+  "specializations": [
+    "synchronsprecher"
+  ],
   "professions": [
-    "schauspieler"
+    "schauspieler",
+    "synchronsprecher"
   ],
   "singing": {
     "jazz": "grundkenntnisse"
@@ -594,6 +602,7 @@ See example response to the right for an overview of included fields. Please not
 - **Deprecation**: `native_dialect` is deprecated. Use `native_dialects` instead.
 - **Deprecation**: `castupload_url` is deprecated. Use `filmmakers_url` instead.
 - **Deprecation**: `castupload_professional_url` is deprecated. Use `filmmakers_cd_url` instead.
+- **Deprecation**: `professions` is deprecated. Use `main_profession` and `specializations` instead.
 
 It is not guaranteed that the exemplary JSON structure shown is complete. Additional fields may be added without notice. The following table provides additional context for the individual fields visible in the exemplary JSON structure:
 
