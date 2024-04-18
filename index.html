@@ -505,6 +505,8 @@ Ratelimit-Reset: 1597048500
 <p><strong>⚠ Webhooks are not yet generally available. If you are interested in using them please contact our support</strong></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>(2024-04-12) <strong>ActorProfile#show</strong>: Add new fields <code>main_profession</code> and <code>specializations</code><br>
+<strong>ActorProfile#index</strong>: Add new field <code>main_profession</code></li>
 <li>(2024-03-19) <strong>ActorProfile#show</strong>: Add new field <code>episode_name</code> to Vita</li>
 <li>(2023-08-17) <strong>ActorProfile#index</strong>: Added possibility to filter by <code>updated_at</code></li>
 <li>(2023-05-31) <strong>ActorProfile#index</strong>:
@@ -572,7 +574,7 @@ Ratelimit-Reset: 1597048500
 <tr>
 <td>fields</td>
 <td>name,gender</td>
-<td>Can be used to modify the fields included in the response. Possible values are: <code>age</code>, <code>gender</code>, <code>first_name</code>, <code>last_name</code>, <code>name</code>, <code>professions</code>, <code>languages</code>, <code>representative</code>, <code>updated_at</code>.</td>
+<td>Can be used to modify the fields included in the response. Possible values are: <code>age</code>, <code>gender</code>, <code>first_name</code>, <code>last_name</code>, <code>name</code>, <code>main_profession</code>, <code>professions</code>, <code>languages</code>, <code>representative</code>, <code>updated_at</code>.</td>
 </tr>
 <tr>
 <td>order</td>
@@ -634,9 +636,14 @@ Ratelimit-Reset: 1597048500
 <td></td>
 </tr>
 <tr>
+<td>main_profession</td>
+<td>string</td>
+<td>main profession of the actor profile</td>
+</tr>
+<tr>
 <td>professions</td>
 <td>array of strings</td>
-<td>list of professions, eg. <code>[&quot;schauspieler&quot;, &quot;synchronsprecher&quot;]</code></td>
+<td>list of professions, eg. <code>[&quot;schauspieler&quot;, &quot;synchronsprecher&quot;]</code> <em>this includes the main_profession &quot;schauspieler&quot; or &quot;nachwuchsdarsteller&quot; when given</em></td>
 </tr>
 <tr>
 <td>languages</td>
@@ -759,8 +766,13 @@ Ratelimit-Reset: 1597048500
   </span><span class="nl">"dances"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"freestyle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gut"</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"main_profession"</span><span class="p">:</span><span class="w"> </span><span class="s2">"actor"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"specializations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"synchronsprecher"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"professions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="s2">"schauspieler"</span><span class="w">
+    </span><span class="s2">"schauspieler"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"synchronsprecher"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"singing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"jazz"</span><span class="p">:</span><span class="w"> </span><span class="s2">"grundkenntnisse"</span><span class="w">
@@ -1050,6 +1062,7 @@ Ratelimit-Reset: 1597048500
 <li><strong>Deprecation</strong>: <code>native_dialect</code> is deprecated. Use <code>native_dialects</code> instead.</li>
 <li><strong>Deprecation</strong>: <code>castupload_url</code> is deprecated. Use <code>filmmakers_url</code> instead.</li>
 <li><strong>Deprecation</strong>: <code>castupload_professional_url</code> is deprecated. Use <code>filmmakers_cd_url</code> instead.</li>
+<li><strong>Deprecation</strong>: <code>professions</code> is deprecated. Use <code>main_profession</code> and <code>specializations</code> instead.</li>
 </ul>
 
 <p>It is not guaranteed that the exemplary JSON structure shown is complete. Additional fields may be added without notice. The following table provides additional context for the individual fields visible in the exemplary JSON structure:</p>
