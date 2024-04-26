@@ -149,6 +149,7 @@ expected_signature == signature["v1"]
 
 
 # Changelog
+- (2024-04-26) **ActorProfile#show**: Add new field `in_development` to Vita<br>
 - (2024-04-12) **ActorProfile#show**: Add new fields `main_profession` and `specializations`<br>
 **ActorProfile#index**: Add new field `main_profession`
 - (2024-03-19) **ActorProfile#show**: Add new field `episode_name` to Vita
@@ -499,6 +500,7 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
         "name": "Schneeflöckchen",
         "year_from": 2019,
         "year_to": 2020,
+        "in_development": false,
         "role": "Jack",
         "role_type": "supporting",
         "distributor": null,
@@ -514,6 +516,7 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
         "name": "The Harmonica ",
         "year_from": 2018,
         "year_to": 2018,
+        "in_development": false,
         "role": "Felix",
         "role_type": "leading",
         "distributor": null,
@@ -532,6 +535,7 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
         "episode_name": "Sophie kommet doch all",
         "year_from": 2015,
         "year_to": 2016,
+        "in_development": false,
         "type_genre": "series",
         "role": "Robert",
         "role_type": "episode_featured_part",
@@ -550,6 +554,7 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
         "name":"Das Dschungelbuch (Jungle Book)",
         "year_from":2001,
         "year_to":2002,
+        "in_development": false,
         "type_genre": null,
         "favorite":false,
         "role":"Mowgli",
