@@ -625,6 +625,7 @@ attribute_visibility | hash | Indicates per attribute `age`, `acting_age`, `gend
 profile_visibility | string | Visibility of the profile on Filmmakers (`public` or `private`)
 showreel_ids | Array | Ids of showreels (see `showreels` endpoint)
 showreel_medium_ids | Array | Ids of showreel media that are either connected to a showreel or credits/skills (see also `showreel_media` endpoint)
+vita | hash | A collection of credits. Each entry contains structured data related to a specific credit. The entries in this collection are sorted by the following logic: `in_development` (if `true` those come first), `year_to`/`year_from` (chronologically descending), `position` (sorted manually by the user), `id`. The credits are grouped by type, e.g. `education`, `television`, `theatre` etc. `ìn_development` indicates whether the title is still in development, i.e. not yet completed/released.
 
 # Talent agencies
 
