@@ -634,6 +634,7 @@ See example response to the right for an overview of included fields. Please not
 - **Deprecation**: `castupload_url` is deprecated. Use `filmmakers_url` instead.
 - **Deprecation**: `castupload_professional_url` is deprecated. Use `filmmakers_cd_url` instead.
 - **Deprecation**: `professions` is deprecated. Use `main_profession` and `specializations` instead.
+- **Deprecation**: `ethnic_appearances` is deprecated. Use `ethnic_background`, `ethnic_background_details` and `ethnic_background_custom` instead.
 
 It is not guaranteed that the exemplary JSON structure shown is complete. Additional fields may be added without notice. The following table provides additional context for the individual fields visible in the exemplary JSON structure:
 
