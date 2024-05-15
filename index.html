@@ -334,6 +334,9 @@
             <a href="#webhooks" class="toc-h1 toc-link" data-title="Webhooks">Webhooks</a>
           </li>
           <li>
+            <a href="#error-codes" class="toc-h1 toc-link" data-title="Error codes">Error codes</a>
+          </li>
+          <li>
             <a href="#changelog" class="toc-h1 toc-link" data-title="Changelog">Changelog</a>
           </li>
           <li>
@@ -504,6 +507,10 @@ Ratelimit-Reset: 1597048500
 <span class="n">expected_signature</span> <span class="o">==</span> <span class="n">signature</span><span class="p">[</span><span class="s2">"v1"</span><span class="p">]</span>
 </code></pre></div>
 <p><strong>⚠ Webhooks are not yet generally available. If you are interested in using them please contact our support</strong></p>
+<h1 id='error-codes'>Error codes</h1>
+<p>Filmmakers uses conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the <code>2xx</code> range indicate success. Codes in the <code>4xx</code> range indicate an error that failed given the information provided (e.g., a required parameter is missing, the request lacks valid authentication credentials, etc.). Codes in the <code>5xx</code> range indicate an error with our servers (these should rarely happen).</p>
+
+<p>Certain <code>4xx</code> errors, notably the <code>410</code> Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.</p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
 <li>(2024-04-26) <strong>ActorProfile#show</strong>: Add new field <code>in_development</code> to Vita<br></li>
