@@ -506,6 +506,7 @@ Ratelimit-Reset: 1597048500
 <p><strong>⚠ Webhooks are not yet generally available. If you are interested in using them please contact our support</strong></p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>(2024-04-26) <strong>ActorProfile#show</strong>: Add new field <code>in_development</code> to Vita<br></li>
 <li>(2024-04-12) <strong>ActorProfile#show</strong>: Add new fields <code>main_profession</code> and <code>specializations</code><br>
 <strong>ActorProfile#index</strong>: Add new field <code>main_profession</code></li>
 <li>(2024-03-19) <strong>ActorProfile#show</strong>: Add new field <code>episode_name</code> to Vita</li>
@@ -945,6 +946,7 @@ Ratelimit-Reset: 1597048500
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Schneeflöckchen"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"year_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">2019</span><span class="p">,</span><span class="w">
         </span><span class="nl">"year_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">2020</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"in_development"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jack"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"role_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"supporting"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"distributor"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -960,6 +962,7 @@ Ratelimit-Reset: 1597048500
         </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Harmonica "</span><span class="p">,</span><span class="w">
         </span><span class="nl">"year_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">2018</span><span class="p">,</span><span class="w">
         </span><span class="nl">"year_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">2018</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"in_development"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Felix"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"role_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"leading"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"distributor"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
@@ -978,6 +981,7 @@ Ratelimit-Reset: 1597048500
         </span><span class="nl">"episode_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sophie kommet doch all"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"year_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">2015</span><span class="p">,</span><span class="w">
         </span><span class="nl">"year_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">2016</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"in_development"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type_genre"</span><span class="p">:</span><span class="w"> </span><span class="s2">"series"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Robert"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"role_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"episode_featured_part"</span><span class="p">,</span><span class="w">
@@ -996,6 +1000,7 @@ Ratelimit-Reset: 1597048500
         </span><span class="nl">"name"</span><span class="p">:</span><span class="s2">"Das Dschungelbuch (Jungle Book)"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"year_from"</span><span class="p">:</span><span class="mi">2001</span><span class="p">,</span><span class="w">
         </span><span class="nl">"year_to"</span><span class="p">:</span><span class="mi">2002</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"in_development"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"type_genre"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
         </span><span class="nl">"favorite"</span><span class="p">:</span><span class="kc">false</span><span class="p">,</span><span class="w">
         </span><span class="nl">"role"</span><span class="p">:</span><span class="s2">"Mowgli"</span><span class="p">,</span><span class="w">
@@ -1129,6 +1134,16 @@ Ratelimit-Reset: 1597048500
 <td>showreel_medium_ids</td>
 <td>Array</td>
 <td>Ids of showreel media that are either connected to a showreel or credits/skills (see also <code>showreel_media</code> endpoint)</td>
+</tr>
+<tr>
+<td>vita</td>
+<td>hash</td>
+<td>A collection of credits, where each entry contains structured data related to a specific credit. The entries are sorted by the following criteria: <code>in_development</code> (entries with <code>true</code> are prioritized), <code>year_to</code>/<code>year_from</code> (in descending chronological order), <code>position</code> (manually sorted by the user), and <code>id</code>. The credits are grouped by type, such as <code>education</code>, <code>television</code>, <code>theatre</code>, etc.</td>
+</tr>
+<tr>
+<td>vita.x[].in_development</td>
+<td>boolean</td>
+<td>indicates film projects that are still in development, meaning it has not been completed or released yet</td>
 </tr>
 </tbody></table>
 <h1 id='talent-agencies'>Talent agencies</h1><h2 id='get-talent-agency-data'>Get talent agency data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/talent_agencies/123"</span> <span class="se">\</span>
