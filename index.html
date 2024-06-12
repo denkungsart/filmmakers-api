@@ -1615,7 +1615,7 @@ Ratelimit-Reset: 1597048500
 <tr>
 <td>proxies</td>
 <td>array</td>
-<td>Only filled in for type <code>ShowreelVideo</code>. Link to transcoded proxies (MP4, H.264). May contain up to three proxies: <code>sd</code> (480p), <code>hd</code> (720p) and <code>full_hd</code> (1080p). Depending on the quality of the source file only one <code>sd</code> and/or <code>hd</code> might be present.</td>
+<td>For the type <code>ShowreelVideo</code>, provide links to transcoded proxies in MP4 format (H.264). These proxies may include the following quality options:<br>- <strong>sd</strong>: 480p<br>- <strong>hd</strong>: 720p<br>- <strong>full_hd</strong>: 1080p<br><br>Note that depending on the quality of the source file, <code>full_hd</code> and/or <code>hd</code> might not be available. Additionally, there might be two legacy proxies:<br>- <strong>web_quality</strong>: Roughly equivalent to 720p<br>- <strong>portrait</strong>: Media in portrait mode</td>
 </tr>
 </tbody></table>
 <h1 id='attributes'>Attributes</h1><h2 id='get-all-attributes'>Get all attributes</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/attributes/"</span> <span class="se">\</span>
