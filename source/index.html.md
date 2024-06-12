@@ -944,7 +944,7 @@ skill | string | Deprecated, please use `skills`
 vita_entry_id | integer | ID of vita entry (credit) if any
 picture | string | Image url to the thumb
 asset | string | Only filled in for type `ShowreelAudio`, may contain codecs `AAC` or `MP3`
-proxies | array | Only filled in for type `ShowreelVideo`. Link to transcoded proxies (MP4, H.264). May contain up to three proxies: `sd` (480p), `hd` (720p) and `full_hd` (1080p). Depending on the quality of the source file only one `sd` and/or `hd` might be present.
+proxies | array | For the type `ShowreelVideo`, provide links to transcoded proxies in MP4 format (H.264). These proxies may include the following quality options:<br>- **sd**: 480p<br>- **hd**: 720p<br>- **full_hd**: 1080p<br><br>Note that depending on the quality of the source file, `full_hd` and/or `hd` might not be available. Additionally, there might be two legacy proxies:<br>- **web_quality**: Roughly equivalent to 720p<br>- **portrait**: Media in portrait mode
 
 # Attributes
 
