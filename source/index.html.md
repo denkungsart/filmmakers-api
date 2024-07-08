@@ -214,8 +214,7 @@ include_picture | false | If set to true, the result will include the profile pi
 picture_version | null | Can be set to `original`, `large` or `thumb` to change the included picture version. The picture will be included in a field named `picture_url`. _(Only applies if `include_picture` is true)_
 fields | name,gender | Can be used to modify the fields included in the response. Possible values are: `age`, `gender`, `gender_new`, `gender_description`, `gender_searchability`, `first_name`, `last_name`, `name`, `main_profession`, `professions`, `languages`, `representative`, `updated_at`.
 order | id | Changes the order of returned results. Possible values are: `id`, `name`, `last_name`
-gender | null | Allows filtering by gender. Possible values are: `m`, `f`, `i`.
-gender_new | null | Allows filtering by gender_new values. Possible values are: `male`, `female`, `transgender_female`, `transgender_male`, `non_binary`, `custom`.
+gender | null | Allows filtering by gender values. Possible values are: `male`, `female`, `transgender_female`, `transgender_male`, `non_binary`, `custom`.
 updated_at[gte] | null | Allows filtering for profiles updated since the passed timestamp. Passed as an integer Unix timestamp.
 q | null | Allows filtering by name. Uses trigram, so allows fuzzy & partial matches
 
