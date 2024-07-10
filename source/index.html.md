@@ -155,8 +155,8 @@ Filmmakers uses conventional HTTP response codes to indicate the success or fail
 Certain `4xx` errors, notably the `410` Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.
 
 # Changelog
-- (2024-07-01) **ActorProfile#index**: Add new field `gender_description`
-- (2024-05-20) **ActorProfile#index**: Add new field `gender_searchability`
+- (2024-07-01) **ActorProfile#show**: Add new field `gender_description`
+- (2024-05-20) **ActorProfile#show**: Add new field `gender_searchability`
 - (2024-05-16) **ActorProfile#index**: Add new field `gender_new`, which replaces 'diverse' value with a larger range of gender values.
 - (2024-04-26) **ActorProfile#show**: Add new field `in_development` to Vita<br>
 - (2024-04-12) **ActorProfile#show**: Add new fields `main_profession` and `specializations`<br>
@@ -212,7 +212,7 @@ page | 1 | Page to display - see "Pagination" section
 per_page | 250 | Items per page - see "Pagination" section
 include_picture | false | If set to true, the result will include the profile picture thumbnail in a field named `main_picture_url_tile`.
 picture_version | null | Can be set to `original`, `large` or `thumb` to change the included picture version. The picture will be included in a field named `picture_url`. _(Only applies if `include_picture` is true)_
-fields | name,gender | Can be used to modify the fields included in the response. Possible values are: `age`, `gender`, `gender_new`, `gender_description`, `gender_searchability`, `first_name`, `last_name`, `name`, `main_profession`, `professions`, `languages`, `representative`, `updated_at`.
+fields | name,gender | Can be used to modify the fields included in the response. Possible values are: `age`, `gender`, `gender_new`, `first_name`, `last_name`, `name`, `main_profession`, `professions`, `languages`, `representative`, `updated_at`.
 order | id | Changes the order of returned results. Possible values are: `id`, `name`, `last_name`
 gender | null | Allows filtering by gender values. Possible values are: `male`, `female`, `transgender_female`, `transgender_male`, `non_binary`, `custom`.
 updated_at[gte] | null | Allows filtering for profiles updated since the passed timestamp. Passed as an integer Unix timestamp.
