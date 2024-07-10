@@ -513,6 +513,9 @@ Ratelimit-Reset: 1597048500
 <p>Certain <code>4xx</code> errors, notably the <code>410</code> Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.</p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>(2024-07-01) <strong>ActorProfile#show</strong>: Add new field <code>gender_description</code></li>
+<li>(2024-05-20) <strong>ActorProfile#show</strong>: Add new field <code>gender_searchability</code></li>
+<li>(2024-05-16) <strong>ActorProfile#index</strong>: Add new field <code>gender_new</code>, which replaces &#39;diverse&#39; value with a larger range of gender values.</li>
 <li>(2024-04-26) <strong>ActorProfile#show</strong>: Add new field <code>in_development</code> to Vita<br></li>
 <li>(2024-04-12) <strong>ActorProfile#show</strong>: Add new fields <code>main_profession</code> and <code>specializations</code><br>
 <strong>ActorProfile#index</strong>: Add new field <code>main_profession</code></li>
@@ -583,7 +586,7 @@ Ratelimit-Reset: 1597048500
 <tr>
 <td>fields</td>
 <td>name,gender</td>
-<td>Can be used to modify the fields included in the response. Possible values are: <code>age</code>, <code>gender</code>, <code>first_name</code>, <code>last_name</code>, <code>name</code>, <code>main_profession</code>, <code>professions</code>, <code>languages</code>, <code>representative</code>, <code>updated_at</code>.</td>
+<td>Can be used to modify the fields included in the response. Possible values are: <code>age</code>, <code>gender</code>, <code>gender_new</code>, <code>first_name</code>, <code>last_name</code>, <code>name</code>, <code>main_profession</code>, <code>professions</code>, <code>languages</code>, <code>representative</code>, <code>updated_at</code>.</td>
 </tr>
 <tr>
 <td>order</td>
@@ -593,7 +596,7 @@ Ratelimit-Reset: 1597048500
 <tr>
 <td>gender</td>
 <td>null</td>
-<td>Allows filtering by gender. Possible values are: <code>m</code>, <code>f</code>, <code>i</code>.</td>
+<td>Allows filtering by gender values. Possible values are: <code>male</code>, <code>female</code>, <code>transgender_female</code>, <code>transgender_male</code>, <code>non_binary</code>, <code>custom</code>.</td>
 </tr>
 <tr>
 <td>updated_at[gte]</td>
@@ -628,6 +631,21 @@ Ratelimit-Reset: 1597048500
 <td>gender</td>
 <td>string</td>
 <td><code>f</code> for female, <code>m</code> for male, <code>i</code> for diverse</td>
+</tr>
+<tr>
+<td>gender_new</td>
+<td>string</td>
+<td><code>female</code> for female, <code>male</code> for male, <code>transgender_male</code> for transgender male, <code>transgender_female</code> for transgender female, <code>non_binary</code> for non binary, <code>custom</code> for custom set gender</td>
+</tr>
+<tr>
+<td>gender_description</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>gender_searchability</td>
+<td>array of strings</td>
+<td>list of genders actor profile can be found under, e.g. <code>[&quot;female&quot;, &quot;non_binary&quot;]</code> <em>this always at least includes the gender of the actor profile if visible</em></td>
 </tr>
 <tr>
 <td>name</td>
@@ -744,6 +762,11 @@ Ratelimit-Reset: 1597048500
   </span><span class="nl">"place_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Darmstadt"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Mainz"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"gender_new"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"gender_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"genderfluid"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"gender_searchability"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"male"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"eye_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"braun"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"hair_color"</span><span class="p">:</span><span class="w"> </span><span class="s2">"braun"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"hair_length"</span><span class="p">:</span><span class="w"> </span><span class="s2">"mittel"</span><span class="p">,</span><span class="w">
