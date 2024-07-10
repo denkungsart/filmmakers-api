@@ -226,7 +226,7 @@ id | number | Unique ID of the actor profile
 age | number |
 gender | string | `f` for female, `m` for male, `i` for diverse
 gender_new | string | `female` for female, `male` for male, `transgender_male` for transgender male, `transgender_female` for transgender female, `non_binary` for non binary, `custom` for custom set gender
-gender_description | string |
+gender_description | string | Custom information actors can enter about their gender identity (free text, max 75 characters)
 gender_searchability | array of strings | list of genders actor profile can be found under, e.g. `["female", "non_binary"]` _this always at least includes the gender of the actor profile if visible_
 name | string | Full name (ie. first & last name) _name can be retrieved separately by using the fields parameter_
 first_name | string |
