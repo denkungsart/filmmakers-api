@@ -654,8 +654,8 @@ showreel_medium_ids | Array | Ids of showreel media that are either connected to
 vita | hash | A collection of credits, where each entry contains structured data related to a specific credit. The entries are sorted by the following criteria: `in_development` (entries with `true` are prioritized), `year_to`/`year_from` (in descending chronological order), `position` (manually sorted by the user), and `id`. The credits are grouped by type, such as `education`, `television`, `theatre`, etc.
 vita.x[].in_development | boolean | indicates film projects that are still in development, meaning it has not been completed or released yet
 ethnic_background | Array | Contains general ethnicities or heritages of the actor. Visibility depends on the setting for `ethnic_appearances` (as described above under _attribute_visibility_).
-ethnic_background_details | Array | Contains specific ethnicities or heritages of the actor, e.g. specific countries. Only visible to verified casting professionals. 
-ethnic_background_custom | string | Contains a custom description of ethnicities or heritages entered by the actor. Only visible to verified casting professionals. 
+ethnic_background_details | Array | Contains specific ethnicities or heritages of the actor, e.g. specific countries.
+ethnic_background_custom | string | Contains a custom description of ethnicities or heritages entered by the actor.
 
 # Talent agencies
 
