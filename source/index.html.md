@@ -155,7 +155,7 @@ Filmmakers uses conventional HTTP response codes to indicate the success or fail
 Certain `4xx` errors, notably the `410` Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.
 
 # Changelog
-- (2024-08-16) **ActorProfile#show**: Make `talent_agency_connections` available, including name of the agency, categories and connection type
+- (2024-08-16) **ActorProfile#show**: Expose `talent_agency_connections`, which includes more details about the agency connections of a profile
 - (2024-07-01) **ActorProfile#show**: Add new field `gender_description`
 - (2024-05-20) **ActorProfile#show**: Add new field `gender_searchability`
 - (2024-05-16) **ActorProfile#index**: Add new field `gender_new`, which replaces 'diverse' value with a larger range of gender values.
