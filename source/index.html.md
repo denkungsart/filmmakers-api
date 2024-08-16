@@ -302,6 +302,16 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
         "acting_agency"
       ],
       "connection_type": "primary_agency"
+    },
+    {
+      "talent_agency_id": 2,
+      "talent_agency_employee_id": 321,
+      "agency_profile_url": null,
+      "talent_agency_name": "My PR agency",
+      "categories": [
+        "pr"
+      ],
+      "connection_type": "secondary_agency"
     }
   ],
   "updated_at": "2021-06-22T16:14:11.519+02:00",
