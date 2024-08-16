@@ -297,7 +297,7 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
       "talent_agency_id": 1,
       "talent_agency_employee_id": 123,
       "agency_profile_url": "https://www.my-agency/my-profile",
-      "talent_agency_name": "My Agency",
+      "talent_agency_name": "My primary agency",
       "categories": [
         "acting_agency"
       ],
