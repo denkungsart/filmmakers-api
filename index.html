@@ -513,6 +513,7 @@ Ratelimit-Reset: 1597048500
 <p>Certain <code>4xx</code> errors, notably the <code>410</code> Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.</p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>(2024-09-26) <strong>ActorProfile#show</strong>: Add new fields <code>ethnic_background</code>, <code>ethnic_background_details</code> and <code>ethnic_background_custom</code><br></li>
 <li>(2024-08-16) <strong>ActorProfile#show</strong>: Expose <code>talent_agency_connections</code>, which includes more details about the agency connections of a profile</li>
 <li>(2024-07-01) <strong>ActorProfile#show</strong>: Add new field <code>gender_description</code></li>
 <li>(2024-05-20) <strong>ActorProfile#show</strong>: Add new field <code>gender_searchability</code></li>
@@ -789,6 +790,13 @@ Ratelimit-Reset: 1597048500
   </span><span class="nl">"ethnic_appearances"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"mitteleuropaisch"</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"ethnic_background"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"6471"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"ethnic_background_details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"6473"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"ethnic_background_custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My custom description"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"figure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"pitch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bariton"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"nationalities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1115,6 +1123,7 @@ Ratelimit-Reset: 1597048500
 <li><strong>Deprecation</strong>: <code>castupload_url</code> is deprecated. Use <code>filmmakers_url</code> instead.</li>
 <li><strong>Deprecation</strong>: <code>castupload_professional_url</code> is deprecated. Use <code>filmmakers_cd_url</code> instead.</li>
 <li><strong>Deprecation</strong>: <code>professions</code> is deprecated. Use <code>main_profession</code> and <code>specializations</code> instead.</li>
+<li><strong>Deprecation</strong>: <code>ethnic_appearances</code> is deprecated. Use <code>ethnic_background</code>, <code>ethnic_background_details</code> and <code>ethnic_background_custom</code> instead.</li>
 </ul>
 
 <p>It is not guaranteed that the exemplary JSON structure shown is complete. Additional fields may be added without notice. The following table provides additional context for the individual fields visible in the exemplary JSON structure:</p>
@@ -1205,6 +1214,21 @@ Ratelimit-Reset: 1597048500
 <td>vita.x[].in_development</td>
 <td>boolean</td>
 <td>indicates film projects that are still in development, meaning it has not been completed or released yet</td>
+</tr>
+<tr>
+<td>ethnic_background</td>
+<td>Array</td>
+<td>Contains general ethnicities or heritages of the actor. Visibility depends on the setting for <code>ethnic_appearances</code> (as described above under <em>attribute_visibility</em>).</td>
+</tr>
+<tr>
+<td>ethnic_background_details</td>
+<td>Array</td>
+<td>Contains specific ethnicities or heritages of the actor, e.g. specific countries.</td>
+</tr>
+<tr>
+<td>ethnic_background_custom</td>
+<td>string</td>
+<td>Contains a custom description of ethnicities or heritages entered by the actor.</td>
 </tr>
 </tbody></table>
 <h1 id='talent-agencies'>Talent agencies</h1><h2 id='get-talent-agency-data'>Get talent agency data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/talent_agencies/123"</span> <span class="se">\</span>
