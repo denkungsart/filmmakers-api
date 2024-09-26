@@ -155,7 +155,8 @@ Filmmakers uses conventional HTTP response codes to indicate the success or fail
 Certain `4xx` errors, notably the `410` Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.
 
 # Changelog
-- (2024-08-15) **ActorProfile#show**: Add new fields `ethnic_background`, `ethnic_background_details` and `ethnic_background_custom`<br>
+- (2024-09-26) **ActorProfile#show**: Add new fields `ethnic_background`, `ethnic_background_details` and `ethnic_background_custom`<br>
+- (2024-08-16) **ActorProfile#show**: Expose `talent_agency_connections`, which includes more details about the agency connections of a profile
 - (2024-07-01) **ActorProfile#show**: Add new field `gender_description`
 - (2024-05-20) **ActorProfile#show**: Add new field `gender_searchability`
 - (2024-05-16) **ActorProfile#index**: Add new field `gender_new`, which replaces 'diverse' value with a larger range of gender values.
@@ -296,7 +297,22 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
     {
       "talent_agency_id": 1,
       "talent_agency_employee_id": 123,
-      "agency_profile_url": "https://www.my-agency/my-profile"
+      "agency_profile_url": "https://www.my-agency/my-profile",
+      "talent_agency_name": "My primary agency",
+      "categories": [
+        "acting_agency"
+      ],
+      "connection_type": "primary_agency"
+    },
+    {
+      "talent_agency_id": 2,
+      "talent_agency_employee_id": 321,
+      "agency_profile_url": null,
+      "talent_agency_name": "My PR agency",
+      "categories": [
+        "pr"
+      ],
+      "connection_type": "secondary_agency"
     }
   ],
   "updated_at": "2021-06-22T16:14:11.519+02:00",
@@ -643,6 +659,9 @@ Field | Type | Description
 talent_agency_connections[].talent_agency_id | integer | id of the talent agency
 talent_agency_connections[].talent_agency_employee_id | integer | id of the talent agency employee
 talent_agency_connections[].agency_profile_url | string | actor profile url on the website of their agency
+talent_agency_connections[].talent_agency_name | string | name of the agency
+talent_agency_connections[].categories | Array | indicates the areas in which the agency represents the client, possible values are "acting_agency", "advertising", "artist_management", "model_agency", "people_agency", "pr", "voice_agency", or "young_talent_agency".
+talent_agency_connections[].connection_type	 | string |indicates the type of agency connection, which can be either "primary_agency" (the main agency) or "secondary_agency". There can be multiple secondary agencies.
 agency_profile_url | string | actor profile url on the website of their agency **Note** Please use talent_agency_connections[].agency_profile_url instead
 talent_agency_id | integer | id of the talent agency **Note** Please use talent_agency_connections[].talent_agency_id instead
 representative.id | integer | id of the talent agency employee **Note** Please use talent_agency_connections[].talent_agency_employee_id instead
