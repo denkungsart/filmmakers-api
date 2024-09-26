@@ -155,6 +155,7 @@ Filmmakers uses conventional HTTP response codes to indicate the success or fail
 Certain `4xx` errors, notably the `410` Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.
 
 # Changelog
+- (2024-09-26) **ActorProfile#show**: Add new fields `ethnic_background`, `ethnic_background_details` and `ethnic_background_custom`<br>
 - (2024-08-16) **ActorProfile#show**: Expose `talent_agency_connections`, which includes more details about the agency connections of a profile
 - (2024-07-01) **ActorProfile#show**: Add new field `gender_description`
 - (2024-05-20) **ActorProfile#show**: Add new field `gender_searchability`
@@ -330,6 +331,13 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
   "ethnic_appearances": [
     "mitteleuropaisch"
   ],
+  "ethnic_background": [
+    "6471"
+  ],
+  "ethnic_background_details": [
+    "6473"
+  ],
+  "ethnic_background_custom": "My custom description",
   "figure": "normal",
   "pitch": "bariton",
   "nationalities": [
@@ -642,6 +650,7 @@ See example response to the right for an overview of included fields. Please not
 - **Deprecation**: `castupload_url` is deprecated. Use `filmmakers_url` instead.
 - **Deprecation**: `castupload_professional_url` is deprecated. Use `filmmakers_cd_url` instead.
 - **Deprecation**: `professions` is deprecated. Use `main_profession` and `specializations` instead.
+- **Deprecation**: `ethnic_appearances` is deprecated. Use `ethnic_background`, `ethnic_background_details` and `ethnic_background_custom` instead.
 
 It is not guaranteed that the exemplary JSON structure shown is complete. Additional fields may be added without notice. The following table provides additional context for the individual fields visible in the exemplary JSON structure:
 
@@ -663,6 +672,9 @@ showreel_ids | Array | Ids of showreels (see `showreels` endpoint)
 showreel_medium_ids | Array | Ids of showreel media that are either connected to a showreel or credits/skills (see also `showreel_media` endpoint)
 vita | hash | A collection of credits, where each entry contains structured data related to a specific credit. The entries are sorted by the following criteria: `in_development` (entries with `true` are prioritized), `year_to`/`year_from` (in descending chronological order), `position` (manually sorted by the user), and `id`. The credits are grouped by type, such as `education`, `television`, `theatre`, etc.
 vita.x[].in_development | boolean | indicates film projects that are still in development, meaning it has not been completed or released yet
+ethnic_background | Array | Contains general ethnicities or heritages of the actor. Visibility depends on the setting for `ethnic_appearances` (as described above under _attribute_visibility_).
+ethnic_background_details | Array | Contains specific ethnicities or heritages of the actor, e.g. specific countries.
+ethnic_background_custom | string | Contains a custom description of ethnicities or heritages entered by the actor.
 
 # Talent agencies
 
