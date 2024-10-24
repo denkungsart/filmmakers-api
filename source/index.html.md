@@ -213,7 +213,7 @@ Parameter | Default | Description
 page | 1 | Page to display - see "Pagination" section
 per_page | 250 | Items per page - see "Pagination" section
 include_picture | false | If set to true, the result will include the profile picture thumbnail in a field named `main_picture_url_tile`.
-picture_version | null | Can be set to `original`, `large` or `thumb` to change the included picture version. The picture will be included in a field named `picture_url`. _(Only applies if `include_picture` is true)_
+picture_version | null | Can be set to `original`, `large`, `thumb` or `thumb_large` to change the included picture version. The picture will be included in a field named `picture_url`. _(Only applies if `include_picture` is true)_
 fields | name,gender | Can be used to modify the fields included in the response. Possible values are: `age`, `gender`, `gender_new`, `first_name`, `last_name`, `name`, `main_profession`, `professions`, `languages`, `representative`, `updated_at`.
 order | id | Changes the order of returned results. Possible values are: `id`, `name`, `last_name`
 gender | null | Allows filtering by gender values. Possible values are: `male`, `female`, `transgender_female`, `transgender_male`, `non_binary`, `custom`.
@@ -441,7 +441,8 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
       "versions": {
         "original": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:3840/h:2160/f:jpg/ZS5qcGVn",
         "large": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:1200/h:1200/f:jpg/ZS5qcGVn",
-        "thumb": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fill/el:1/c:528:528:nowe:250:0/w:190/h:190/g:no/f:jpg/ZS5qcGVn"
+        "thumb": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fill/el:1/c:528:528:nowe:250:0/w:190/h:190/g:no/f:jpg/ZS5qcGVn",
+        "thumb_large": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fill/el:1/c:528:528:nowe:250:0/w:500/h:500/g:no/f:jpg/ZS5qcGVn"
       },
       "orientation": "square",
       "dimensions": [
@@ -466,7 +467,8 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
       "versions": {
         "original": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:3840/h:2160/f:jpg/ZS5qcGVn",
         "large": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:1200/h:1200/f:jpg/ZS5qcGVn",
-        "thumb": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fill/el:1/c:528:528:nowe:250:0/w:190/h:190/g:no/f:jpg/ZS5qcGVn"
+        "thumb": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fill/el:1/c:528:528:nowe:250:0/w:190/h:190/g:no/f:jpg/ZS5qcGVn",
+        "thumb_large": "https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fill/el:1/c:528:528:nowe:250:0/w:500/h:500/g:no/f:jpg/ZS5qcGVn"
       },
       "orientation": "landscape",
       "dimensions": [
