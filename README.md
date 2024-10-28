@@ -1,3 +1,5 @@
+When opening a PR please make sure you are not opening the PR against the forked repo.
+
 <p align="center">
   <img src="https://raw.githubusercontent.com/slatedocs/img/main/logo-slate.png" alt="Slate: API Documentation Generator" width="226">
   <br>
