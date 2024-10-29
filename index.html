@@ -513,6 +513,7 @@ Ratelimit-Reset: 1597048500
 <p>Certain <code>4xx</code> errors, notably the <code>410</code> Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.</p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>(2024-10-29) <strong>ActorProfile#show</strong>: Add <code>:thumb_large</code> 500x500 profile picture option </li>
 <li>(2024-09-26) <strong>ActorProfile#show</strong>: Add new fields <code>ethnic_background</code>, <code>ethnic_background_details</code> and <code>ethnic_background_custom</code><br></li>
 <li>(2024-08-16) <strong>ActorProfile#show</strong>: Expose <code>talent_agency_connections</code>, which includes more details about the agency connections of a profile</li>
 <li>(2024-07-01) <strong>ActorProfile#show</strong>: Add new field <code>gender_description</code></li>
@@ -583,7 +584,7 @@ Ratelimit-Reset: 1597048500
 <tr>
 <td>picture_version</td>
 <td>null</td>
-<td>Can be set to <code>original</code>, <code>large</code> or <code>thumb</code> to change the included picture version. The picture will be included in a field named <code>picture_url</code>. <em>(Only applies if <code>include_picture</code> is true)</em></td>
+<td>Can be set to <code>original</code>, <code>large</code>, <code>thumb</code> or <code>thumb_large</code> to change the included picture version. The picture will be included in a field named <code>picture_url</code>. <em>(Only applies if <code>include_picture</code> is true)</em></td>
 </tr>
 <tr>
 <td>fields</td>
@@ -900,7 +901,8 @@ Ratelimit-Reset: 1597048500
       </span><span class="nl">"versions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:3840/h:2160/f:jpg/ZS5qcGVn"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"large"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:1200/h:1200/f:jpg/ZS5qcGVn"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fill/el:1/c:528:528:nowe:250:0/w:190/h:190/g:no/f:jpg/ZS5qcGVn"</span><span class="w">
+        </span><span class="nl">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fill/el:1/c:528:528:nowe:250:0/w:190/h:190/g:no/f:jpg/ZS5qcGVn"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"thumb_large"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fill/el:1/c:528:528:nowe:250:0/w:500/h:500/g:no/f:jpg/ZS5qcGVn"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"square"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -925,7 +927,8 @@ Ratelimit-Reset: 1597048500
       </span><span class="nl">"versions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nl">"original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:3840/h:2160/f:jpg/ZS5qcGVn"</span><span class="p">,</span><span class="w">
         </span><span class="nl">"large"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fit/w:1200/h:1200/f:jpg/ZS5qcGVn"</span><span class="p">,</span><span class="w">
-        </span><span class="nl">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fill/el:1/c:528:528:nowe:250:0/w:190/h:190/g:no/f:jpg/ZS5qcGVn"</span><span class="w">
+        </span><span class="nl">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fill/el:1/c:528:528:nowe:250:0/w:190/h:190/g:no/f:jpg/ZS5qcGVn"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"thumb_large"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/gqz46mqnA/rt:fill/el:1/c:528:528:nowe:250:0/w:500/h:500/g:no/f:jpg/ZS5qcGVn"</span><span class="w">
       </span><span class="p">},</span><span class="w">
       </span><span class="nl">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"landscape"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
