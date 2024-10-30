@@ -68,7 +68,7 @@ See example on how to fetch the OAuth Access Token with curl.
 ```shell
 export CLIENT_ID="your-client-id-goes-here"
 export CLIENT_SECRET="your-client-secret-goes-here"
-curl -s -X POST "http://filmmakers.test/oauth/token" \
+curl -s -X POST "http://filmmakers.eu/oauth/token" \
            -H "Content-Type: application/x-www-form-urlencoded" \
            --data-urlencode "grant_type=client_credentials" \
            --data-urlencode "client_id=$CLIENT_ID" \
@@ -90,7 +90,7 @@ Filmmakers expects the OAuth Access Token to be included in all API requests to 
 
 `Authorization: Bearer ACCESS_TOKEN`
 
-OAuth access tokens expire after a set period (currently 120 minutes, though this may change in the future) and must be refreshed. Your client software is responsible for automating the OAuth flow. You can always retrieve the expiry time of an access token from the introspection endpoint listed in the [Filmmakers OpenID Configuration](https://www.filmmakers.eu/.well-known/openid-configuration)." 
+OAuth access tokens expire after a set period (currently 120 minutes, though this may change in the future) and must be refreshed. Your client software is responsible for automating the OAuth flow. You can always retrieve the expiry time of an access token from the introspection endpoint listed in the [Filmmakers OpenID Configuration](https://www.filmmakers.eu/.well-known/openid-configuration)."
 
 
 ```shell
