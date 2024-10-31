@@ -68,7 +68,7 @@ See example on how to fetch the OAuth Access Token with curl.
 ```shell
 export CLIENT_ID="your-client-id-goes-here"
 export CLIENT_SECRET="your-client-secret-goes-here"
-curl -s -X POST "http://filmmakers.eu/oauth/token" \
+curl -s -X POST "https://www.filmmakers.eu/oauth/token" \
            -H "Content-Type: application/x-www-form-urlencoded" \
            --data-urlencode "grant_type=client_credentials" \
            --data-urlencode "client_id=$CLIENT_ID" \
@@ -100,8 +100,25 @@ curl -I https://www.filmmakers.eu/api/v1/actor_profiles -H "Authorization: Beare
 ```text
 HTTP/1.1 200 OK
 ```
+
 <aside class="notice">
 You must replace <code>ACCESS_TOKEN</code> with a non-expired OAuth Access Token.
+</aside>
+
+### Introspecting Tokens
+
+Token information can be retrieved from the introspection_endpoint (see [Filmmakers OpenID Configuration](https://www.filmmakers.eu/.well-known/openid-configuration)
+).
+
+```shell
+curl -X POST https://www.filmmakers.eu/oauth/introspect \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "token=ACCESS_TOKEN" \
+  -u "CLIENT_ID:CLIENT_SECRET"
+```
+
+<aside class="notice">
+You must replace <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code> with your credentials and <code>ACCESS_TOKEN</code> with your OAuth Access Token.
 </aside>
 
 # Cross origin resource sharing
