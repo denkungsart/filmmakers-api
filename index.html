@@ -320,6 +320,14 @@
           </li>
           <li>
             <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#token-based" class="toc-h2 toc-link" data-title="Token-based">Token-based</a>
+                  </li>
+                  <li>
+                    <a href="#oauth" class="toc-h2 toc-link" data-title="OAuth">OAuth</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#cross-origin-resource-sharing" class="toc-h1 toc-link" data-title="Cross origin resource sharing">Cross origin resource sharing</a>
@@ -405,7 +413,7 @@
       <div class="dark-box"></div>
       <div class="content">
         <h1 id='introduction'>Introduction</h1>
-<p>Filmmakers provides a RESTful JSON API with token-based authentication. You can request an API key with <a href="https://www.filmmakers.eu/contact/new">our support</a>. The permission scope of the API key varies depending on the use case, so when contacting us be sure to specify the desired use case (e.g. you plan on using Filmmakers data for a website).</p>
+<p>Filmmakers provides a RESTful JSON API with OAuth and token-based authentication. You can request an API key with <a href="https://www.filmmakers.eu/contact/new">our support</a>. The permission scope of the API key varies depending on the use case, so when contacting us be sure to specify the desired use case (e.g. you plan on using Filmmakers data for a website).</p>
 <h1 id='api-updates-and-backwards-compatibility'>API updates and backwards compatibility</h1>
 <p>While we won&#39;t be introducing any major changes, we do plan to add new features and endpoints over time. This is a list of changes that we consider to be backwards compatible:</p>
 
@@ -420,7 +428,7 @@
 <p>Please bear this in mind when programming against our API, and try to ensure that these non-breaking changes don&#39;t break your code.</p>
 
 <p>If we do introduce a breaking change, we will create new endpoints with a new version prefix in the URI.</p>
-<h1 id='authentication'>Authentication</h1>
+<h1 id='authentication'>Authentication</h1><h2 id='token-based'>Token-based</h2>
 <p>Once you have been issued an API key you can use the following code to authorize requests:</p>
 <div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"api_endpoint_here"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
@@ -431,6 +439,50 @@
 
 <aside class="notice">
 You must replace <code>API_KEY</code> with your personal API key.
+</aside>
+<h2 id='oauth'>OAuth</h2>
+<p>Filmmakers API supports the OAuth flow with refresh tokens.</p>
+<h3 id='setting-up-oauth-access'>Setting up OAuth Access</h3>
+<p>Once you have been issued an API key with OAuth Authorization enabled, you can use the following configuration from your client code:</p>
+
+<p><a href="https://www.filmmakers.eu/.well-known/openid-configuration">Filmmakers OpenID Configuration</a></p>
+
+<p>See example on how to fetch the OAuth Access Token with curl.</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code><span class="nb">export </span><span class="nv">CLIENT_ID</span><span class="o">=</span><span class="s2">"your-client-id-goes-here"</span>
+<span class="nb">export </span><span class="nv">CLIENT_SECRET</span><span class="o">=</span><span class="s2">"your-client-secret-goes-here"</span>
+curl <span class="nt">-s</span> <span class="nt">-X</span> POST <span class="s2">"https://www.filmmakers.eu/oauth/token"</span> <span class="se">\</span>
+           <span class="nt">-H</span> <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="se">\</span>
+           <span class="nt">--data-urlencode</span> <span class="s2">"grant_type=client_credentials"</span> <span class="se">\</span>
+           <span class="nt">--data-urlencode</span> <span class="s2">"client_id=</span><span class="nv">$CLIENT_ID</span><span class="s2">"</span> <span class="se">\</span>
+           <span class="nt">--data-urlencode</span> <span class="s2">"client_secret=</span><span class="nv">$CLIENT_SECRET</span><span class="s2">"</span> <span class="se">\</span>
+           <span class="nt">--data-urlencode</span> <span class="s2">"scope=public"</span>
+</code></pre></div><div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="nl">"access_token"</span><span class="p">:</span><span class="s2">"Uvm37RVcZano399REpMXh837fDT-jtSc0lTvmEexpKI"</span><span class="p">,</span><span class="nl">"token_type"</span><span class="p">:</span><span class="s2">"Bearer"</span><span class="p">,</span><span class="nl">"expires_in"</span><span class="p">:</span><span class="mi">7200</span><span class="p">,</span><span class="nl">"scope"</span><span class="p">:</span><span class="s2">"public"</span><span class="p">,</span><span class="nl">"created_at"</span><span class="p">:</span><span class="mi">1730119409</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
+<aside class="notice">
+You must replace <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code> with your credentials.
+</aside>
+<h3 id='using-oauth-access-tokens'>Using OAuth Access Tokens</h3>
+<p>Filmmakers expects the OAuth Access Token to be included in all API requests to the server in a header that looks like the following:</p>
+
+<p><code>Authorization: Bearer ACCESS_TOKEN</code></p>
+
+<p>OAuth access tokens expire after a set period (currently 120 minutes, though this may change in the future) and must be refreshed. Your client software is responsible for automating the OAuth flow. You can always retrieve the expiry time of an access token from the introspection endpoint listed in the <a href="https://www.filmmakers.eu/.well-known/openid-configuration">Filmmakers OpenID Configuration</a>.&quot;</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-I</span> https://www.filmmakers.eu/api/v1/actor_profiles <span class="nt">-H</span> <span class="s2">"Authorization: Bearer </span><span class="nv">$ACCESS_TOKEN</span><span class="s2">"</span> <span class="nt">-H</span> <span class="s2">"Accept: application/json"</span>
+</code></pre></div><div class="highlight"><pre class="highlight plaintext"><code>HTTP/1.1 200 OK
+</code></pre></div>
+<aside class="notice">
+You must replace <code>ACCESS_TOKEN</code> with a non-expired OAuth Access Token.
+</aside>
+<h3 id='introspecting-tokens'>Introspecting Tokens</h3>
+<p>Token information can be retrieved from the introspection_endpoint (see <a href="https://www.filmmakers.eu/.well-known/openid-configuration">Filmmakers OpenID Configuration</a>
+).</p>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://www.filmmakers.eu/oauth/introspect <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Content-Type: application/x-www-form-urlencoded"</span> <span class="se">\</span>
+  <span class="nt">-d</span> <span class="s2">"token=ACCESS_TOKEN"</span> <span class="se">\</span>
+  <span class="nt">-u</span> <span class="s2">"CLIENT_ID:CLIENT_SECRET"</span>
+</code></pre></div>
+<aside class="notice">
+You must replace <code>CLIENT_ID</code> and <code>CLIENT_SECRET</code> with your credentials and <code>ACCESS_TOKEN</code> with your OAuth Access Token.
 </aside>
 <h1 id='cross-origin-resource-sharing'>Cross origin resource sharing</h1>
 <p>The API supports Cross Origin Resource Sharing (CORS) for AJAX requests from any origin.</p>
@@ -513,7 +565,8 @@ Ratelimit-Reset: 1597048500
 <p>Certain <code>4xx</code> errors, notably the <code>410</code> Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.</p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
-<li>(2024-10-29) <strong>ActorProfile#show</strong>: Add <code>:thumb_large</code> 500x500 profile picture option </li>
+<li>(2024-10-29) <strong>ActorProfile#show</strong>: Add <code>:thumb_large</code> 500x500 profile picture option</li>
+<li>(2024-10-28) <strong>API</strong>: Optional OAuth Authorization added to all endpoints<br></li>
 <li>(2024-09-26) <strong>ActorProfile#show</strong>: Add new fields <code>ethnic_background</code>, <code>ethnic_background_details</code> and <code>ethnic_background_custom</code><br></li>
 <li>(2024-08-16) <strong>ActorProfile#show</strong>: Expose <code>talent_agency_connections</code>, which includes more details about the agency connections of a profile</li>
 <li>(2024-07-01) <strong>ActorProfile#show</strong>: Add new field <code>gender_description</code></li>
