@@ -22,13 +22,14 @@ Filmmakers provides a RESTful JSON API with OAuth and token-based authentication
 
 # API updates and backwards compatibility
 
-While we won't be introducing any major changes, we do plan to add new features and endpoints over time. This is a list of changes that we consider to be backwards compatible:
+While we won't be introducing any major changes, we do plan to add new features and endpoints over time. Below is a list of changes that we consider backwards compatible:
 
 * Adding new fields or links to responses
 * Adding new resources or endpoints
 * Adding of new (optional) query parameters
-* Changes to the default page length for paginated resources
-* Changes to the attributes of individual fields (including adding/removing/modifying values). Updated lists can be retrieved via the attributes endpoint (see dedicated section).
+* Changing the default page length for paginated resources
+* Modifying the attributes of individual fields (including adding, removing, or modifying values). Updated lists can be retrieved via the attributes endpoint (see dedicated section)
+* Updating translations for individual attributes or skill levels
 
 Please bear this in mind when programming against our API, and try to ensure that these non-breaking changes don't break your code.
 
