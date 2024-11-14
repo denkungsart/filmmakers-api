@@ -225,7 +225,7 @@ Filmmakers uses conventional HTTP response codes to indicate the success or fail
 Certain `4xx` errors, notably the `410` Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.
 
 # Changelog
-- (2024-11-14) **ActorProfile#show**: Add new field `working_permits`
+- (2024-11-14) **ActorProfile#show**: Add new fields `working_permits` and `attribute_visibility.working_permits`
 - (2024-10-29) **ActorProfile#show**: Add `:thumb_large` 500x500 profile picture option
 - (2024-10-28) **API**: Optional OAuth Authorization added to all endpoints<br>
 - (2024-09-26) **ActorProfile#show**: Add new fields `ethnic_background`, `ethnic_background_details` and `ethnic_background_custom`<br>
@@ -364,7 +364,8 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
     "acting_age": "public",
     "gender": "public",
     "ethnic_appearances": "private",
-    "figures": "private"
+    "figures": "private",
+    "working_permits": "public"
   },
   "talent_agency_connections": [
     {
@@ -745,7 +746,7 @@ agency_profile_url | string | actor profile url on the website of their agency *
 talent_agency_id | integer | id of the talent agency **Note** Please use talent_agency_connections[].talent_agency_id instead
 representative.id | integer | id of the talent agency employee **Note** Please use talent_agency_connections[].talent_agency_employee_id instead
 representative.name | string | name of the talent agency employee **Note** Please use talent_agency#employees.first_name/last_name instead
-attribute_visibility | hash | Indicates per attribute `age`, `acting_age`, `gender`, `ethnic_appearances` and `figures` whether these are publicly visible on Filmmakers (`public`) or only visible to verified casting professionals (`private`)
+attribute_visibility | hash | Indicates per attribute `age`, `acting_age`, `gender`, `ethnic_appearances`, `figures` and `working_permits` whether these are publicly visible on Filmmakers (`public`) or only visible to verified casting professionals (`private`)
 profile_visibility | string | Visibility of the profile on Filmmakers (`public` or `private`)
 showreel_ids | Array | Ids of showreels (see `showreels` endpoint)
 showreel_medium_ids | Array | Ids of showreel media that are either connected to a showreel or credits/skills (see also `showreel_media` endpoint)
