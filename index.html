@@ -565,6 +565,7 @@ Ratelimit-Reset: 1597048500
 <p>Certain <code>4xx</code> errors, notably the <code>410</code> Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.</p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>(2024-11-14) <strong>ActorProfile#show</strong>: Add new field <code>working_permits</code></li>
 <li>(2024-10-29) <strong>ActorProfile#show</strong>: Add <code>:thumb_large</code> 500x500 profile picture option</li>
 <li>(2024-10-28) <strong>API</strong>: Optional OAuth Authorization added to all endpoints<br></li>
 <li>(2024-09-26) <strong>ActorProfile#show</strong>: Add new fields <code>ethnic_background</code>, <code>ethnic_background_details</code> and <code>ethnic_background_custom</code><br></li>
@@ -900,6 +901,10 @@ Ratelimit-Reset: 1597048500
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"unions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"bffs"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"working_permits"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"EU-27"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"GB"</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nl">"locations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="p">{</span><span class="w">
