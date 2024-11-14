@@ -415,14 +415,15 @@
         <h1 id='introduction'>Introduction</h1>
 <p>Filmmakers provides a RESTful JSON API with OAuth and token-based authentication. You can request an API key with <a href="https://www.filmmakers.eu/contact/new">our support</a>. The permission scope of the API key varies depending on the use case, so when contacting us be sure to specify the desired use case (e.g. you plan on using Filmmakers data for a website).</p>
 <h1 id='api-updates-and-backwards-compatibility'>API updates and backwards compatibility</h1>
-<p>While we won&#39;t be introducing any major changes, we do plan to add new features and endpoints over time. This is a list of changes that we consider to be backwards compatible:</p>
+<p>While we won&#39;t be introducing any major changes, we do plan to add new features and endpoints over time. Below is a list of changes that we consider backwards compatible:</p>
 
 <ul>
 <li>Adding new fields or links to responses</li>
 <li>Adding new resources or endpoints</li>
 <li>Adding of new (optional) query parameters</li>
-<li>Changes to the default page length for paginated resources</li>
-<li>Changes to the attributes of individual fields (including adding/removing/modifying values). Updated lists can be retrieved via the attributes endpoint (see dedicated section).</li>
+<li>Changing the default page length for paginated resources</li>
+<li>Modifying the attributes of individual fields (including adding, removing, or modifying values). Updated lists can be retrieved via the attributes endpoint (see dedicated section)</li>
+<li>Updating translations for individual attributes or skill levels</li>
 </ul>
 
 <p>Please bear this in mind when programming against our API, and try to ensure that these non-breaking changes don&#39;t break your code.</p>
