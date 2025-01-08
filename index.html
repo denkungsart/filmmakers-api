@@ -569,7 +569,7 @@ Ratelimit-Reset: 1597048500
 <li>(2024-11-14) <strong>ActorProfile#show</strong>: Add new fields <code>working_permits</code> and <code>attribute_visibility.working_permits</code></li>
 <li>(2024-10-29) <strong>ActorProfile#show</strong>: Add <code>:thumb_large</code> 500x500 profile picture option</li>
 <li>(2024-10-28) <strong>API</strong>: Optional OAuth Authorization added to all endpoints<br></li>
-<li>(2024-09-26) <strong>ActorProfile#show</strong>: Add new fields <code>ethnic_background</code>, <code>ethnic_background_details</code> and <code>ethnic_background_custom</code><br></li>
+<li>(2024-09-26) <strong>ActorProfile#show</strong>: Add new fields <code>ethnic_background</code>, <code>ethnic_background_details</code> and <code>ethnic_background_description</code><br></li>
 <li>(2024-08-16) <strong>ActorProfile#show</strong>: Expose <code>talent_agency_connections</code>, which includes more details about the agency connections of a profile</li>
 <li>(2024-07-01) <strong>ActorProfile#show</strong>: Add new field <code>gender_description</code></li>
 <li>(2024-05-20) <strong>ActorProfile#show</strong>: Add new field <code>gender_searchability</code></li>
@@ -853,7 +853,7 @@ Ratelimit-Reset: 1597048500
   </span><span class="nl">"ethnic_background_details"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
     </span><span class="s2">"6473"</span><span class="w">
   </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"ethnic_background_custom"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My custom description"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"ethnic_background_description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My custom description"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"figure"</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"pitch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bariton"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"nationalities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -1186,7 +1186,7 @@ Ratelimit-Reset: 1597048500
 <li><strong>Deprecation</strong>: <code>castupload_url</code> is deprecated. Use <code>filmmakers_url</code> instead.</li>
 <li><strong>Deprecation</strong>: <code>castupload_professional_url</code> is deprecated. Use <code>filmmakers_cd_url</code> instead.</li>
 <li><strong>Deprecation</strong>: <code>professions</code> is deprecated. Use <code>main_profession</code> and <code>specializations</code> instead.</li>
-<li><strong>Deprecation</strong>: <code>ethnic_appearances</code> is deprecated. Use <code>ethnic_background</code>, <code>ethnic_background_details</code> and <code>ethnic_background_custom</code> instead.</li>
+<li><strong>Deprecation</strong>: <code>ethnic_appearances</code> is deprecated. Use <code>ethnic_background</code>, <code>ethnic_background_details</code> and <code>ethnic_background_description</code> instead.</li>
 </ul>
 
 <p>It is not guaranteed that the exemplary JSON structure shown is complete. Additional fields may be added without notice. The following table provides additional context for the individual fields visible in the exemplary JSON structure:</p>
@@ -1289,7 +1289,7 @@ Ratelimit-Reset: 1597048500
 <td>Contains specific ethnicities or heritages of the actor, e.g. specific countries.</td>
 </tr>
 <tr>
-<td>ethnic_background_custom</td>
+<td>ethnic_background_description</td>
 <td>string</td>
 <td>Contains a custom description of ethnicities or heritages entered by the actor.</td>
 </tr>
