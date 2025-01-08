@@ -229,7 +229,7 @@ Certain `4xx` errors, notably the `410` Gone status, indicate that a requested r
 - (2024-11-14) **ActorProfile#show**: Add new fields `working_permits` and `attribute_visibility.working_permits`
 - (2024-10-29) **ActorProfile#show**: Add `:thumb_large` 500x500 profile picture option
 - (2024-10-28) **API**: Optional OAuth Authorization added to all endpoints<br>
-- (2024-09-26) **ActorProfile#show**: Add new fields `ethnic_background`, `ethnic_background_details` and `ethnic_background_custom`<br>
+- (2024-09-26) **ActorProfile#show**: Add new fields `ethnic_background`, `ethnic_background_details` and `ethnic_background_description`<br>
 - (2024-08-16) **ActorProfile#show**: Expose `talent_agency_connections`, which includes more details about the agency connections of a profile
 - (2024-07-01) **ActorProfile#show**: Add new field `gender_description`
 - (2024-05-20) **ActorProfile#show**: Add new field `gender_searchability`
@@ -412,7 +412,7 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
   "ethnic_background_details": [
     "6473"
   ],
-  "ethnic_background_custom": "My custom description",
+  "ethnic_background_description": "My custom description",
   "figure": "normal",
   "pitch": "bariton",
   "nationalities": [
@@ -731,7 +731,7 @@ See example response to the right for an overview of included fields. Please not
 - **Deprecation**: `castupload_url` is deprecated. Use `filmmakers_url` instead.
 - **Deprecation**: `castupload_professional_url` is deprecated. Use `filmmakers_cd_url` instead.
 - **Deprecation**: `professions` is deprecated. Use `main_profession` and `specializations` instead.
-- **Deprecation**: `ethnic_appearances` is deprecated. Use `ethnic_background`, `ethnic_background_details` and `ethnic_background_custom` instead.
+- **Deprecation**: `ethnic_appearances` is deprecated. Use `ethnic_background`, `ethnic_background_details` and `ethnic_background_description` instead.
 
 It is not guaranteed that the exemplary JSON structure shown is complete. Additional fields may be added without notice. The following table provides additional context for the individual fields visible in the exemplary JSON structure:
 
@@ -755,7 +755,7 @@ vita | hash | A collection of credits, where each entry contains structured data
 vita.x[].in_development | boolean | indicates film projects that are still in development, meaning it has not been completed or released yet
 ethnic_background | Array | Contains general ethnicities or heritages of the actor. Visibility depends on the setting for `ethnic_appearances` (as described above under _attribute_visibility_).
 ethnic_background_details | Array | Contains specific ethnicities or heritages of the actor, e.g. specific countries.
-ethnic_background_custom | string | Contains a custom description of ethnicities or heritages entered by the actor.
+ethnic_background_description | string | Contains a custom description of ethnicities or heritages entered by the actor.
 
 # Talent agencies
 
