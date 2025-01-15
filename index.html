@@ -359,6 +359,17 @@
               </ul>
           </li>
           <li>
+            <a href="#crew-profiles" class="toc-h1 toc-link" data-title="Crew profiles">Crew profiles</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-all-crew-profiles" class="toc-h2 toc-link" data-title="Get all crew profiles">Get all crew profiles</a>
+                  </li>
+                  <li>
+                    <a href="#get-a-specific-crew-profile" class="toc-h2 toc-link" data-title="Get a specific crew profile">Get a specific crew profile</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
             <a href="#talent-agencies" class="toc-h1 toc-link" data-title="Talent agencies">Talent agencies</a>
               <ul class="toc-list-h2">
                   <li>
@@ -1294,6 +1305,283 @@ Ratelimit-Reset: 1597048500
 <td>Contains a custom description of ethnicities or heritages entered by the actor.</td>
 </tr>
 </tbody></table>
+<h1 id='crew-profiles'>Crew profiles</h1><h2 id='get-all-crew-profiles'>Get all crew profiles</h2>
+<p>Here is an example request:</p>
+
+<p>curl &quot;https://www.filmmakers.eu/api/v1/crew_profiles&quot; \
+      -H &quot;Authorization: Token token=API_KEY&quot;</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+
+<p>[
+      {
+        &quot;id&quot;: 1,
+        &quot;name&quot;: &quot;John Doe&quot;,
+        &quot;gender&quot;: &quot;m&quot;
+      },
+      {
+        &quot;id&quot;: 2,
+        &quot;name&quot;: &quot;Jane Doe&quot;,
+        &quot;gender&quot;: &quot;f&quot;
+      }
+    ]</p>
+
+<p>This endpoint retrieves all crew profiles available with the access rights of the API key. Most of the time it is scoped to a talent agency.</p>
+<h3 id='http-request-3'>HTTP Request</h3>
+<p><code>GET https://www.filmmakers.eu/api/v1/crew_profiles</code></p>
+<h3 id='query-parameters-3'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>page</td>
+<td>1</td>
+<td>Page to display - see &quot;Pagination&quot; section</td>
+</tr>
+<tr>
+<td>per_page</td>
+<td>250</td>
+<td>Items per page - see &quot;Pagination&quot; section</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>null</td>
+<td>Allows filtering by gender values. Possible values are: <code>male</code>, <code>female</code>, <code>transgender_female</code>, <code>transgender_male</code>, <code>non_binary</code>, <code>custom</code>. Returned as <code>m</code>, <code>f</code>, or <code>i</code> in the JSON response (depending on internal mapping).</td>
+</tr>
+<tr>
+<td>updated_at[gte]</td>
+<td>null</td>
+<td>Allows filtering for profiles updated since the passed timestamp. Passed as an integer Unix timestamp.</td>
+</tr>
+<tr>
+<td>q</td>
+<td>null</td>
+<td>Allows filtering by name. Uses trigram, so allows fuzzy &amp; partial matches.</td>
+</tr>
+<tr>
+<td>include_picture</td>
+<td>false</td>
+<td>If set to <code>true</code>, the result will include the profile picture thumbnail in a field named <code>main_picture_url_tile</code>.</td>
+</tr>
+<tr>
+<td>picture_version</td>
+<td>null</td>
+<td>Can be set to <code>original</code>, <code>large</code>, <code>thumb</code>, or <code>thumb_large</code> to change the included picture version. The picture will be included in a field named <code>picture_url</code>. <em>(Only applies if <code>include_picture</code> is <code>true</code>.)</em></td>
+</tr>
+<tr>
+<td>fields</td>
+<td>name,gender</td>
+<td>Can be used to modify the fields included in the response. Possible values can include <code>name</code>, <code>first_name</code>, <code>last_name</code>, <code>gender</code>, <code>professions</code>, <code>languages</code>, <code>representative</code>, <code>updated_at</code>, etc.</td>
+</tr>
+<tr>
+<td>order</td>
+<td>id</td>
+<td>Changes the order of returned results. Possible values are: <code>id</code>, <code>name</code>, <code>last_name</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='response-fields-3'>Response fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>id</td>
+<td>number</td>
+<td>Unique ID of the crew profile</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>Full name of the crew member (usually first &amp; last name)</td>
+</tr>
+<tr>
+<td>gender</td>
+<td>string</td>
+<td><code>f</code> for female, <code>m</code> for male, <code>i</code> for diverse</td>
+</tr>
+<tr>
+<td>professions</td>
+<td>array of strings</td>
+<td>A list of professions, e.g. <code>[&quot;regie&quot;, &quot;kamera&quot;]</code></td>
+</tr>
+<tr>
+<td>main_picture_url_tile</td>
+<td>string</td>
+<td>Profile picture URL (thumbnail version) if <code>include_picture</code> is set</td>
+</tr>
+<tr>
+<td>picture_url</td>
+<td>string</td>
+<td>Profile picture URL of the specified version if <code>picture_version</code> is set</td>
+</tr>
+<tr>
+<td>picture_copyright</td>
+<td>string</td>
+<td>Copyright information</td>
+</tr>
+<tr>
+<td>representative</td>
+<td>JSON Object</td>
+<td>Contains &quot;id&quot; and &quot;name&quot; of the talent agency employee</td>
+</tr>
+<tr>
+<td>updated_at</td>
+<td>string</td>
+<td>Format ISO 8601</td>
+</tr>
+</tbody></table>
+
+<hr>
+<h2 id='get-a-specific-crew-profile'>Get a specific crew profile</h2>
+<p>Example request:</p>
+
+<p>curl &quot;https://www.filmmakers.eu/api/v1/crew_profiles/123&quot; \
+      -H &quot;Authorization: Token token=API_KEY&quot;</p>
+
+<blockquote>
+<p>The above command returns JSON structured like this:</p>
+</blockquote>
+
+<p>{
+      &quot;id&quot;: 162,
+      &quot;first_name&quot;: &quot;John&quot;,
+      &quot;last_name&quot;: &quot;Doe&quot;,
+      &quot;year_of_birth&quot;: 1980,
+      &quot;place_of_birth&quot;: &quot;Berlin&quot;,
+      &quot;professions&quot;: [&quot;regie&quot;, &quot;autor&quot;],
+      &quot;nationalities&quot;: [&quot;DE&quot;, &quot;FR&quot;],
+      &quot;languages&quot;: {
+        &quot;deutsch&quot;: &quot;muttersprachlich&quot;,
+        &quot;englisch&quot;: &quot;fliessend&quot;
+      },
+      &quot;accommodation_options&quot;: [
+        &quot;Berlin&quot;,
+        &quot;Köln&quot;
+      ],
+      &quot;representative&quot;: {
+        &quot;id&quot;: 123,
+        &quot;name&quot;: &quot;Jane Roe&quot;
+      },
+      &quot;talent_agency_id&quot;: 1,
+      &quot;pictures&quot;: [
+        {
+          &quot;id&quot;: 140,
+          &quot;copyright&quot;: &quot;John Doe&quot;,
+          &quot;url&quot;: &quot;https://imgproxy.filmmakers.eu/production/abc.jpg&quot;,
+          &quot;versions&quot;: {
+            &quot;original&quot;: &quot;https://imgproxy.filmmakers.eu/...&quot;,
+            &quot;large&quot;: &quot;https://imgproxy.filmmakers.eu/...&quot;,
+            &quot;thumb&quot;: &quot;https://imgproxy.filmmakers.eu/...&quot;,
+            &quot;thumb_large&quot;: &quot;https://imgproxy.filmmakers.eu/...&quot;
+          },
+          &quot;orientation&quot;: &quot;portrait&quot;,
+          &quot;dimensions&quot;: [50, 64],
+          &quot;crop_coordinates&quot;: {
+            &quot;x&quot;: 0,
+            &quot;y&quot;: 36,
+            &quot;w&quot;: 357,
+            &quot;h&quot;: 357
+          },
+          &quot;main_picture&quot;: true,
+          &quot;year&quot;: 2020,
+          &quot;recorded_at&quot;: &quot;2020-12-23T18:16:52+00:00&quot;
+        }
+      ],
+      &quot;external_showreels&quot;: [
+        &quot;https://youtube.com/john-doe/video&quot;
+      ],
+      &quot;showreels&quot;: [
+        {
+          &quot;name&quot;: &quot;My Showreel&quot;,
+          &quot;url&quot;: &quot;https://www.filmmakers.eu/crew/john-doe/showreels/15&quot;,
+          &quot;type&quot;: &quot;video&quot;
+        }
+      ],
+      &quot;showreel_ids&quot;: [12345],
+      &quot;showreel_medium_ids&quot;: [123456],
+      &quot;vita&quot;: {
+        &quot;film&quot;: [
+          {
+            &quot;name&quot;: &quot;Sample Film&quot;,
+            &quot;year_from&quot;: 2019,
+            &quot;year_to&quot;: 2019
+          }
+        ],
+        &quot;television&quot;: [],
+        &quot;theatre&quot;: [],
+        &quot;award&quot;: []
+      },
+      &quot;homepage_url&quot;: &quot;https://www.example.com&quot;,
+      &quot;agency_profile_url&quot;: &quot;https://www.my-agency/my-profile&quot;,
+      &quot;country&quot;: &quot;DE&quot;,
+      &quot;state&quot;: &quot;DE-RP&quot;,
+      &quot;gender&quot;: &quot;m&quot;,
+      &quot;updated_at&quot;: &quot;2021-06-22T16:14:11.519+02:00&quot;
+    }</p>
+
+<p>This endpoint retrieves a specific crew profile.</p>
+<h3 id='http-request-4'>HTTP Request</h3>
+<p><code>GET https://www.filmmakers.eu/api/v1/crew_profiles/&lt;ID&gt;</code></p>
+<h3 id='url-parameters-2'>URL Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ID</td>
+<td>The ID of the crew profile to retrieve</td>
+</tr>
+</tbody></table>
+<h3 id='query-parameters-4'>Query Parameters</h3>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>enum</td>
+<td>null</td>
+<td>If set to <code>translate</code>, attributes are translated if possible (e.g. gender will be <code>male</code> or <code>männlich</code> instead of <code>m</code>).  Note that arrays and hashes will be joined to strings when translating.</td>
+</tr>
+<tr>
+<td>locale</td>
+<td>en</td>
+<td>Translates attributes with closed lists. Possible values are: <code>en</code>, <code>de</code>, <code>fr</code>, <code>it</code>, <code>es</code>, <code>pl</code>, <code>ro</code>, <code>ru</code>, <code>tr</code>. Only has an effect if <code>enum</code> is set to <code>translate</code>.</td>
+</tr>
+</tbody></table>
+<h3 id='response-fields-4'>Response fields</h3>
+<p>The JSON structure will include relevant crew-related fields similar to those shown above. Not all fields are guaranteed to appear in every profile, and additional fields may be added without notice. Important fields include:</p>
+
+<ul>
+<li><strong>id</strong>: Unique ID of the crew profile</li>
+<li><strong>first_name</strong>, <strong>last_name</strong>, <strong>name</strong>: Strings representing the person&#39;s name</li>
+<li><strong>gender</strong>: <code>m</code>, <code>f</code>, or <code>i</code> in the default form; can be expanded/translated if <code>enum=translate</code> is set</li>
+<li><strong>professions</strong>: Array of strings indicating the crew member’s areas of expertise (e.g. <code>[&quot;regie&quot;, &quot;autor&quot;, &quot;kamera&quot;]</code>)</li>
+<li><strong>languages</strong>: JSON object, e.g. <code>{ &quot;deutsch&quot;: &quot;muttersprachlich&quot; }</code></li>
+<li><strong>representative</strong>: JSON object with <code>id</code> and <code>name</code> of the representing agent</li>
+<li><strong>talent_agency_id</strong>: ID of the primary talent agency representing the crew member</li>
+<li><strong>pictures</strong>: Array of JSON objects with information about each uploaded picture</li>
+<li><strong>showreels</strong>, <strong>showreel_ids</strong>, <strong>showreel_medium_ids</strong>: Showreels connected to the profile</li>
+<li><strong>vita</strong>: Structured data about film/theatre/TV credits, awards, etc.</li>
+<li><strong>country</strong>, <strong>state</strong>: Country and state codes (or translated values if <code>enum=translate</code> is used)</li>
+</ul>
+
+<blockquote>
+<p><strong>Note</strong>: Additional fields such as <code>external_showreels</code>, <code>year_of_birth</code>, <code>accommodation_options</code>, <code>place_of_birth</code>, <code>nationalities</code>, etc. may also be included, depending on the profile.</p>
+</blockquote>
 <h1 id='talent-agencies'>Talent agencies</h1><h2 id='get-talent-agency-data'>Get talent agency data</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/talent_agencies/123"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
 </code></pre></div>
@@ -1335,9 +1623,9 @@ Ratelimit-Reset: 1597048500
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
 <p>This endpoint retrieves a specific talent agency.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
+<h3 id='http-request-5'>HTTP Request</h3>
 <p><code>GET https://www.filmmakers.eu/api/v1/talent_agencies/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
+<h3 id='url-parameters-3'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1349,7 +1637,7 @@ Ratelimit-Reset: 1597048500
 <td>The ID of the talent agency to retrieve</td>
 </tr>
 </tbody></table>
-<h3 id='response-fields-3'>Response fields</h3>
+<h3 id='response-fields-5'>Response fields</h3>
 <p>See example response to the right for an overview of included fields.</p>
 <h1 id='blog-posts'>Blog posts</h1><h2 id='get-all-blog-posts'>Get all blog posts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/blog_posts"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
@@ -1370,9 +1658,9 @@ Ratelimit-Reset: 1597048500
 
 </span></code></pre></div>
 <p>This endpoint retrieves all blog posts available with the access rights of the API key.</p>
-<h3 id='http-request-4'>HTTP Request</h3>
+<h3 id='http-request-6'>HTTP Request</h3>
 <p><code>GET https://www.filmmakers.eu/api/v1/blog_posts</code></p>
-<h3 id='query-parameters-3'>Query Parameters</h3>
+<h3 id='query-parameters-5'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1401,7 +1689,7 @@ Ratelimit-Reset: 1597048500
 <td>Filter items by tags - allows passing multiple tag ids using array form of the param eg. <code>tags[id][]=1&amp;tags[id][]=5</code></td>
 </tr>
 </tbody></table>
-<h3 id='response-fields-4'>Response fields</h3>
+<h3 id='response-fields-6'>Response fields</h3>
 <table><thead>
 <tr>
 <th>Field</th>
@@ -1458,9 +1746,9 @@ Ratelimit-Reset: 1597048500
 
 </span></code></pre></div>
 <p>This endpoint retrieves a specific blog post.</p>
-<h3 id='http-request-5'>HTTP Request</h3>
+<h3 id='http-request-7'>HTTP Request</h3>
 <p><code>GET https://www.filmmakers.eu/api/v1/blog_posts/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-3'>URL Parameters</h3>
+<h3 id='url-parameters-4'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1472,7 +1760,7 @@ Ratelimit-Reset: 1597048500
 <td>The ID of the blog post to retrieve</td>
 </tr>
 </tbody></table>
-<h3 id='response-fields-5'>Response fields</h3>
+<h3 id='response-fields-7'>Response fields</h3>
 <p>See example response to the right for an overview of included fields</p>
 
 <table><thead>
@@ -1568,9 +1856,9 @@ Ratelimit-Reset: 1597048500
 
 </span></code></pre></div>
 <p>This endpoint retrieves a specific showreel.</p>
-<h3 id='http-request-6'>HTTP Request</h3>
+<h3 id='http-request-8'>HTTP Request</h3>
 <p><code>GET https://www.filmmakers.eu/api/v1/showreels/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-4'>URL Parameters</h3>
+<h3 id='url-parameters-5'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1582,7 +1870,7 @@ Ratelimit-Reset: 1597048500
 <td>The ID of the showreel to retrieve (refer to the <code>showreel_ids</code> array field from actor_profiles endpoint to obtain these ids)</td>
 </tr>
 </tbody></table>
-<h3 id='response-fields-6'>Response fields</h3>
+<h3 id='response-fields-8'>Response fields</h3>
 <p>See example response to the right for an overview of included fields</p>
 
 <table><thead>
@@ -1664,9 +1952,9 @@ Ratelimit-Reset: 1597048500
 
 </span></code></pre></div>
 <p>This endpoint retrieves specific showreel media.</p>
-<h3 id='http-request-7'>HTTP Request</h3>
+<h3 id='http-request-9'>HTTP Request</h3>
 <p><code>GET https://www.filmmakers.eu/api/v1/showreel_media/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-5'>URL Parameters</h3>
+<h3 id='url-parameters-6'>URL Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -1678,7 +1966,7 @@ Ratelimit-Reset: 1597048500
 <td>The ID of the showreel media to retrieve (refer to the <code>showreel_medium_ids</code> array field from showreels endpoint to obtain these ids)</td>
 </tr>
 </tbody></table>
-<h3 id='response-fields-7'>Response fields</h3>
+<h3 id='response-fields-9'>Response fields</h3>
 <p>See example response to the right for an overview of included fields</p>
 
 <table><thead>
