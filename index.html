@@ -1307,27 +1307,25 @@ Ratelimit-Reset: 1597048500
 </tbody></table>
 <h1 id='crew-profiles'>Crew profiles</h1><h2 id='get-all-crew-profiles'>Get all crew profiles</h2>
 <p>Here is an example request:</p>
-
-<p>curl &quot;https://www.filmmakers.eu/api/v1/crew_profiles&quot; \
-      -H &quot;Authorization: Token token=API_KEY&quot;</p>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/crew_profiles"</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-
-<p>[
-      {
-        &quot;id&quot;: 1,
-        &quot;name&quot;: &quot;John Doe&quot;,
-        &quot;gender&quot;: &quot;m&quot;
-      },
-      {
-        &quot;id&quot;: 2,
-        &quot;name&quot;: &quot;Jane Doe&quot;,
-        &quot;gender&quot;: &quot;f&quot;
-      }
-    ]</p>
-
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Doe"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre></div>
 <p>This endpoint retrieves all crew profiles available with the access rights of the API key. Most of the time it is scoped to a talent agency.</p>
 <h3 id='http-request-3'>HTTP Request</h3>
 <p><code>GET https://www.filmmakers.eu/api/v1/crew_profiles</code></p>
@@ -1443,91 +1441,89 @@ Ratelimit-Reset: 1597048500
 <hr>
 <h2 id='get-a-specific-crew-profile'>Get a specific crew profile</h2>
 <p>Example request:</p>
-
-<p>curl &quot;https://www.filmmakers.eu/api/v1/crew_profiles/123&quot; \
-      -H &quot;Authorization: Token token=API_KEY&quot;</p>
-
+<div class="highlight"><pre class="highlight shell tab-shell"><code>    curl <span class="s2">"https://www.filmmakers.eu/api/v1/crew_profiles/123"</span> <span class="se">\</span>
+      <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
+</code></pre></div>
 <blockquote>
 <p>The above command returns JSON structured like this:</p>
 </blockquote>
-
-<p>{
-      &quot;id&quot;: 162,
-      &quot;first_name&quot;: &quot;John&quot;,
-      &quot;last_name&quot;: &quot;Doe&quot;,
-      &quot;year_of_birth&quot;: 1980,
-      &quot;place_of_birth&quot;: &quot;Berlin&quot;,
-      &quot;professions&quot;: [&quot;regie&quot;, &quot;autor&quot;],
-      &quot;nationalities&quot;: [&quot;DE&quot;, &quot;FR&quot;],
-      &quot;languages&quot;: {
-        &quot;deutsch&quot;: &quot;muttersprachlich&quot;,
-        &quot;englisch&quot;: &quot;fliessend&quot;
-      },
-      &quot;accommodation_options&quot;: [
-        &quot;Berlin&quot;,
-        &quot;Köln&quot;
-      ],
-      &quot;representative&quot;: {
-        &quot;id&quot;: 123,
-        &quot;name&quot;: &quot;Jane Roe&quot;
-      },
-      &quot;talent_agency_id&quot;: 1,
-      &quot;pictures&quot;: [
-        {
-          &quot;id&quot;: 140,
-          &quot;copyright&quot;: &quot;John Doe&quot;,
-          &quot;url&quot;: &quot;https://imgproxy.filmmakers.eu/production/abc.jpg&quot;,
-          &quot;versions&quot;: {
-            &quot;original&quot;: &quot;https://imgproxy.filmmakers.eu/...&quot;,
-            &quot;large&quot;: &quot;https://imgproxy.filmmakers.eu/...&quot;,
-            &quot;thumb&quot;: &quot;https://imgproxy.filmmakers.eu/...&quot;,
-            &quot;thumb_large&quot;: &quot;https://imgproxy.filmmakers.eu/...&quot;
-          },
-          &quot;orientation&quot;: &quot;portrait&quot;,
-          &quot;dimensions&quot;: [50, 64],
-          &quot;crop_coordinates&quot;: {
-            &quot;x&quot;: 0,
-            &quot;y&quot;: 36,
-            &quot;w&quot;: 357,
-            &quot;h&quot;: 357
-          },
-          &quot;main_picture&quot;: true,
-          &quot;year&quot;: 2020,
-          &quot;recorded_at&quot;: &quot;2020-12-23T18:16:52+00:00&quot;
-        }
-      ],
-      &quot;external_showreels&quot;: [
-        &quot;https://youtube.com/john-doe/video&quot;
-      ],
-      &quot;showreels&quot;: [
-        {
-          &quot;name&quot;: &quot;My Showreel&quot;,
-          &quot;url&quot;: &quot;https://www.filmmakers.eu/crew/john-doe/showreels/15&quot;,
-          &quot;type&quot;: &quot;video&quot;
-        }
-      ],
-      &quot;showreel_ids&quot;: [12345],
-      &quot;showreel_medium_ids&quot;: [123456],
-      &quot;vita&quot;: {
-        &quot;film&quot;: [
-          {
-            &quot;name&quot;: &quot;Sample Film&quot;,
-            &quot;year_from&quot;: 2019,
-            &quot;year_to&quot;: 2019
-          }
-        ],
-        &quot;television&quot;: [],
-        &quot;theatre&quot;: [],
-        &quot;award&quot;: []
-      },
-      &quot;homepage_url&quot;: &quot;https://www.example.com&quot;,
-      &quot;agency_profile_url&quot;: &quot;https://www.my-agency/my-profile&quot;,
-      &quot;country&quot;: &quot;DE&quot;,
-      &quot;state&quot;: &quot;DE-RP&quot;,
-      &quot;gender&quot;: &quot;m&quot;,
-      &quot;updated_at&quot;: &quot;2021-06-22T16:14:11.519+02:00&quot;
-    }</p>
-
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">162</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Doe"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"year_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="mi">1980</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"place_of_birth"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Berlin"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"professions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"regie"</span><span class="p">,</span><span class="w"> </span><span class="s2">"autor"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"nationalities"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"DE"</span><span class="p">,</span><span class="w"> </span><span class="s2">"FR"</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"languages"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"deutsch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"muttersprachlich"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"englisch"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fliessend"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"accommodation_options"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"Berlin"</span><span class="p">,</span><span class="w">
+    </span><span class="s2">"Köln"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"representative"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Roe"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"talent_agency_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"pictures"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">140</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"copyright"</span><span class="p">:</span><span class="w"> </span><span class="s2">"John Doe"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/production/abc.jpg"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"versions"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"original"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/..."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"large"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/..."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"thumb"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/..."</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"thumb_large"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/..."</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"orientation"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portrait"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"dimensions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">64</span><span class="p">],</span><span class="w">
+      </span><span class="nl">"crop_coordinates"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"x"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"y"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"w"</span><span class="p">:</span><span class="w"> </span><span class="mi">357</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"h"</span><span class="p">:</span><span class="w"> </span><span class="mi">357</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="nl">"main_picture"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"year"</span><span class="p">:</span><span class="w"> </span><span class="mi">2020</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"recorded_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-12-23T18:16:52+00:00"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"external_showreels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"https://youtube.com/john-doe/video"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"showreels"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"My Showreel"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.filmmakers.eu/crew/john-doe/showreels/15"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"video"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"showreel_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">12345</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"showreel_medium_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mi">123456</span><span class="p">],</span><span class="w">
+  </span><span class="nl">"vita"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"film"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Sample Film"</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year_from"</span><span class="p">:</span><span class="w"> </span><span class="mi">2019</span><span class="p">,</span><span class="w">
+        </span><span class="nl">"year_to"</span><span class="p">:</span><span class="w"> </span><span class="mi">2019</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nl">"television"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"theatre"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span><span class="w">
+    </span><span class="nl">"award"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="nl">"homepage_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"agency_profile_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.my-agency/my-profile"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DE"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DE-RP"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2021-06-22T16:14:11.519+02:00"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div>
 <p>This endpoint retrieves a specific crew profile.</p>
 <h3 id='http-request-4'>HTTP Request</h3>
 <p><code>GET https://www.filmmakers.eu/api/v1/crew_profiles/&lt;ID&gt;</code></p>
