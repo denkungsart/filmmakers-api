@@ -946,8 +946,6 @@ The JSON structure will include relevant crew-related fields similar to those sh
 - **vita**: Structured data about film/theatre/TV credits, awards, etc.
 - **country**, **state**: Country and state codes (or translated values if `enum=translate` is used)
 
-> **Note**: Additional fields such as `external_showreels`, `year_of_birth`, `accommodation_options`, `place_of_birth`, `nationalities`, etc. may also be included, depending on the profile.
-
 # Talent agencies
 
 ## Get talent agency data
