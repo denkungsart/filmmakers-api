@@ -763,23 +763,27 @@ ethnic_background_description | string | Contains a custom description of ethnic
 
 Here is an example request:
 
-    curl "https://www.filmmakers.eu/api/v1/crew_profiles" \
-      -H "Authorization: Token token=API_KEY"
+```shell
+curl "https://www.filmmakers.eu/api/v1/crew_profiles" \
+  -H "Authorization: Token token=API_KEY"
+```
 
 > The above command returns JSON structured like this:
 
-    [
-      {
-        "id": 1,
-        "name": "John Doe",
-        "gender": "m"
-      },
-      {
-        "id": 2,
-        "name": "Jane Doe",
-        "gender": "f"
-      }
-    ]
+```json
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "gender": "m"
+  },
+  {
+    "id": 2,
+    "name": "Jane Doe",
+    "gender": "f"
+  }
+]
+```
 
 This endpoint retrieves all crew profiles available with the access rights of the API key. Most of the time it is scoped to a talent agency.
 
@@ -821,87 +825,91 @@ This endpoint retrieves all crew profiles available with the access rights of th
 
 Example request:
 
+```shell
     curl "https://www.filmmakers.eu/api/v1/crew_profiles/123" \
       -H "Authorization: Token token=API_KEY"
+```
 
 > The above command returns JSON structured like this:
 
+```json
+{
+  "id": 162,
+  "first_name": "John",
+  "last_name": "Doe",
+  "year_of_birth": 1980,
+  "place_of_birth": "Berlin",
+  "professions": ["regie", "autor"],
+  "nationalities": ["DE", "FR"],
+  "languages": {
+    "deutsch": "muttersprachlich",
+    "englisch": "fliessend"
+  },
+  "accommodation_options": [
+    "Berlin",
+    "Köln"
+  ],
+  "representative": {
+    "id": 123,
+    "name": "Jane Roe"
+  },
+  "talent_agency_id": 1,
+  "pictures": [
     {
-      "id": 162,
-      "first_name": "John",
-      "last_name": "Doe",
-      "year_of_birth": 1980,
-      "place_of_birth": "Berlin",
-      "professions": ["regie", "autor"],
-      "nationalities": ["DE", "FR"],
-      "languages": {
-        "deutsch": "muttersprachlich",
-        "englisch": "fliessend"
+      "id": 140,
+      "copyright": "John Doe",
+      "url": "https://imgproxy.filmmakers.eu/production/abc.jpg",
+      "versions": {
+        "original": "https://imgproxy.filmmakers.eu/...",
+        "large": "https://imgproxy.filmmakers.eu/...",
+        "thumb": "https://imgproxy.filmmakers.eu/...",
+        "thumb_large": "https://imgproxy.filmmakers.eu/..."
       },
-      "accommodation_options": [
-        "Berlin",
-        "Köln"
-      ],
-      "representative": {
-        "id": 123,
-        "name": "Jane Roe"
+      "orientation": "portrait",
+      "dimensions": [50, 64],
+      "crop_coordinates": {
+        "x": 0,
+        "y": 36,
+        "w": 357,
+        "h": 357
       },
-      "talent_agency_id": 1,
-      "pictures": [
-        {
-          "id": 140,
-          "copyright": "John Doe",
-          "url": "https://imgproxy.filmmakers.eu/production/abc.jpg",
-          "versions": {
-            "original": "https://imgproxy.filmmakers.eu/...",
-            "large": "https://imgproxy.filmmakers.eu/...",
-            "thumb": "https://imgproxy.filmmakers.eu/...",
-            "thumb_large": "https://imgproxy.filmmakers.eu/..."
-          },
-          "orientation": "portrait",
-          "dimensions": [50, 64],
-          "crop_coordinates": {
-            "x": 0,
-            "y": 36,
-            "w": 357,
-            "h": 357
-          },
-          "main_picture": true,
-          "year": 2020,
-          "recorded_at": "2020-12-23T18:16:52+00:00"
-        }
-      ],
-      "external_showreels": [
-        "https://youtube.com/john-doe/video"
-      ],
-      "showreels": [
-        {
-          "name": "My Showreel",
-          "url": "https://www.filmmakers.eu/crew/john-doe/showreels/15",
-          "type": "video"
-        }
-      ],
-      "showreel_ids": [12345],
-      "showreel_medium_ids": [123456],
-      "vita": {
-        "film": [
-          {
-            "name": "Sample Film",
-            "year_from": 2019,
-            "year_to": 2019
-          }
-        ],
-        "television": [],
-        "theatre": [],
-        "award": []
-      },
-      "homepage_url": "https://www.example.com",
-      "agency_profile_url": "https://www.my-agency/my-profile",
-      "country": "DE",
-      "state": "DE-RP",
-      "gender": "m",
-      "updated_at": "2021-06-22T16:14:11.519+02:00"
+      "main_picture": true,
+      "year": 2020,
+      "recorded_at": "2020-12-23T18:16:52+00:00"
     }
+  ],
+  "external_showreels": [
+    "https://youtube.com/john-doe/video"
+  ],
+  "showreels": [
+    {
+      "name": "My Showreel",
+      "url": "https://www.filmmakers.eu/crew/john-doe/showreels/15",
+      "type": "video"
+    }
+  ],
+  "showreel_ids": [12345],
+  "showreel_medium_ids": [123456],
+  "vita": {
+    "film": [
+      {
+        "name": "Sample Film",
+        "year_from": 2019,
+        "year_to": 2019
+      }
+    ],
+    "television": [],
+    "theatre": [],
+    "award": []
+  },
+  "homepage_url": "https://www.example.com",
+  "agency_profile_url": "https://www.my-agency/my-profile",
+  "country": "DE",
+  "state": "DE-RP",
+  "gender": "m",
+  "updated_at": "2021-06-22T16:14:11.519+02:00"
+}
+```
 
 This endpoint retrieves a specific crew profile.
 
