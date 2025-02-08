@@ -226,6 +226,7 @@ Filmmakers uses conventional HTTP response codes to indicate the success or fail
 Certain `4xx` errors, notably the `410` Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.
 
 # Changelog
+- (2025-02-08) **ActorProfiles#show/TalentAgencies#show**: Deprecate `twitter_handle`. This will be removed in a future Api version.
 - (2024-11-14) **ActorProfile#show**: Add new fields `working_permits` and `attribute_visibility.working_permits`
 - (2024-10-29) **ActorProfile#show**: Add `:thumb_large` 500x500 profile picture option
 - (2024-10-28) **API**: Optional OAuth Authorization added to all endpoints<br>
@@ -348,7 +349,6 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
   "imdb_link": "https://www.imdb.com/name/nm0000001",
   "imdb_id": "nm0000001",
   "facebook_page": "Filmmakers",
-  "twitter_handle": "Filmmakers",
   "instagram_username": "Filmmakers",
   "filmmakers_url": null,
   "sv_url": null,
@@ -967,7 +967,6 @@ curl "https://www.filmmakers.eu/api/v1/talent_agencies/123" \
   "imdb_link": "https://pro.imdb.com/company/co0000001",
   "imdb_id": "co0000001",
   "showreel_url": "https://www.example.com/showreel",
-  "twitter_handle": "@example_agency",
   "public_email": "info@example.com",
   "picture_url": "https://imgproxy.filmmakers.eu/bf042068-c6ac-11ee-b970-a34dadd10171.jpg",
   "address": {
