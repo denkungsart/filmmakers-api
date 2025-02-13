@@ -226,6 +226,7 @@ Filmmakers uses conventional HTTP response codes to indicate the success or fail
 Certain `4xx` errors, notably the `410` Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.
 
 # Changelog
+- (2025-02-13) **ActorProfile#index**: Add new filters for `acting_age` & `languages`
 - (2025-02-08) **ActorProfiles#show/TalentAgencies#show**: Deprecate `twitter_handle`. This will be removed in a future Api version.
 - (2024-11-14) **ActorProfile#show**: Add new fields `working_permits` and `attribute_visibility.working_permits`
 - (2024-10-29) **ActorProfile#show**: Add `:thumb_large` 500x500 profile picture option
@@ -293,6 +294,9 @@ fields | name,gender | Can be used to modify the fields included in the response
 order | id | Changes the order of returned results. Possible values are: `id`, `name`, `last_name`
 gender | null | Allows filtering by gender values. Possible values are: `male`, `female`, `transgender_female`, `transgender_male`, `non_binary`, `custom`.
 updated_at[gte] | null | Allows filtering for profiles updated since the passed timestamp. Passed as an integer Unix timestamp.
+acting_age[lte] | null | Filter profiles with acting_age <= value
+acting_age[gte] | null | Filter profiles with acting_age >= value
+languages | null | Filter profiles by languages (using ISO 639-2 codes). Multiple languages can be separated by comma, eg. `deu,eng`
 q | null | Allows filtering by name. Uses trigram, so allows fuzzy & partial matches
 
 ### Response fields
