@@ -1027,11 +1027,15 @@ curl "https://www.filmmakers.eu/api/v1/blog_posts" \
 [
   {
     "id": 36,
-    "title": "Blog post title"
+    "title": "Blog post title",
+    "blog_id": 1,
+    "tags": [{ "id": 2, "name": "News" }]
   },
   {
     "id": 35,
-    "title": "Blog post title"
+    "title": "Blog post title",
+    "blog_id": 1,
+    "tags": [{ "id": 3, "name": "Awards" }]
   }
 ]
 
