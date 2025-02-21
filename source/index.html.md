@@ -1061,7 +1061,9 @@ tags[id] | null | Filter items by tags - allows passing multiple tag ids using a
 Field | Type | Description
 --------- | ------- | -----------
 id | number | Unique ID of the blog post
+blog_id | number | Unique ID of the blog the post belongs to
 title | string | Title of the blog post
+tags | array of objects | Includes ID and name of the associated tags
 
 ## Get a specific blog post
 
