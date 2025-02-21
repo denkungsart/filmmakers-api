@@ -1027,11 +1027,15 @@ curl "https://www.filmmakers.eu/api/v1/blog_posts" \
 [
   {
     "id": 36,
-    "title": "Blog post title"
+    "title": "Blog post title",
+    "blog_id": 1,
+    "tags": [{ "id": 2, "name": "News" }]
   },
   {
     "id": 35,
-    "title": "Blog post title"
+    "title": "Blog post title",
+    "blog_id": 1,
+    "tags": [{ "id": 3, "name": "Awards" }]
   }
 ]
 
@@ -1057,7 +1061,9 @@ tags[id] | null | Filter items by tags - allows passing multiple tag ids using a
 Field | Type | Description
 --------- | ------- | -----------
 id | number | Unique ID of the blog post
+blog_id | number | Unique ID of the blog the post belongs to
 title | string | Title of the blog post
+tags | array of objects | Includes ID and name of the associated tags
 
 ## Get a specific blog post
 
