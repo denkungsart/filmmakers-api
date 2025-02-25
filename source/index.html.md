@@ -853,6 +853,7 @@ Example request:
     "Berlin",
     "Köln"
   ],
+  "about_me": "This is a text about me.",
   "representative": {
     "id": 123,
     "name": "Jane Roe"
