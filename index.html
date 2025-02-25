@@ -577,6 +577,7 @@ Ratelimit-Reset: 1597048500
 <p>Certain <code>4xx</code> errors, notably the <code>410</code> Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.</p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>(2025-02-25) <strong>CrewProfiles#show</strong>: Add new field <code>about_me</code></li>
 <li>(2025-02-13) <strong>ActorProfile#index</strong>: Add new filters for <code>acting_age</code> &amp; <code>languages</code></li>
 <li>(2025-02-08) <strong>ActorProfiles#show/TalentAgencies#show</strong>: Deprecate <code>twitter_handle</code>. This will be removed in a future Api version.</li>
 <li>(2024-11-14) <strong>ActorProfile#show</strong>: Add new fields <code>working_permits</code> and <code>attribute_visibility.working_permits</code></li>
@@ -1479,6 +1480,7 @@ Ratelimit-Reset: 1597048500
     </span><span class="s2">"Berlin"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"Köln"</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"about_me"</span><span class="p">:</span><span class="w"> </span><span class="s2">"This is a text about me."</span><span class="p">,</span><span class="w">
   </span><span class="nl">"representative"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">123</span><span class="p">,</span><span class="w">
     </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Jane Roe"</span><span class="w">
