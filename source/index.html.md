@@ -1031,13 +1031,15 @@ curl "https://www.filmmakers.eu/api/v1/blog_posts" \
     "id": 36,
     "title": "Blog post title",
     "blog_id": 1,
-    "tags": [{ "id": 2, "name": "News" }]
+    "tags": [{ "id": 2, "name": "News" }],
+    "mentions": [{ "mentionable_type": "ActorProfile", "mentionable_id": 789 }]
   },
   {
     "id": 35,
     "title": "Blog post title",
     "blog_id": 1,
-    "tags": [{ "id": 3, "name": "Awards" }]
+    "tags": [{ "id": 3, "name": "Awards" }],
+    "mentions": []
   }
 ]
 
@@ -1057,6 +1059,7 @@ blog_id | id | Limit blog posts to specific blog id (e.g. `blog_id` from actor p
 page | 1 | Page to display - see "Pagination" section
 per_page | 250 | Items per page - see "Pagination" section
 tags[id] | null | Filter items by tags - allows passing multiple tag ids using array form of the param eg. `tags[id][]=1&tags[id][]=5`
+actor_profiles[id] | null | Filter by IDs of actor profiles who have been mentioned in blog posts - allows passing multiple actor profile ids using array form of the param eg. `actor_profiles[id][]=7&actor_profiles[id][]=9`
 
 ### Response fields
 
@@ -1066,6 +1069,7 @@ id | number | Unique ID of the blog post
 blog_id | number | Unique ID of the blog the post belongs to
 title | string | Title of the blog post
 tags | array of objects | Includes ID and name of the associated tags
+mentions | array of objects | Includes type and ID of the mentioned object
 
 ## Get a specific blog post
 
@@ -1104,6 +1108,12 @@ curl "https://www.filmmakers.eu/api/v1/blog_posts/123" \
       "url": "https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpg",
       "copyright": "Abc inc"
     }
+  ],
+  "mentions": [
+    {
+      "mentionable_type": "ActorProfile",
+      "mentionable_id": 789
+    }
   ]
 }
 
@@ -1139,7 +1149,7 @@ tags | array | array of tags applied to the blog post, each containing two key-v
 images[].url | string | image url
 images[].cover | boolean | true if image is a cover image; default: `false`
 images[].copyright | string | image copyright
-
+mentions | array | Array of objects mentioned in the blog post, e.g. actor profiles. Contains the `mentionable_type` of the related object and `mentionable_id`.
 
 # Showreels
 
