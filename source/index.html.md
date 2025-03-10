@@ -597,6 +597,10 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
     123459,
     123460
   ],
+  "mentioned_in_blog_post_ids": [
+    211,
+    344
+  ],
   "vita": {
     "primary_education": [
       {
@@ -761,6 +765,7 @@ vita.x[].in_development | boolean | indicates film projects that are still in de
 ethnic_background | Array | Contains general ethnicities or heritages of the actor. Visibility depends on the setting for `ethnic_appearances` (as described above under _attribute_visibility_).
 ethnic_background_details | Array | Contains specific ethnicities or heritages of the actor, e.g. specific countries.
 ethnic_background_description | string | Contains a custom description of ethnicities or heritages entered by the actor.
+mentioned_in_blog_post_ids | Array | IDs of blog posts in which the profile was mentioned
 
 # Crew profiles
 
