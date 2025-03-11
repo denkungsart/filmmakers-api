@@ -577,6 +577,8 @@ Ratelimit-Reset: 1597048500
 <p>Certain <code>4xx</code> errors, notably the <code>410</code> Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.</p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>(2025-03-10) <strong>BlogPosts#index/BlogPosts#show</strong>: Add new field <code>mentions</code>; add possibility to filter blog posts by mentioned actor profiles</li>
+<li>(2025-03-10) <strong>ActorProfiles#show</strong>: Add new field <code>mentioned_in_blog_post_ids</code></li>
 <li>(2025-02-25) <strong>CrewProfiles#show</strong>: Add new field <code>about_me</code></li>
 <li>(2025-02-13) <strong>ActorProfile#index</strong>: Add new filters for <code>acting_age</code> &amp; <code>languages</code></li>
 <li>(2025-02-08) <strong>ActorProfiles#show/TalentAgencies#show</strong>: Deprecate <code>twitter_handle</code>. This will be removed in a future Api version.</li>
@@ -1061,6 +1063,10 @@ Ratelimit-Reset: 1597048500
     </span><span class="mi">123459</span><span class="p">,</span><span class="w">
     </span><span class="mi">123460</span><span class="w">
   </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"mentioned_in_blog_post_ids"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="mi">211</span><span class="p">,</span><span class="w">
+    </span><span class="mi">344</span><span class="w">
+  </span><span class="p">],</span><span class="w">
   </span><span class="nl">"vita"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
     </span><span class="nl">"primary_education"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
@@ -1320,6 +1326,11 @@ Ratelimit-Reset: 1597048500
 <td>ethnic_background_description</td>
 <td>string</td>
 <td>Contains a custom description of ethnicities or heritages entered by the actor.</td>
+</tr>
+<tr>
+<td>mentioned_in_blog_post_ids</td>
+<td>Array</td>
+<td>IDs of blog posts in which the profile was mentioned</td>
 </tr>
 </tbody></table>
 <h1 id='crew-profiles'>Crew profiles</h1><h2 id='get-all-crew-profiles'>Get all crew profiles</h2>
@@ -1659,13 +1670,15 @@ Ratelimit-Reset: 1597048500
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">36</span><span class="p">,</span><span class="w">
     </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blog post title"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"blog_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"News"</span><span class="w"> </span><span class="p">}]</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"News"</span><span class="w"> </span><span class="p">}],</span><span class="w">
+    </span><span class="nl">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"mentionable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ActorProfile"</span><span class="p">,</span><span class="w"> </span><span class="nl">"mentionable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="w"> </span><span class="p">}]</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
     </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span><span class="w">
     </span><span class="nl">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Blog post title"</span><span class="p">,</span><span class="w">
     </span><span class="nl">"blog_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Awards"</span><span class="w"> </span><span class="p">}]</span><span class="w">
+    </span><span class="nl">"tags"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w"> </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Awards"</span><span class="w"> </span><span class="p">}],</span><span class="w">
+    </span><span class="nl">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 
@@ -1701,6 +1714,11 @@ Ratelimit-Reset: 1597048500
 <td>null</td>
 <td>Filter items by tags - allows passing multiple tag ids using array form of the param eg. <code>tags[id][]=1&amp;tags[id][]=5</code></td>
 </tr>
+<tr>
+<td>actor_profiles[id]</td>
+<td>null</td>
+<td>Filter by IDs of actor profiles who have been mentioned in blog posts - allows passing multiple actor profile ids using array form of the param eg. <code>actor_profiles[id][]=7&amp;actor_profiles[id][]=9</code></td>
+</tr>
 </tbody></table>
 <h3 id='response-fields-6'>Response fields</h3>
 <table><thead>
@@ -1729,6 +1747,11 @@ Ratelimit-Reset: 1597048500
 <td>tags</td>
 <td>array of objects</td>
 <td>Includes ID and name of the associated tags</td>
+</tr>
+<tr>
+<td>mentions</td>
+<td>array of objects</td>
+<td>Includes type and ID of the mentioned object</td>
 </tr>
 </tbody></table>
 <h2 id='get-a-specific-blog-post'>Get a specific blog post</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/blog_posts/123"</span> <span class="se">\</span>
@@ -1763,6 +1786,12 @@ Ratelimit-Reset: 1597048500
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpg"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"copyright"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Abc inc"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"mentions"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"mentionable_type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ActorProfile"</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"mentionable_id"</span><span class="p">:</span><span class="w"> </span><span class="mi">789</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
@@ -1852,6 +1881,11 @@ Ratelimit-Reset: 1597048500
 <td>images[].copyright</td>
 <td>string</td>
 <td>image copyright</td>
+</tr>
+<tr>
+<td>mentions</td>
+<td>array</td>
+<td>Array of objects mentioned in the blog post, e.g. actor profiles. Contains the <code>mentionable_type</code> of the related object and <code>mentionable_id</code>.</td>
 </tr>
 </tbody></table>
 <h1 id='showreels'>Showreels</h1><h2 id='get-a-specific-showreel'>Get a specific showreel</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/showreels/100"</span> <span class="se">\</span>
