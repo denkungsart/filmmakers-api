@@ -226,6 +226,8 @@ Filmmakers uses conventional HTTP response codes to indicate the success or fail
 Certain `4xx` errors, notably the `410` Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.
 
 # Changelog
+- (2025-03-10) **BlogPosts#index/BlogPosts#show**: Add new field `mentions`; add possibility to filter blog posts by mentioned actor profiles
+- (2025-03-10) **ActorProfiles#show**: Add new field `mentioned_in_blog_post_ids`
 - (2025-02-25) **CrewProfiles#show**: Add new field `about_me`
 - (2025-02-13) **ActorProfile#index**: Add new filters for `acting_age` & `languages`
 - (2025-02-08) **ActorProfiles#show/TalentAgencies#show**: Deprecate `twitter_handle`. This will be removed in a future Api version.
@@ -597,6 +599,10 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
     123459,
     123460
   ],
+  "mentioned_in_blog_post_ids": [
+    211,
+    344
+  ],
   "vita": {
     "primary_education": [
       {
@@ -761,6 +767,7 @@ vita.x[].in_development | boolean | indicates film projects that are still in de
 ethnic_background | Array | Contains general ethnicities or heritages of the actor. Visibility depends on the setting for `ethnic_appearances` (as described above under _attribute_visibility_).
 ethnic_background_details | Array | Contains specific ethnicities or heritages of the actor, e.g. specific countries.
 ethnic_background_description | string | Contains a custom description of ethnicities or heritages entered by the actor.
+mentioned_in_blog_post_ids | Array | IDs of blog posts in which the profile was mentioned
 
 # Crew profiles
 
@@ -1031,13 +1038,15 @@ curl "https://www.filmmakers.eu/api/v1/blog_posts" \
     "id": 36,
     "title": "Blog post title",
     "blog_id": 1,
-    "tags": [{ "id": 2, "name": "News" }]
+    "tags": [{ "id": 2, "name": "News" }],
+    "mentions": [{ "mentionable_type": "ActorProfile", "mentionable_id": 789 }]
   },
   {
     "id": 35,
     "title": "Blog post title",
     "blog_id": 1,
-    "tags": [{ "id": 3, "name": "Awards" }]
+    "tags": [{ "id": 3, "name": "Awards" }],
+    "mentions": []
   }
 ]
 
@@ -1057,6 +1066,7 @@ blog_id | id | Limit blog posts to specific blog id (e.g. `blog_id` from actor p
 page | 1 | Page to display - see "Pagination" section
 per_page | 250 | Items per page - see "Pagination" section
 tags[id] | null | Filter items by tags - allows passing multiple tag ids using array form of the param eg. `tags[id][]=1&tags[id][]=5`
+actor_profiles[id] | null | Filter by IDs of actor profiles who have been mentioned in blog posts - allows passing multiple actor profile ids using array form of the param eg. `actor_profiles[id][]=7&actor_profiles[id][]=9`
 
 ### Response fields
 
@@ -1066,6 +1076,7 @@ id | number | Unique ID of the blog post
 blog_id | number | Unique ID of the blog the post belongs to
 title | string | Title of the blog post
 tags | array of objects | Includes ID and name of the associated tags
+mentions | array of objects | Includes type and ID of the mentioned object
 
 ## Get a specific blog post
 
@@ -1104,6 +1115,12 @@ curl "https://www.filmmakers.eu/api/v1/blog_posts/123" \
       "url": "https://imgproxy.filmmakers.eu/83570365-9d0f-4165-85c6-df1dd48adb1f.jpg",
       "copyright": "Abc inc"
     }
+  ],
+  "mentions": [
+    {
+      "mentionable_type": "ActorProfile",
+      "mentionable_id": 789
+    }
   ]
 }
 
@@ -1139,7 +1156,7 @@ tags | array | array of tags applied to the blog post, each containing two key-v
 images[].url | string | image url
 images[].cover | boolean | true if image is a cover image; default: `false`
 images[].copyright | string | image copyright
-
+mentions | array | Array of objects mentioned in the blog post, e.g. actor profiles. Contains the `mentionable_type` of the related object and `mentionable_id`.
 
 # Showreels
 
