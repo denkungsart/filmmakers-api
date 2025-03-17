@@ -577,6 +577,7 @@ Ratelimit-Reset: 1597048500
 <p>Certain <code>4xx</code> errors, notably the <code>410</code> Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.</p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>(2025-03-17) <strong>TalentAgencies#show</strong>: Add new field <code>associations</code></li>
 <li>(2025-03-10) <strong>BlogPosts#index/BlogPosts#show</strong>: Add new field <code>mentions</code>; add possibility to filter blog posts by mentioned actor profiles</li>
 <li>(2025-03-10) <strong>ActorProfiles#show</strong>: Add new field <code>mentioned_in_blog_post_ids</code></li>
 <li>(2025-02-25) <strong>CrewProfiles#show</strong>: Add new field <code>about_me</code></li>
@@ -1639,6 +1640,9 @@ Ratelimit-Reset: 1597048500
       </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"role"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/bfa9eb4c-c6ac-11ee-9015-f30db07efa43.jpg"</span><span class="w">
     </span><span class="p">}</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"associations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"vda"</span><span class="w">
   </span><span class="p">]</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre></div>
@@ -1658,6 +1662,20 @@ Ratelimit-Reset: 1597048500
 </tr>
 </tbody></table>
 <h3 id='response-fields-5'>Response fields</h3>
+<table><thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>associations</td>
+<td>array of strings</td>
+<td>Possible values are: <code>pma</code>, <code>sfaal</code>, <code>vda</code></td>
+</tr>
+</tbody></table>
+
 <p>See example response to the right for an overview of included fields.</p>
 <h1 id='blog-posts'>Blog posts</h1><h2 id='get-all-blog-posts'>Get all blog posts</h2><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://www.filmmakers.eu/api/v1/blog_posts"</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s2">"Authorization: Token token=API_KEY"</span>
