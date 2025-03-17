@@ -577,6 +577,7 @@ Ratelimit-Reset: 1597048500
 <p>Certain <code>4xx</code> errors, notably the <code>410</code> Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.</p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>(2025-03-17) <strong>CrewProfiles#show</strong>: Add web presence fields <code>imdb_link</code>, <code>imdb_id</code> <code>facebook_page</code>, <code>instagram_username</code>, <code>wikipedia_url</code></li>
 <li>(2025-03-17) <strong>TalentAgencies#show</strong>: Add new field <code>associations</code></li>
 <li>(2025-03-10) <strong>BlogPosts#index/BlogPosts#show</strong>: Add new field <code>mentions</code>; add possibility to filter blog posts by mentioned actor profiles</li>
 <li>(2025-03-10) <strong>ActorProfiles#show</strong>: Add new field <code>mentioned_in_blog_post_ids</code></li>
@@ -1548,6 +1549,11 @@ Ratelimit-Reset: 1597048500
   </span><span class="p">},</span><span class="w">
   </span><span class="nl">"homepage_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"agency_profile_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.my-agency/my-profile"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"imdb_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.imdb.com/name/nm1234"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"imdb_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nm1234"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"facebook_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-facebook-page"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instagram_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-instagram-name"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"wikipedia_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://de.wikipedia.org/wiki/my-wikipedia-page"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DE"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DE-RP"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"gender"</span><span class="p">:</span><span class="w"> </span><span class="s2">"m"</span><span class="p">,</span><span class="w">
