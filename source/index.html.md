@@ -1023,6 +1023,10 @@ ID | The ID of the talent agency to retrieve
 
 ### Response fields
 
+| Field | Type | Description |
+| - | - | - |
+| associations | array of strings | Possible values are: `pma`, `sfaal`, `vda` |
+
 See example response to the right for an overview of included fields.
 
 # Blog posts
