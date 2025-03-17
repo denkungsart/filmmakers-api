@@ -226,6 +226,7 @@ Filmmakers uses conventional HTTP response codes to indicate the success or fail
 Certain `4xx` errors, notably the `410` Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.
 
 # Changelog
+- (2025-03-17) **TalentAgencies#show**: Add new field `associations`
 - (2025-03-10) **BlogPosts#index/BlogPosts#show**: Add new field `mentions`; add possibility to filter blog posts by mentioned actor profiles
 - (2025-03-10) **ActorProfiles#show**: Add new field `mentioned_in_blog_post_ids`
 - (2025-02-25) **CrewProfiles#show**: Add new field `about_me`
@@ -1001,6 +1002,9 @@ curl "https://www.filmmakers.eu/api/v1/talent_agencies/123" \
       "role": "role",
       "picture_url": "https://imgproxy.filmmakers.eu/bfa9eb4c-c6ac-11ee-9015-f30db07efa43.jpg"
     }
+  ],
+  "associations": [
+    "vda"
   ]
 }
 ```
@@ -1018,6 +1022,10 @@ Parameter | Description
 ID | The ID of the talent agency to retrieve
 
 ### Response fields
+
+| Field | Type | Description |
+| - | - | - |
+| associations | array of strings | Possible values are: `pma`, `sfaal`, `vda` |
 
 See example response to the right for an overview of included fields.
 
