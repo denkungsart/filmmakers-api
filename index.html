@@ -577,6 +577,7 @@ Ratelimit-Reset: 1597048500
 <p>Certain <code>4xx</code> errors, notably the <code>410</code> Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.</p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>(2025-03-18) <strong>CrewProfiles#index</strong>: Allow filtering crew profiles by <code>professions</code> array</li>
 <li>(2025-03-17) <strong>CrewProfiles#show</strong>: Add web presence fields <code>imdb_link</code>, <code>imdb_id</code> <code>facebook_page</code>, <code>instagram_username</code>, <code>wikipedia_url</code></li>
 <li>(2025-03-17) <strong>TalentAgencies#show</strong>: Add new field <code>associations</code></li>
 <li>(2025-03-10) <strong>BlogPosts#index/BlogPosts#show</strong>: Add new field <code>mentions</code>; add possibility to filter blog posts by mentioned actor profiles</li>
@@ -1411,6 +1412,11 @@ Ratelimit-Reset: 1597048500
 <td>order</td>
 <td>id</td>
 <td>Changes the order of returned results. Possible values are: <code>id</code>, <code>name</code>, <code>last_name</code>.</td>
+</tr>
+<tr>
+<td>professions[]</td>
+<td>null</td>
+<td>Filter crew profiles by professions - allows passing multiple profession names using array form of the param eg. <code>professions[]=regie&amp;professions[][]=kamera</code>. Possible values are <code>schauspiel</code>, <code>regie</code>, <code>autor</code>, <code>kamera</code>, <code>komponist</code>, <code>dramaturg</code>, <code>schnitt</code></td>
 </tr>
 </tbody></table>
 <h3 id='response-fields-3'>Response fields</h3>
