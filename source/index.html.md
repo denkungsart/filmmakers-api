@@ -226,6 +226,7 @@ Filmmakers uses conventional HTTP response codes to indicate the success or fail
 Certain `4xx` errors, notably the `410` Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.
 
 # Changelog
+- (2025-03-18) **CrewProfiles#index**: Allow filtering crew profiles by `professions` array
 - (2025-03-17) **CrewProfiles#show**: Add web presence fields `imdb_link`, `imdb_id` `facebook_page`, `instagram_username`, `wikipedia_url`
 - (2025-03-17) **TalentAgencies#show**: Add new field `associations`
 - (2025-03-10) **BlogPosts#index/BlogPosts#show**: Add new field `mentions`; add possibility to filter blog posts by mentioned actor profiles
@@ -818,6 +819,7 @@ This endpoint retrieves all crew profiles available with the access rights of th
 | picture_version   | null    | Can be set to `original`, `large`, `thumb`, or `thumb_large` to change the included picture version. The picture will be included in a field named `picture_url`. _(Only applies if `include_picture` is `true`.)_       |
 | fields            | name,gender | Can be used to modify the fields included in the response. Possible values can include `name`, `first_name`, `last_name`, `gender`, `professions`, `languages`, `representative`, `updated_at`, etc.                                                        |
 | order             | id      | Changes the order of returned results. Possible values are: `id`, `name`, `last_name`.                                                                                                                                  |
+| professions[] | null | Filter crew profiles by professions - allows passing multiple profession names using array form of the param eg. `professions[]=regie&professions[][]=kamera`. Possible values are `schauspiel`, `regie`, `autor`, `kamera`, `komponist`, `dramaturg`, `schnitt`
 
 ### Response fields
 
