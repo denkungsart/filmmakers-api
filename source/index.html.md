@@ -226,6 +226,7 @@ Filmmakers uses conventional HTTP response codes to indicate the success or fail
 Certain `4xx` errors, notably the `410` Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.
 
 # Changelog
+- (2025-04-01) **TalentAgencies#show**: Add new fields `facebook_page` and `instagram_username`
 - (2025-03-18) **CrewProfiles#index**: Allow filtering crew profiles by `professions` array
 - (2025-03-17) **CrewProfiles#show**: Add web presence fields `imdb_link`, `imdb_id` `facebook_page`, `instagram_username`, `wikipedia_url`
 - (2025-03-17) **TalentAgencies#show**: Add new field `associations`
@@ -989,6 +990,8 @@ curl "https://www.filmmakers.eu/api/v1/talent_agencies/123" \
   "imdb_link": "https://pro.imdb.com/company/co0000001",
   "imdb_id": "co0000001",
   "showreel_url": "https://www.example.com/showreel",
+  "facebook_page": "my-facebook-page",
+  "instagram_username": "myinstaprofile",
   "public_email": "info@example.com",
   "picture_url": "https://imgproxy.filmmakers.eu/bf042068-c6ac-11ee-b970-a34dadd10171.jpg",
   "address": {
