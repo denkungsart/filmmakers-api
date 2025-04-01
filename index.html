@@ -577,6 +577,7 @@ Ratelimit-Reset: 1597048500
 <p>Certain <code>4xx</code> errors, notably the <code>410</code> Gone status, indicate that a requested resource (such as an actor_profile or a talent_agency) has been merged with another and is no longer available at the original URL. The response will include the ID of the new resource, and clients should use this ID to access the merged resource.</p>
 <h1 id='changelog'>Changelog</h1>
 <ul>
+<li>(2025-04-01) <strong>TalentAgencies#show</strong>: Add new fields <code>facebook_page</code> and <code>instagram_username</code></li>
 <li>(2025-03-18) <strong>CrewProfiles#index</strong>: Allow filtering crew profiles by <code>professions</code> array</li>
 <li>(2025-03-17) <strong>CrewProfiles#show</strong>: Add web presence fields <code>imdb_link</code>, <code>imdb_id</code> <code>facebook_page</code>, <code>instagram_username</code>, <code>wikipedia_url</code></li>
 <li>(2025-03-17) <strong>TalentAgencies#show</strong>: Add new field <code>associations</code></li>
@@ -1631,6 +1632,8 @@ Ratelimit-Reset: 1597048500
   </span><span class="nl">"imdb_link"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://pro.imdb.com/company/co0000001"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"imdb_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"co0000001"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"showreel_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://www.example.com/showreel"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"facebook_page"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my-facebook-page"</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"instagram_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"myinstaprofile"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"public_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"info@example.com"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"picture_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://imgproxy.filmmakers.eu/bf042068-c6ac-11ee-b970-a34dadd10171.jpg"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
