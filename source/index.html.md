@@ -989,6 +989,8 @@ curl "https://www.filmmakers.eu/api/v1/talent_agencies/123" \
   "imdb_link": "https://pro.imdb.com/company/co0000001",
   "imdb_id": "co0000001",
   "showreel_url": "https://www.example.com/showreel",
+  "facebook_page": "my-facebook-page",
+  "instagram_username": "myinstaprofile",
   "public_email": "info@example.com",
   "picture_url": "https://imgproxy.filmmakers.eu/bf042068-c6ac-11ee-b970-a34dadd10171.jpg",
   "address": {
