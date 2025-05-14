@@ -1,44 +1,52 @@
-name: Deploy
+name: Deploy Docusaurus to GitHub Pages
 
 on:
   push:
-    branches: [ 'main' ]
+    branches:
+      - main # Or your default branch
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
-    permissions:
-      contents: write
-
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
-    env:
-      ruby-version: 2.6
-
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    # No working-directory needed if site is at repo root
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Ruby
-      uses: ruby/setup-ruby@v1
-      with:
-        ruby-version: ${{ env.ruby-version }}
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18' # Docusaurus recommends Node 18 or higher
+          cache: 'npm'
+          cache-dependency-path: package-lock.json # Or yarn.lock, assuming it's at the repo root
 
-    - uses: actions/cache@v3
-      with:
-        path: vendor/bundle
-        key: gems-${{ runner.os }}-${{ env.ruby-version }}-${{ hashFiles('**/Gemfile.lock') }}
-        restore-keys: |
-          gems-${{ runner.os }}-${{ env.ruby-version }}-
-          gems-${{ runner.os }}-
+      - name: Install dependencies
+        run: npm ci
 
-    - run: bundle config set deployment 'true'
-    - name: bundle install
-      run: |
-        bundle config path vendor/bundle
-        bundle install --jobs 4 --retry 3
+      - name: Build
+        run: npm run build
 
-    - run: bundle exec middleman build
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
 
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./build
-        keep_files: true
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Path to the build output directory, assuming site is at repo root
+          path: ./build
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
