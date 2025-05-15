@@ -40,7 +40,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 page | 1 | Page to display – see "Pagination" section
 per_page | 250 | Items per page – see "Pagination" section
-fields | all | Can be used to limit the fields included in the response. Possible values are: `message_type`, `body`, `sender_name`, `deadline`. Multiple fields can be specified as a comma-separated list.
+fields | subject | Can be used to limit the fields included in the response. Possible values are: `subject`, `message_type`, `body`, `sender_name`. Multiple fields can be specified as a comma-separated list.
 
 ### Response Fields
 

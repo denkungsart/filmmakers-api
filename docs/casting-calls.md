@@ -2,11 +2,9 @@
 sidebar_label: 'Casting Calls'
 ---
 
-import Admonition from '@theme/Admonition';
-
-<Admonition type="warning" title="Beta Notice">
+::::caution
 The Casting Calls API is in beta/early preview and may undergo changes. If you are interested in using them, please contact our support.
-</Admonition>
+::::
 
 # Casting Calls
 
@@ -42,6 +40,7 @@ Parameter | Default | Description
 --------- | ------- | -----------
 page | 1 | Page to display – see "Pagination" section
 per_page | 250 | Items per page – see "Pagination" section
+fields | name | Can be used to limit the fields included in the response. Possible values are: `name`, `casting_type`, `description`, `production_format`, `deadline`, `deadline_visible`. Multiple fields can be specified as a comma-separated list.
 
 ### Response Fields
 
