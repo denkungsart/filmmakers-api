@@ -1,0 +1,30 @@
+name: PR Build Check
+
+on:
+  pull_request:
+    branches:
+      - main # Or your default branch
+
+permissions:
+  contents: read
+
+jobs:
+  build_check:
+    name: Check Docusaurus Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18' # Docusaurus recommends Node 18 or higher
+          cache: 'npm'
+          cache-dependency-path: package-lock.json # Or yarn.lock
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Docusaurus site
+        run: npm run build
