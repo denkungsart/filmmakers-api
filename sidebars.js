@@ -56,6 +56,15 @@ const sidebars = {
       items: [
         {
           type: 'category',
+          label: 'Attributes',
+          link: { type: 'doc', id: 'attributes' },
+          items: [
+            { type: 'link', label: 'Get all attributes', href: '/attributes#get-all-attributes' },
+            { type: 'link', label: 'Get key/value pairs for attributes', href: '/attributes#get-keyvalue-pairs-for-attributes' },
+          ],
+        },
+        {
+          type: 'category',
           label: 'Actor Profiles',
           link: { type: 'doc', id: 'actor-profiles' },
           items: [
@@ -107,11 +116,20 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'Attributes',
-          link: { type: 'doc', id: 'attributes' },
+          label: 'Messages',
+          link: { type: 'doc', id: 'messages' },
           items: [
-            { type: 'link', label: 'Get all attributes', href: '/attributes#get-all-attributes' },
-            { type: 'link', label: 'Get key/value pairs for attributes', href: '/attributes#get-keyvalue-pairs-for-attributes' },
+            { type: 'link', label: 'Get all messages', href: '/messages#get-all-messages' },
+            { type: 'link', label: 'Get a specific message', href: '/messages#get-a-specific-message' },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Casting Calls',
+          link: { type: 'doc', id: 'casting-calls' },
+          items: [
+            { type: 'link', label: 'Get all casting calls', href: '/casting-calls#get-all-casting-calls' },
+            { type: 'link', label: 'Get a specific casting call', href: '/casting-calls#get-a-specific-casting-call' },
           ],
         },
       ],
