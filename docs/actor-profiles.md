@@ -2,9 +2,9 @@
 sidebar_label: 'Actor Profiles'
 ---
 
-# Actor profiles
+# Actor Profiles
 
-## Get all actor profiles
+## Get All Actor Profiles
 
 ```shell
 curl "https://www.filmmakers.eu/api/v1/actor_profiles" \
@@ -28,7 +28,7 @@ curl "https://www.filmmakers.eu/api/v1/actor_profiles" \
 ]
 ```
 
-This endpoint retrieves all actor profiles available with the access rights of the API key. Most of the time it is scoped to a talent agency.
+This endpoint retrieves all actor profiles available with the access rights of the API key. Most of the time, it is scoped to a talent agency.
 
 ### HTTP Request
 
@@ -38,42 +38,42 @@ This endpoint retrieves all actor profiles available with the access rights of t
 
 Parameter | Default | Description
 --------- | ------- | -----------
-page | 1 | Page to display - see "Pagination" section
-per_page | 250 | Items per page - see "Pagination" section
+page | 1 | Page to display – see "Pagination" section
+per_page | 250 | Items per page – see "Pagination" section
 include_picture | false | If set to true, the result will include the profile picture thumbnail in a field named `main_picture_url_tile`.
-picture_version | null | Can be set to `original`, `large`, `thumb` or `thumb_large` to change the included picture version. The picture will be included in a field named `picture_url`. _(Only applies if `include_picture` is true)_
+picture_version | null | Can be set to `original`, `large`, `thumb`, or `thumb_large` to change the included picture version. The picture will be included in a field named `picture_url`. _(Only applies if `include_picture` is true)_
 fields | name,gender | Can be used to modify the fields included in the response. Possible values are: `age`, `gender`, `gender_new`, `first_name`, `last_name`, `name`, `main_profession`, `professions`, `languages`, `representative`, `updated_at`.
 order | id | Changes the order of returned results. Possible values are: `id`, `name`, `last_name`
 gender | null | Allows filtering by gender values. Possible values are: `male`, `female`, `transgender_female`, `transgender_male`, `non_binary`, `custom`.
 updated_at[gte] | null | Allows filtering for profiles updated since the passed timestamp. Passed as an integer Unix timestamp.
-acting_age[lte] | null | Filter profiles with acting_age `<=` value
-acting_age[gte] | null | Filter profiles with acting_age `>=` value
-languages | null | Filter profiles by languages (using ISO 639-2 codes). Multiple languages can be separated by comma, eg. `deu,eng`
+acting_age[lte] | null | Filter profiles with acting_age less than or equal to the value
+acting_age[gte] | null | Filter profiles with acting_age greater than or equal to the value
+languages | null | Filter profiles by languages (using ISO 639-2 codes). Multiple languages can be separated by commas, e.g., `deu,eng`
 q | null | Allows filtering by name. Uses trigram, so allows fuzzy & partial matches
 
-### Response fields
+### Response Fields
 
 Field | Type | Description
 --------- | ------- | -----------
 id | number | Unique ID of the actor profile
 age | number |
 gender | string | `f` for female, `m` for male, `i` for diverse
-gender_new | string | `female` for female, `male` for male, `transgender_male` for transgender male, `transgender_female` for transgender female, `non_binary` for non binary, `custom` for custom set gender
+gender_new | string | `female` for female, `male` for male, `transgender_male` for transgender male, `transgender_female` for transgender female, `non_binary` for non-binary, `custom` for custom set gender
 gender_description | string | Custom information actors can enter about their gender identity (free text, max 75 characters)
-gender_searchability | array of strings | list of genders actor profile can be found under, e.g. `["female", "non_binary"]` _this always at least includes the gender of the actor profile if visible_
-name | string | Full name (ie. first & last name) _name can be retrieved separately by using the fields parameter_
+gender_searchability | array of strings | List of genders the actor profile can be found under, e.g., `["female", "non_binary"]`. _This always at least includes the gender of the actor profile if visible._
+name | string | Full name (i.e., first & last name). _Name can be retrieved separately by using the fields parameter._
 first_name | string |
 last_name | string |
-main_profession | string | main profession of the actor profile
-professions | array of strings | list of professions, eg. `["schauspieler", "synchronsprecher"]` _this includes the main_profession "schauspieler" or "nachwuchsdarsteller" when given_
-languages | JSON Object | format `{ "language": "skill level" }`
-updated_at | string | format ISO 8601
-main_picture_url_tile | string | profile picture url (thumbnail version)
-picture_url | string | profile picture url of specified version
-picture_copyright | string | copyright information for the profile picture
+main_profession | string | Main profession of the actor profile
+professions | array of strings | List of professions, e.g., `["schauspieler", "synchronsprecher"]`. _This includes the main_profession "schauspieler" or "nachwuchsdarsteller" when given._
+languages | JSON Object | Format `{ "language": "skill level" }`
+updated_at | string | Format ISO 8601
+main_picture_url_tile | string | Profile picture URL (thumbnail version)
+picture_url | string | Profile picture URL of specified version
+picture_copyright | string | Copyright information for the profile picture
 representative | JSON Object | "id" and "name" of the agent representing the actor
 
-## Get a specific actor profile
+## Get a Specific Actor Profile
 
 ```shell
 curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
@@ -476,12 +476,12 @@ ID | The ID of the actor profile to retrieve
 
 Parameter | Default | Description
 --------- | ------- | -----------
-enum | null | If set to `translate` attributes are translated if possible (e.g. gender will be `male` or `männlich` instead of `m`). _Note that hash and array attributes (eg. dances / sports) will be joined to a comma-separated string when translating attributes._
-locale | en | Translates attributes with closed lists, free text fields are only available in the entry language. Possible values are: `en`, `de`, `fr`, `it`, `es`, `pl`, `ro`, `ru`, `tr`. _This parameter only has an effect when `enum` is set to `translate`._
+enum | null | If set to `translate`, attributes are translated if possible (e.g., gender will be `male` or `männlich` instead of `m`). _Note that hash and array attributes (e.g., dances / sports) will be joined to a comma-separated string when translating attributes._
+locale | en | Translates attributes with closed lists; free text fields are only available in the entry language. Possible values are: `en`, `de`, `fr`, `it`, `es`, `pl`, `ro`, `ru`, `tr`. _This parameter only has an effect when `enum` is set to `translate`._
 
-### Response fields
+### Response Fields
 
-See example response to the right for an overview of included fields. Please note:
+See the example response above for an overview of included fields. Please note:
 
 - **Deprecation**: `external_showreel` is deprecated. Use `external_showreels` instead.
 - **Deprecation**: `pitch` is deprecated. Use `pitches` instead.
@@ -490,29 +490,29 @@ See example response to the right for an overview of included fields. Please not
 - **Deprecation**: `castupload_url` is deprecated. Use `filmmakers_url` instead.
 - **Deprecation**: `castupload_professional_url` is deprecated. Use `filmmakers_cd_url` instead.
 - **Deprecation**: `professions` is deprecated. Use `main_profession` and `specializations` instead.
-- **Deprecation**: `ethnic_appearances` is deprecated. Use `ethnic_background`, `ethnic_background_details` and `ethnic_background_description` instead.
+- **Deprecation**: `ethnic_appearances` is deprecated. Use `ethnic_background`, `ethnic_background_details`, and `ethnic_background_description` instead.
 
-It is not guaranteed that the exemplary JSON structure shown is complete. Additional fields may be added without notice. The following table provides additional context for the individual fields visible in the exemplary JSON structure:
+It is not guaranteed that the example JSON structure shown is complete. Additional fields may be added without notice. The following table provides additional context for the individual fields visible in the example JSON structure:
 
 Field | Type | Description
 --------- | ------- | -----------
-talent_agency_connections[].talent_agency_id | integer | id of the talent agency
-talent_agency_connections[].talent_agency_employee_id | integer | id of the talent agency employee
-talent_agency_connections[].agency_profile_url | string | actor profile url on the website of their agency
-talent_agency_connections[].talent_agency_name | string | name of the agency
-talent_agency_connections[].categories | Array | indicates the areas in which the agency represents the client, possible values are "acting_agency", "advertising", "artist_management", "model_agency", "people_agency", "pr", "voice_agency", or "young_talent_agency".
-talent_agency_connections[].connection_type	 | string |indicates the type of agency connection, which can be either "primary_agency" (the main agency) or "secondary_agency". There can be multiple secondary agencies.
-agency_profile_url | string | actor profile url on the website of their agency **Note** Please use talent_agency_connections[].agency_profile_url instead
-talent_agency_id | integer | id of the talent agency **Note** Please use talent_agency_connections[].talent_agency_id instead
-representative.id | integer | id of the talent agency employee **Note** Please use talent_agency_connections[].talent_agency_employee_id instead
-representative.name | string | name of the talent agency employee **Note** Please use talent_agency#employees.first_name/last_name instead
-attribute_visibility | hash | Indicates per attribute `age`, `acting_age`, `gender`, `ethnic_appearances`, `figures` and `working_permits` whether these are publicly visible on Filmmakers (`public`) or only visible to verified casting professionals (`private`)
+talent_agency_connections[].talent_agency_id | integer | ID of the talent agency
+talent_agency_connections[].talent_agency_employee_id | integer | ID of the talent agency employee
+talent_agency_connections[].agency_profile_url | string | Actor profile URL on the website of their agency
+talent_agency_connections[].talent_agency_name | string | Name of the agency
+talent_agency_connections[].categories | Array | Indicates the areas in which the agency represents the client. Possible values are "acting_agency", "advertising", "artist_management", "model_agency", "people_agency", "pr", "voice_agency", or "young_talent_agency".
+talent_agency_connections[].connection_type | string | Indicates the type of agency connection, which can be either "primary_agency" (the main agency) or "secondary_agency". There can be multiple secondary agencies.
+agency_profile_url | string | Actor profile URL on the website of their agency **Note** Please use talent_agency_connections[].agency_profile_url instead
+talent_agency_id | integer | ID of the talent agency **Note** Please use talent_agency_connections[].talent_agency_id instead
+representative.id | integer | ID of the talent agency employee **Note** Please use talent_agency_connections[].talent_agency_employee_id instead
+representative.name | string | Name of the talent agency employee **Note** Please use talent_agency#employees.first_name/last_name instead
+attribute_visibility | hash | Indicates per attribute `age`, `acting_age`, `gender`, `ethnic_appearances`, `figures`, and `working_permits` whether these are publicly visible on Filmmakers (`public`) or only visible to verified casting professionals (`private`)
 profile_visibility | string | Visibility of the profile on Filmmakers (`public` or `private`)
-showreel_ids | Array | Ids of showreels (see `showreels` endpoint)
-showreel_medium_ids | Array | Ids of showreel media that are either connected to a showreel or credits/skills (see also `showreel_media` endpoint)
+showreel_ids | Array | IDs of showreels (see `showreels` endpoint)
+showreel_medium_ids | Array | IDs of showreel media that are either connected to a showreel or credits/skills (see also `showreel_media` endpoint)
 vita | hash | A collection of credits, where each entry contains structured data related to a specific credit. The entries are sorted by the following criteria: `in_development` (entries with `true` are prioritized), `year_to`/`year_from` (in descending chronological order), `position` (manually sorted by the user), and `id`. The credits are grouped by type, such as `education`, `television`, `theatre`, etc.
-vita.x[].in_development | boolean | indicates film projects that are still in development, meaning it has not been completed or released yet
+vita.x[].in_development | boolean | Indicates film projects that are still in development, meaning it has not been completed or released yet
 ethnic_background | Array | Contains general ethnicities or heritages of the actor. Visibility depends on the setting for `ethnic_appearances` (as described above under _attribute_visibility_).
-ethnic_background_details | Array | Contains specific ethnicities or heritages of the actor, e.g. specific countries.
+ethnic_background_details | Array | Contains specific ethnicities or heritages of the actor, e.g., specific countries.
 ethnic_background_description | string | Contains a custom description of ethnicities or heritages entered by the actor.
 mentioned_in_blog_post_ids | Array | IDs of blog posts in which the profile was mentioned

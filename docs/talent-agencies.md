@@ -2,9 +2,9 @@
 sidebar_label: 'Talent Agencies'
 ---
 
-# Talent agencies
+# Talent Agencies
 
-## Get talent agency data
+## Get Talent Agency Data
 
 ```shell
 curl "https://www.filmmakers.eu/api/v1/talent_agencies/123" \
@@ -65,10 +65,10 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the talent agency to retrieve
 
-### Response fields
+### Response Fields
 
 | Field | Type | Description |
-| - | - | - |
+|-------|------|-------------|
 | associations | array of strings | Possible values are: `pma`, `sfaal`, `vda` |
 
-See example response to the right for an overview of included fields.
+See the example response above for an overview of included fields.

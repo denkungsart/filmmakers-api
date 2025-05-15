@@ -4,7 +4,7 @@ sidebar_label: 'Showreels'
 
 # Showreels
 
-## Get a specific showreel
+## Get a Specific Showreel
 
 ```shell
 curl "https://www.filmmakers.eu/api/v1/showreels/100" \
@@ -30,7 +30,6 @@ curl "https://www.filmmakers.eu/api/v1/showreels/100" \
   ],
   "poster": "https://imgproxy.filmmakers.eu/8f7c74be-c696-11ee-85a8-4781e0bae8b1.jpg"
 }
-
 ```
 
 This endpoint retrieves a specific showreel.
@@ -43,19 +42,19 @@ This endpoint retrieves a specific showreel.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the showreel to retrieve (refer to the `showreel_ids` array field from actor_profiles endpoint to obtain these ids)
+ID | The ID of the showreel to retrieve (refer to the `showreel_ids` array field from the actor profiles endpoint to obtain these IDs)
 
-### Response fields
+### Response Fields
 
-See example response to the right for an overview of included fields
+See the example response above for an overview of included fields.
 
 Field | Type | Description
 --------- | ------- | -----------
 id | integer | ID of the showreel
-showreel_type | string | either `video` or `audio`
-name | string | name of the showreel
+showreel_type | string | Either `video` or `audio`
+name | string | Name of the showreel
 position | integer | The position of the showreel on Filmmakers
-poster | string | Image url to the showreel poster/thumb
-poster_copyright | string | Copyright for the showreel poster/thumb
+poster | string | Image URL to the showreel poster/thumbnail
+poster_copyright | string | Copyright for the showreel poster/thumbnail
 download | boolean | Whether the download option is active on Filmmakers
-showreel_medium_ids| array | IDs of showreel media contained in the showreel (see `showreel_media` endpoint below)
+showreel_medium_ids | array | IDs of showreel media contained in the showreel (see `showreel_media` endpoint below)

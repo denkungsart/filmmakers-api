@@ -1,10 +1,10 @@
 ---
-sidebar_label: 'Blog posts'
+sidebar_label: 'Blog Posts'
 ---
 
-# Blog posts
+# Blog Posts
 
-## Get all blog posts
+## Get All Blog Posts
 
 ```shell
 curl "https://www.filmmakers.eu/api/v1/blog_posts" \
@@ -30,7 +30,6 @@ curl "https://www.filmmakers.eu/api/v1/blog_posts" \
     "mentions": []
   }
 ]
-
 ```
 
 This endpoint retrieves all blog posts available with the access rights of the API key.
@@ -43,13 +42,13 @@ This endpoint retrieves all blog posts available with the access rights of the A
 
 Parameter | Default | Description
 --------- | ------- | -----------
-blog_id | id | Limit blog posts to specific blog id (e.g. `blog_id` from actor profile)
-page | 1 | Page to display - see "Pagination" section
-per_page | 250 | Items per page - see "Pagination" section
-tags[id] | null | Filter items by tags - allows passing multiple tag ids using array form of the param eg. `tags[id][]=1&tags[id][]=5`
-actor_profiles[id] | null | Filter by IDs of actor profiles who have been mentioned in blog posts - allows passing multiple actor profile ids using array form of the param eg. `actor_profiles[id][]=7&actor_profiles[id][]=9`
+blog_id | id | Limit blog posts to a specific blog ID (e.g., `blog_id` from actor profile)
+page | 1 | Page to display – see "Pagination" section
+per_page | 250 | Items per page – see "Pagination" section
+tags[id] | null | Filter items by tags – allows passing multiple tag IDs using array form of the parameter, e.g., `tags[id][]=1&tags[id][]=5`
+actor_profiles[id] | null | Filter by IDs of actor profiles who have been mentioned in blog posts – allows passing multiple actor profile IDs using array form of the parameter, e.g., `actor_profiles[id][]=7&actor_profiles[id][]=9`
 
-### Response fields
+### Response Fields
 
 Field | Type | Description
 --------- | ------- | -----------
@@ -59,7 +58,7 @@ title | string | Title of the blog post
 tags | array of objects | Includes ID and name of the associated tags
 mentions | array of objects | Includes type and ID of the mentioned object
 
-## Get a specific blog post
+## Get a Specific Blog Post
 
 ```shell
 curl "https://www.filmmakers.eu/api/v1/blog_posts/123" \
@@ -104,7 +103,6 @@ curl "https://www.filmmakers.eu/api/v1/blog_posts/123" \
     }
   ]
 }
-
 ```
 
 This endpoint retrieves a specific blog post.
@@ -119,22 +117,22 @@ Parameter | Description
 --------- | -----------
 ID | The ID of the blog post to retrieve
 
-### Response fields
+### Response Fields
 
-See example response to the right for an overview of included fields
+See the example response above for an overview of included fields.
 
 Field | Type | Description
 --------- | ------- | -----------
-title | string | title of the blog post
-note | string | optional comment on the post
-body | string | plain text representation of the blog post body with line breaks, **but no HTML markup**
-body_html | string |  blog post body with **HTML markup**, includes images with copyright information. Allowed HTML tags are `a, br, div, em, figcaption, figure, h1, img, li, ol, strong, ul`. Following example CSS can be used to show copyright over the image at the top left corner: `.image-wrapper { position: relative; } .image-caption { position: absolute; top: 0; left: 0; z-index: 1; }`
-publication_date | datetime | publication date of this post
-source | string | original source of the post - e.g. a newspaper in case an article was shared from an external url. Will be null in case of internal posts, i.e. posts written by the entity themselves.
-source.url | string | url of the source article
-source.publication_date | datetime | date of publication of original (may be null if source date cannot be determined)
-tags | array | array of tags applied to the blog post, each containing two key-value pairs: "id" and "name". Available tag names are: "News", "Premiere", "Awards", and "Press"
-images[].url | string | image url
-images[].cover | boolean | true if image is a cover image; default: `false`
-images[].copyright | string | image copyright
-mentions | array | Array of objects mentioned in the blog post, e.g. actor profiles. Contains the `mentionable_type` of the related object and `mentionable_id`.
+title | string | Title of the blog post
+note | string | Optional comment on the post
+body | string | Plain text representation of the blog post body with line breaks, **but no HTML markup**
+body_html | string | Blog post body with **HTML markup**, includes images with copyright information. Allowed HTML tags are `a, br, div, em, figcaption, figure, h1, img, li, ol, strong, ul`. Example CSS to show copyright over the image at the top left corner: `.image-wrapper { position: relative; } .image-caption { position: absolute; top: 0; left: 0; z-index: 1; }`
+publication_date | datetime | Publication date of this post
+source | string | Original source of the post – e.g., a newspaper in case an article was shared from an external URL. Will be null in case of internal posts, i.e., posts written by the entity themselves.
+source.url | string | URL of the source article
+source.publication_date | datetime | Date of publication of original (may be null if source date cannot be determined)
+tags | array | Array of tags applied to the blog post, each containing two key-value pairs: "id" and "name". Available tag names are: "News", "Premiere", "Awards", and "Press"
+images[].url | string | Image URL
+images[].cover | boolean | True if image is a cover image; default: `false`
+images[].copyright | string | Image copyright
+mentions | array | Array of objects mentioned in the blog post, e.g., actor profiles. Contains the `mentionable_type` of the related object and `mentionable_id`.

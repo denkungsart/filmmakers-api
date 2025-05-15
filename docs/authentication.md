@@ -4,9 +4,9 @@ sidebar_label: 'Authentication'
 
 # Authentication
 
-## Token-based
+## Token-Based
 
-Once you have been issued an API key you can use the following code to authorize requests:
+Once you have been issued an API key, you can use the following code to authorize requests:
 
 ```shell
 curl "api_endpoint_here" \
@@ -23,15 +23,15 @@ You must replace `API_KEY` with your personal API key.
 
 ## OAuth
 
-Filmmakers API supports the OAuth flow with refresh tokens.
+The Filmmakers API supports the OAuth flow with refresh tokens.
 
-### Setting up OAuth Access
+### Setting Up OAuth Access
 
 Once you have been issued an API key with OAuth Authorization enabled, you can use the following configuration from your client code:
 
 [Filmmakers OpenID Configuration](https://www.filmmakers.eu/.well-known/openid-configuration)
 
-See example on how to fetch the OAuth Access Token with curl.
+See the example below on how to fetch the OAuth Access Token with curl.
 
 ```shell
 export CLIENT_ID="your-client-id-goes-here"
@@ -58,8 +58,7 @@ Filmmakers expects the OAuth Access Token to be included in all API requests to 
 
 `Authorization: Bearer ACCESS_TOKEN`
 
-OAuth access tokens expire after a set period (currently 120 minutes, though this may change in the future) and must be refreshed. Your client software is responsible for automating the OAuth flow. You can always retrieve the expiry time of an access token from the introspection endpoint listed in the [Filmmakers OpenID Configuration](https://www.filmmakers.eu/.well-known/openid-configuration)."
-
+OAuth access tokens expire after a set period (currently 120 minutes, though this may change in the future) and must be refreshed. Your client software is responsible for automating the OAuth flow. You can always retrieve the expiry time of an access token from the introspection endpoint listed in the [Filmmakers OpenID Configuration](https://www.filmmakers.eu/.well-known/openid-configuration).
 
 ```shell
 curl -I https://www.filmmakers.eu/api/v1/actor_profiles -H "Authorization: Bearer $ACCESS_TOKEN" -H "Accept: application/json"
@@ -75,8 +74,7 @@ You must replace `ACCESS_TOKEN` with a non-expired OAuth Access Token.
 
 ### Introspecting Tokens
 
-Token information can be retrieved from the introspection_endpoint (see [Filmmakers OpenID Configuration](https://www.filmmakers.eu/.well-known/openid-configuration)
-).
+Token information can be retrieved from the `introspection_endpoint` (see [Filmmakers OpenID Configuration](https://www.filmmakers.eu/.well-known/openid-configuration)).
 
 ```shell
 curl -X POST https://www.filmmakers.eu/oauth/introspect \

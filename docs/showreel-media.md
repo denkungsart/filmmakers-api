@@ -4,7 +4,7 @@ sidebar_label: 'Showreel Media'
 
 # Showreel Media
 
-## Get specific showreel media
+## Get Specific Showreel Media
 
 ```shell
 curl "https://www.filmmakers.eu/api/v1/showreel_media/123456" \
@@ -36,7 +36,6 @@ curl "https://www.filmmakers.eu/api/v1/showreel_media/123456" \
     "full_hd": "https://static.filmmakers.eu/production/109d0832-c698-11ee-b7b8-fb95fd1a375c.mp4"
   }
 }
-
 ```
 
 This endpoint retrieves specific showreel media.
@@ -49,25 +48,25 @@ This endpoint retrieves specific showreel media.
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the showreel media to retrieve (refer to the `showreel_medium_ids` array field from showreels endpoint to obtain these ids)
+ID | The ID of the showreel media to retrieve (refer to the `showreel_medium_ids` array field from the showreels endpoint to obtain these IDs)
 
-### Response fields
+### Response Fields
 
-See example response to the right for an overview of included fields
+See the example response above for an overview of included fields.
 
 Field | Type | Description
 --------- | ------- | -----------
 id | integer | ID of the video or audio
-type | string | either `ShowreelVideo` (for videos) or `ShowreelAudio` (for audios)
+type | string | Either `ShowreelVideo` (for videos) or `ShowreelAudio` (for audios)
 name | string | Name of the video or audio
 director | string | Name of the director linked to the medium (if any)
-role | string| Name of the role linked to the medium (if any)
+role | string | Name of the role linked to the medium (if any)
 year | integer | Year of the medium (if any)
 download | boolean | Whether the download option is active on Filmmakers
 duration | float | Duration in seconds
-skills | array | Links to skills from actor profile attributes, in the format of `NAME#VALUE`, e.g. `languages#deutsch` or `dialects#berlinerisch`
+skills | array | Links to skills from actor profile attributes, in the format of `NAME#VALUE`, e.g., `languages#deutsch` or `dialects#berlinerisch`
 skill | string | Deprecated, please use `skills`
 vita_entry_id | integer | ID of vita entry (credit) if any
-picture | string | Image url to the thumb
+picture | string | Image URL to the thumbnail
 asset | string | Only filled in for type `ShowreelAudio`, may contain codecs `AAC` or `MP3`
-proxies | array | For the type `ShowreelVideo`, provide links to transcoded proxies in MP4 format (H.264). These proxies may include the following quality options:<br />- **sd**: 480p<br />- **hd**: 720p<br />- **full_hd**: 1080p<br /><br />Note that depending on the quality of the source file, `full_hd` and/or `hd` might not be available. Additionally, there might be two legacy proxies:<br />- **web_quality**: Roughly equivalent to 720p<br />- **portrait**: Media in portrait mode
+proxies | array | For the type `ShowreelVideo`, provides links to transcoded proxies in MP4 format (H.264). These proxies may include the following quality options:<br />- **sd**: 480p<br />- **hd**: 720p<br />- **full_hd**: 1080p<br /><br />Note that depending on the quality of the source file, `full_hd` and/or `hd` might not be available. Additionally, there might be two legacy proxies:<br />- **web_quality**: Roughly equivalent to 720p<br />- **portrait**: Media in portrait mode
