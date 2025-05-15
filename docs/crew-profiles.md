@@ -47,9 +47,15 @@ This endpoint retrieves all crew profiles available with the access rights of th
 | q                 | null    | Allows filtering by name. Uses trigram, so allows fuzzy & partial matches. |
 | include_picture   | false   | If set to `true`, the result will include the profile picture thumbnail in a field named `main_picture_url_tile`. |
 | picture_version   | null    | Can be set to `original`, `large`, `thumb`, or `thumb_large` to change the included picture version. The picture will be included in a field named `picture_url`. _(Only applies if `include_picture` is `true`.)_ |
-| fields            | name,gender | Can be used to modify the fields included in the response. Possible values can include `name`, `first_name`, `last_name`, `gender`, `professions`, `languages`, `representative`, `updated_at`, etc. |
-| order             | id      | Changes the order of returned results. Possible values are: `id`, `name`, `last_name`. |
-| professions[]     | null    | Filter crew profiles by professions – allows passing multiple profession names using array form of the parameter, e.g., `professions[]=regie&professions[]=kamera`. Possible values are `schauspiel`, `regie`, `autor`, `kamera`, `komponist`, `dramaturg`, `schnitt`. |
+| fields            | name,gender | Can be used to modify the fields included in the response. Allowed fields are: `name`, `first_name`, `last_name`, `gender`, `professions`, `languages`, `representative`, `updated_at` |
+| order             | id      | Changes the order of returned results. Allowed values: `id`, `name`, `last_name`. |
+| professions[]     | null    | Filter crew profiles by professions – allows passing multiple profession names using array form of the parameter, e.g., `professions[]=regie&professions[]=kamera`. Allowed values: `regie`, `autor`, `kamera`, `komponist`, `dramaturg`, `schnitt`. |
+
+> **Note:**
+> - Only visible showreels and vita entries are returned.
+> - Pictures that are invisible or still processing are skipped.
+> - The `representative` field is only present if the crew member is represented by a talent agency employee.
+> - If a user requests a forbidden or unknown field in `fields`, it is ignored (not an error).
 
 ### Response Fields
 
