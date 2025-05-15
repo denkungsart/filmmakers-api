@@ -10,140 +10,118 @@ const sidebars = {
   // But we want to create a custom sidebar
   apiSidebar: [
     {
+      type: 'doc',
+      id: 'introduction',
+      label: 'Getting Started',
+    },
+    {
       type: 'category',
-      label: 'Introduction',
-      link: {
-        type: 'doc',
-        id: 'introduction',
-      },
+      label: 'Core Concepts',
       items: [
-        { type: 'link', label: 'API updates and backwards compatibility', href: '/#api-updates-and-backwards-compatibility' },
+        {
+          type: 'doc',
+          id: 'authentication',
+          label: 'Authentication',
+        },
+        {
+          type: 'doc',
+          id: 'cors',
+          label: 'Cross Origin Resource Sharing',
+        },
+        {
+          type: 'doc',
+          id: 'rate-limits',
+          label: 'Rate Limits',
+        },
+        {
+          type: 'doc',
+          id: 'pagination',
+          label: 'Pagination',
+        },
+        {
+          type: 'doc',
+          id: 'webhooks',
+          label: 'Webhooks',
+        },
+        {
+          type: 'doc',
+          id: 'errors',
+          label: 'Error Codes',
+        },
       ],
     },
     {
       type: 'category',
-      label: 'Authentication',
-      link: {
-        type: 'doc',
-        id: 'authentication',
-      },
+      label: 'Resources',
       items: [
-        { type: 'link', label: 'Token-based', href: '/authentication#token-based' },
-        { type: 'link', label: 'OAuth', href: '/authentication#oauth' },
+        {
+          type: 'category',
+          label: 'Actor Profiles',
+          link: { type: 'doc', id: 'actor-profiles' },
+          items: [
+            { type: 'link', label: 'Get all actor profiles', href: '/actor-profiles#get-all-actor-profiles' },
+            { type: 'link', label: 'Get a specific actor profile', href: '/actor-profiles#get-a-specific-actor-profile' },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Crew Profiles',
+          link: { type: 'doc', id: 'crew-profiles' },
+          items: [
+            { type: 'link', label: 'Get all crew profiles', href: '/crew-profiles#get-all-crew-profiles' },
+            { type: 'link', label: 'Get a specific crew profile', href: '/crew-profiles#get-a-specific-crew-profile' },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Talent Agencies',
+          link: { type: 'doc', id: 'talent-agencies' },
+          items: [
+            { type: 'link', label: 'Get talent agency data', href: '/talent-agencies#get-talent-agency-data' },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Blog Posts',
+          link: { type: 'doc', id: 'blog-posts' },
+          items: [
+            { type: 'link', label: 'Get all blog posts', href: '/blog-posts#get-all-blog-posts' },
+            { type: 'link', label: 'Get a specific blog post', href: '/blog-posts#get-a-specific-blog-post' },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Showreels',
+          link: { type: 'doc', id: 'showreels' },
+          items: [
+            { type: 'link', label: 'Get a specific showreel', href: '/showreels#get-a-specific-showreel' },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Showreel Media',
+          link: { type: 'doc', id: 'showreel-media' },
+          items: [
+            { type: 'link', label: 'Get specific showreel media', href: '/showreel-media#get-specific-showreel-media' },
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Attributes',
+          link: { type: 'doc', id: 'attributes' },
+          items: [
+            { type: 'link', label: 'Get all attributes', href: '/attributes#get-all-attributes' },
+            { type: 'link', label: 'Get key/value pairs for attributes', href: '/attributes#get-keyvalue-pairs-for-attributes' },
+          ],
+        },
       ],
-    },
-    {
-      type: 'doc',
-      id: 'cors',
-      label: 'Cross origin resource sharing',
-    },
-    {
-      type: 'doc',
-      id: 'rate-limits',
-      label: 'Rate limits',
-    },
-    {
-      type: 'doc',
-      id: 'pagination',
-      label: 'Pagination',
-    },
-    {
-      type: 'doc',
-      id: 'webhooks',
-      label: 'Webhooks',
-    },
-    {
-      type: 'doc',
-      id: 'errors',
-      label: 'Error codes',
     },
     {
       type: 'doc',
       id: 'changelog',
       label: 'Changelog',
     },
-    {
-      type: 'category',
-      label: 'Actor profiles',
-      link: {
-        type: 'doc',
-        id: 'actor-profiles',
-      },
-      items: [
-        { type: 'link', label: 'Get all actor profiles', href: '/actor-profiles#get-all-actor-profiles' },
-        { type: 'link', label: 'Get a specific actor profile', href: '/actor-profiles#get-a-specific-actor-profile' },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Crew profiles',
-      link: {
-        type: 'doc',
-        id: 'crew-profiles',
-      },
-      items: [
-        { type: 'link', label: 'Get all crew profiles', href: '/crew-profiles#get-all-crew-profiles' },
-        { type: 'link', label: 'Get a specific crew profile', href: '/crew-profiles#get-a-specific-crew-profile' },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Talent agencies',
-      link: {
-        type: 'doc',
-        id: 'talent-agencies',
-      },
-      items: [
-        { type: 'link', label: 'Get talent agency data', href: '/talent-agencies#get-talent-agency-data' },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Blog posts',
-      link: {
-        type: 'doc',
-        id: 'blog-posts',
-      },
-      items: [
-        { type: 'link', label: 'Get all blog posts', href: '/blog-posts#get-all-blog-posts' },
-        { type: 'link', label: 'Get a specific blog post', href: '/blog-posts#get-a-specific-blog-post' },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Showreels',
-      link: {
-        type: 'doc',
-        id: 'showreels',
-      },
-      items: [
-        { type: 'link', label: 'Get a specific showreel', href: '/showreels#get-a-specific-showreel' },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Showreel Media',
-      link: {
-        type: 'doc',
-        id: 'showreel-media',
-      },
-      items: [
-        { type: 'link', label: 'Get specific showreel media', href: '/showreel-media#get-specific-showreel-media' },
-      ],
-    },
-    {
-      type: 'category',
-      label: 'Attributes',
-      link: {
-        type: 'doc',
-        id: 'attributes',
-      },
-      items: [
-        { type: 'link', label: 'Get all attributes', href: '/attributes#get-all-attributes' },
-        { type: 'link', label: 'Get key/value pairs for attributes', href: '/attributes#get-keyvalue-pairs-for-attributes' },
-      ],
-    },
   ],
 };
 
-module.exports = sidebars;
+export default sidebars;
