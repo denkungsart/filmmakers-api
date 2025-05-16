@@ -30,6 +30,35 @@ import TabItem from '@theme/TabItem';
     .catch(error => console.error('Error:', error));
     ```
   </TabItem>
+  <TabItem value="php" label="PHP (cURL)">
+    ```php
+    <?php
+    $url = 'https://www.filmmakers.eu/api/v1/attributes/';
+    $apiKey = 'API_KEY'; // Replace with your actual API key
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Authorization: Token token=' . $apiKey,
+    ]);
+
+    $response = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        echo 'cURL Error: ' . curl_error($ch);
+    } else {
+        echo $response;
+        // For further processing, you might want to decode the JSON:
+        // $data = json_decode($response, true);
+        // var_dump($data);
+    }
+
+    curl_close($ch);
+    ?>
+    ```
+  </TabItem>
 </Tabs>
 
 > The above command returns an array structured like this:
@@ -72,6 +101,37 @@ For countries, ISO 3166-1 alpha-2 codes are used ([see here](https://en.wikipedi
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+  <TabItem value="php" label="PHP (cURL)">
+    ```php
+    <?php
+    // Replace 'xxx' with the specific attribute key, e.g., 'nationalities'
+    $attributeKey = 'xxx';
+    $url = 'https://www.filmmakers.eu/api/v1/attributes/' . $attributeKey;
+    $apiKey = 'API_KEY'; // Replace with your actual API key
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Authorization: Token token=' . $apiKey,
+    ]);
+
+    $response = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        echo 'cURL Error: ' . curl_error($ch);
+    } else {
+        echo $response;
+        // For further processing, you might want to decode the JSON:
+        // $data = json_decode($response, true);
+        // var_dump($data);
+    }
+
+    curl_close($ch);
+    ?>
     ```
   </TabItem>
 </Tabs>

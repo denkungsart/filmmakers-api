@@ -36,6 +36,32 @@ The Casting Calls endpoint allows you to retrieve information about casting call
     .catch(error => console.error('Error:', error));
     ```
   </TabItem>
+  <TabItem value="php" label="PHP (cURL)">
+    ```php
+    <?php
+    $apiKey = 'API_KEY'; // Replace with your actual API key
+    $url = "https://www.filmmakers.eu/api/v1/casting_calls";
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Authorization: Token token=' . $apiKey,
+    ]);
+
+    $response = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        echo 'cURL Error: ' . curl_error($ch);
+    } else {
+        echo $response;
+    }
+
+    curl_close($ch);
+    ?>
+    ```
+  </TabItem>
 </Tabs>
 
 > The above command returns JSON structured like this:
@@ -94,6 +120,33 @@ name | string | Name of the casting call
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+  <TabItem value="php" label="PHP (cURL)">
+    ```php
+    <?php
+    $apiKey = 'API_KEY'; // Replace with your actual API key
+    $castingCallId = '{id}'; // Replace {id} with the actual casting call ID
+    $url = "https://www.filmmakers.eu/api/v1/casting_calls/" . $castingCallId;
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Authorization: Token token=' . $apiKey,
+    ]);
+
+    $response = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        echo 'cURL Error: ' . curl_error($ch);
+    } else {
+        echo $response;
+    }
+
+    curl_close($ch);
+    ?>
     ```
   </TabItem>
 </Tabs>

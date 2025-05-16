@@ -30,6 +30,35 @@ import TabItem from '@theme/TabItem';
     .catch(error => console.error('Error:', error));
     ```
   </TabItem>
+  <TabItem value="php" label="PHP (cURL)">
+    ```php
+    <?php
+    $apiKey = 'API_KEY'; // Replace with your actual API key
+    $url = 'https://www.filmmakers.eu/api/v1/blog_posts';
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Authorization: Token token=' . $apiKey,
+    ]);
+
+    $response = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        echo 'cURL Error: ' . curl_error($ch);
+    } else {
+        echo $response;
+        // For further processing, you might want to decode the JSON:
+        // $data = json_decode($response, true);
+        // var_dump($data);
+    }
+
+    curl_close($ch);
+    ?>
+    ```
+  </TabItem>
 </Tabs>
 
 > The above command returns JSON structured like this:
@@ -100,6 +129,36 @@ mentions | array of objects | Includes type and ID of the mentioned object
     .then(response => response.json())
     .then(data => console.log(data))
     .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+  <TabItem value="php" label="PHP (cURL)">
+    ```php
+    <?php
+    $blogPostId = 123; // Replace with the actual blog post ID
+    $apiKey = 'API_KEY'; // Replace with your actual API key
+    $url = 'https://www.filmmakers.eu/api/v1/blog_posts/' . $blogPostId;
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Authorization: Token token=' . $apiKey,
+    ]);
+
+    $response = curl_exec($ch);
+
+    if (curl_errno($ch)) {
+        echo 'cURL Error: ' . curl_error($ch);
+    } else {
+        echo $response;
+        // For further processing, you might want to decode the JSON:
+        // $data = json_decode($response, true);
+        // var_dump($data);
+    }
+
+    curl_close($ch);
+    ?>
     ```
   </TabItem>
 </Tabs>
