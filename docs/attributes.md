@@ -2,14 +2,35 @@
 sidebar_label: 'Attributes'
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Attributes
 
 ## Get All Attributes
 
-```shell
-curl "https://www.filmmakers.eu/api/v1/attributes/" \
-  -H "Authorization: Token token=API_KEY"
-```
+<Tabs groupId="api-examples">
+  <TabItem value="curl" label="cURL" default>
+    ```shell
+    curl "https://www.filmmakers.eu/api/v1/attributes/" \
+      -H "Authorization: Token token=API_KEY"
+    ```
+  </TabItem>
+  <TabItem value="javascript" label="JavaScript (Fetch)">
+    ```javascript
+    fetch('https://www.filmmakers.eu/api/v1/attributes/', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Token token=API_KEY',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+</Tabs>
 
 > The above command returns an array structured like this:
 
@@ -31,10 +52,29 @@ For countries, ISO 3166-1 alpha-2 codes are used ([see here](https://en.wikipedi
 
 ## Get Key/Value Pairs for Attributes
 
-```shell
-curl "https://www.filmmakers.eu/api/v1/attributes/xxx" \
-  -H "Authorization: Token token=API_KEY"
-```
+<Tabs groupId="api-examples">
+  <TabItem value="curl" label="cURL" default>
+    ```shell
+    curl "https://www.filmmakers.eu/api/v1/attributes/xxx" \
+      -H "Authorization: Token token=API_KEY"
+    ```
+  </TabItem>
+  <TabItem value="javascript" label="JavaScript (Fetch)">
+    ```javascript
+    // Replace 'xxx' with the specific attribute key, e.g., 'nationalities'
+    fetch('https://www.filmmakers.eu/api/v1/attributes/xxx', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Token token=API_KEY',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+</Tabs>
 
 > The above command returns JSON structured like this (e.g., for nationalities):
 

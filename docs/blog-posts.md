@@ -2,14 +2,35 @@
 sidebar_label: 'Blog Posts'
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Blog Posts
 
 ## Get All Blog Posts
 
-```shell
-curl "https://www.filmmakers.eu/api/v1/blog_posts" \
-  -H "Authorization: Token token=API_KEY"
-```
+<Tabs groupId="api-examples">
+  <TabItem value="curl" label="cURL" default>
+    ```shell
+    curl "https://www.filmmakers.eu/api/v1/blog_posts" \
+      -H "Authorization: Token token=API_KEY"
+    ```
+  </TabItem>
+  <TabItem value="javascript" label="JavaScript (Fetch)">
+    ```javascript
+    fetch('https://www.filmmakers.eu/api/v1/blog_posts', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Token token=API_KEY',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+</Tabs>
 
 > The above command returns JSON structured like this:
 
@@ -60,10 +81,28 @@ mentions | array of objects | Includes type and ID of the mentioned object
 
 ## Get a Specific Blog Post
 
-```shell
-curl "https://www.filmmakers.eu/api/v1/blog_posts/123" \
-  -H "Authorization: Token token=API_KEY"
-```
+<Tabs groupId="api-examples">
+  <TabItem value="curl" label="cURL" default>
+    ```shell
+    curl "https://www.filmmakers.eu/api/v1/blog_posts/123" \
+      -H "Authorization: Token token=API_KEY"
+    ```
+  </TabItem>
+  <TabItem value="javascript" label="JavaScript (Fetch)">
+    ```javascript
+    fetch('https://www.filmmakers.eu/api/v1/blog_posts/123', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Token token=API_KEY',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+</Tabs>
 
 > The above command returns JSON structured like this:
 

@@ -2,14 +2,35 @@
 sidebar_label: 'Actor Profiles'
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Actor Profiles
 
 ## Get All Actor Profiles
 
-```shell
-curl "https://www.filmmakers.eu/api/v1/actor_profiles" \
-  -H "Authorization: Token token=API_KEY"
-```
+<Tabs groupId="api-examples">
+  <TabItem value="curl" label="cURL" default>
+    ```shell
+    curl "https://www.filmmakers.eu/api/v1/actor_profiles" \
+      -H "Authorization: Token token=API_KEY"
+    ```
+  </TabItem>
+  <TabItem value="javascript" label="JavaScript (Fetch)">
+    ```javascript
+    fetch('https://www.filmmakers.eu/api/v1/actor_profiles', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Token token=API_KEY',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+</Tabs>
 
 > The above command returns JSON structured like this:
 
@@ -75,10 +96,28 @@ representative | JSON Object | "id" and "name" of the agent representing the act
 
 ## Get a Specific Actor Profile
 
-```shell
-curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
-  -H "Authorization: Token token=API_KEY"
-```
+<Tabs groupId="api-examples">
+  <TabItem value="curl" label="cURL" default>
+    ```shell
+    curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
+      -H "Authorization: Token token=API_KEY"
+    ```
+  </TabItem>
+  <TabItem value="javascript" label="JavaScript (Fetch)">
+    ```javascript
+    fetch('https://www.filmmakers.eu/api/v1/actor_profiles/123', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Token token=API_KEY',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+</Tabs>
 
 > The above command returns JSON structured like this:
 

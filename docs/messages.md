@@ -2,6 +2,9 @@
 sidebar_label: 'Messages'
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ::::caution
 The Messages API is in beta/early preview and may undergo changes. If you are interested in using them, please contact our support.
 ::::
@@ -12,10 +15,28 @@ The Messages endpoint allows you to retrieve messages such as casting invitation
 
 ## Get All Messages
 
-```shell
-curl "https://www.filmmakers.eu/api/v1/messages" \
-  -H "Authorization: Token token=API_KEY"
-```
+<Tabs groupId="api-examples">
+  <TabItem value="curl" label="cURL" default>
+    ```shell
+    curl "https://www.filmmakers.eu/api/v1/messages" \
+      -H "Authorization: Token token=API_KEY"
+    ```
+  </TabItem>
+  <TabItem value="javascript" label="JavaScript (Fetch)">
+    ```javascript
+    fetch('https://www.filmmakers.eu/api/v1/messages', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Token token=API_KEY',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+</Tabs>
 
 > The above command returns JSON structured like this:
 
@@ -53,10 +74,29 @@ subject | string | Subject of the message
 
 ## Get a Specific Message
 
-```shell
-curl "https://www.filmmakers.eu/api/v1/messages/{id}" \
-  -H "Authorization: Token token=API_KEY"
-```
+<Tabs groupId="api-examples">
+  <TabItem value="curl" label="cURL" default>
+    ```shell
+    curl "https://www.filmmakers.eu/api/v1/messages/{id}" \
+      -H "Authorization: Token token=API_KEY"
+    ```
+  </TabItem>
+  <TabItem value="javascript" label="JavaScript (Fetch)">
+    ```javascript
+    // Replace {id} with the actual message ID
+    fetch('https://www.filmmakers.eu/api/v1/messages/{id}', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Token token=API_KEY',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+</Tabs>
 
 > Replace `{id}` with the ID of the message you want to retrieve.
 

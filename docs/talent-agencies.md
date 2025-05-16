@@ -2,14 +2,35 @@
 sidebar_label: 'Talent Agencies'
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Talent Agencies
 
 ## Get Talent Agency Data
 
-```shell
-curl "https://www.filmmakers.eu/api/v1/talent_agencies/123" \
-  -H "Authorization: Token token=API_KEY"
-```
+<Tabs groupId="api-examples">
+  <TabItem value="curl" label="cURL" default>
+    ```shell
+    curl "https://www.filmmakers.eu/api/v1/talent_agencies/123" \
+      -H "Authorization: Token token=API_KEY"
+    ```
+  </TabItem>
+  <TabItem value="javascript" label="JavaScript (Fetch)">
+    ```javascript
+    fetch('https://www.filmmakers.eu/api/v1/talent_agencies/123', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Token token=API_KEY',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+</Tabs>
 
 > The above command returns JSON structured like this:
 

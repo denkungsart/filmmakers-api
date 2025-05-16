@@ -2,6 +2,9 @@
 sidebar_label: 'Casting Calls'
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 ::::caution
 The Casting Calls API is in beta/early preview and may undergo changes. If you are interested in using them, please contact our support.
 ::::
@@ -12,10 +15,28 @@ The Casting Calls endpoint allows you to retrieve information about casting call
 
 ## Get All Casting Calls
 
-```shell
-curl "https://www.filmmakers.eu/api/v1/casting_calls" \
-  -H "Authorization: Token token=API_KEY"
-```
+<Tabs groupId="api-examples">
+  <TabItem value="curl" label="cURL" default>
+    ```shell
+    curl "https://www.filmmakers.eu/api/v1/casting_calls" \
+      -H "Authorization: Token token=API_KEY"
+    ```
+  </TabItem>
+  <TabItem value="javascript" label="JavaScript (Fetch)">
+    ```javascript
+    fetch('https://www.filmmakers.eu/api/v1/casting_calls', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Token token=API_KEY',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+</Tabs>
 
 > The above command returns JSON structured like this:
 
@@ -53,10 +74,29 @@ name | string | Name of the casting call
 
 ## Get a Specific Casting Call
 
-```shell
-curl "https://www.filmmakers.eu/api/v1/casting_calls/{id}" \
-  -H "Authorization: Token token=API_KEY"
-```
+<Tabs groupId="api-examples">
+  <TabItem value="curl" label="cURL" default>
+    ```shell
+    curl "https://www.filmmakers.eu/api/v1/casting_calls/{id}" \
+      -H "Authorization: Token token=API_KEY"
+    ```
+  </TabItem>
+  <TabItem value="javascript" label="JavaScript (Fetch)">
+    ```javascript
+    // Replace {id} with the actual casting call ID
+    fetch('https://www.filmmakers.eu/api/v1/casting_calls/{id}', {
+      method: 'GET',
+      headers: {
+        'Authorization': 'Token token=API_KEY',
+        'Content-Type': 'application/json'
+      }
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error('Error:', error));
+    ```
+  </TabItem>
+</Tabs>
 
 > Replace `{id}` with the ID of the casting call you want to retrieve.
 
