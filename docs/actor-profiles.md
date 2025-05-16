@@ -61,7 +61,7 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 
-> The above command returns JSON structured like this:
+##### Example Response
 
 ```json
 [
@@ -128,13 +128,13 @@ representative | JSON Object | "id" and "name" of the agent representing the act
 <Tabs groupId="api-examples">
   <TabItem value="curl" label="cURL" default>
     ```shell
-    curl "https://www.filmmakers.eu/api/v1/actor_profiles/123" \
+    curl "https://www.filmmakers.eu/api/v1/actor_profiles/{id}" \
       -H "Authorization: Token token=API_KEY"
     ```
   </TabItem>
   <TabItem value="javascript" label="JavaScript (Fetch)">
     ```javascript
-    fetch('https://www.filmmakers.eu/api/v1/actor_profiles/123', {
+    fetch('https://www.filmmakers.eu/api/v1/actor_profiles/{id}', {
       method: 'GET',
       headers: {
         'Authorization': 'Token token=API_KEY',
@@ -149,7 +149,7 @@ representative | JSON Object | "id" and "name" of the agent representing the act
   <TabItem value="php" label="PHP (cURL)">
     ```php
     <?php
-    $actorProfileId = 123; // Replace with the actual actor profile ID
+    $actorProfileId = '{id}'; // Replace with the actual actor profile ID
     $apiKey = 'API_KEY'; // Replace with your actual API key
     $url = 'https://www.filmmakers.eu/api/v1/actor_profiles/' . $actorProfileId;
 
@@ -178,7 +178,9 @@ representative | JSON Object | "id" and "name" of the agent representing the act
   </TabItem>
 </Tabs>
 
-> The above command returns JSON structured like this:
+Replace `{id}` with the ID of the actor profile you want to retrieve.
+
+##### Example Response
 
 ```json
 {

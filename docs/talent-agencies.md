@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 <Tabs groupId="api-examples">
   <TabItem value="curl" label="cURL" default>
     ```shell
-    curl "https://www.filmmakers.eu/api/v1/talent_agencies/123" \
+    curl "https://www.filmmakers.eu/api/v1/talent_agencies/{id}" \
       -H "Authorization: Token token=API_KEY"
     ```
   </TabItem>
   <TabItem value="javascript" label="JavaScript (Fetch)">
     ```javascript
-    fetch('https://www.filmmakers.eu/api/v1/talent_agencies/123', {
+    fetch('https://www.filmmakers.eu/api/v1/talent_agencies/{id}', {
       method: 'GET',
       headers: {
         'Authorization': 'Token token=API_KEY',
@@ -33,8 +33,8 @@ import TabItem from '@theme/TabItem';
   <TabItem value="php" label="PHP (cURL)">
     ```php
     <?php
+    $talentAgencyId = '{id}'; // Replace with the actual talent agency ID
     $apiKey = 'API_KEY'; // Replace with your actual API key
-    $talentAgencyId = 123; // Replace with the actual talent agency ID
     $url = 'https://www.filmmakers.eu/api/v1/talent_agencies/' . $talentAgencyId;
 
     $ch = curl_init();
@@ -62,7 +62,9 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 
-> The above command returns JSON structured like this:
+Replace `{id}` with the ID of the talent agency you want to retrieve.
+
+##### Example Response
 
 ```json
 {

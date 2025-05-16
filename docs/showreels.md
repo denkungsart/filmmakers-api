@@ -12,13 +12,13 @@ import TabItem from '@theme/TabItem';
 <Tabs groupId="api-examples">
   <TabItem value="curl" label="cURL" default>
     ```shell
-    curl "https://www.filmmakers.eu/api/v1/showreels/100" \
+    curl "https://www.filmmakers.eu/api/v1/showreels/{id}" \
       -H "Authorization: Token token=API_KEY"
     ```
   </TabItem>
   <TabItem value="javascript" label="JavaScript (Fetch)">
     ```javascript
-    fetch('https://www.filmmakers.eu/api/v1/showreels/100', {
+    fetch('https://www.filmmakers.eu/api/v1/showreels/{id}', {
       method: 'GET',
       headers: {
         'Authorization': 'Token token=API_KEY',
@@ -33,7 +33,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="php" label="PHP (cURL)">
     ```php
     <?php
-    $showreelId = 100; // Replace with the actual showreel ID
+    $showreelId = '{id}'; // Replace with the actual showreel ID
     $apiKey = 'API_KEY'; // Replace with your actual API key
     $url = "https://www.filmmakers.eu/api/v1/showreels/" . $showreelId;
 
@@ -62,7 +62,9 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 
-> The above command returns JSON structured like this:
+Replace `{id}` with the ID of the showreel you want to retrieve.
+
+##### Example Response
 
 ```json
 {

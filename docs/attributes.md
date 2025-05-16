@@ -61,7 +61,7 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 
-> The above command returns an array structured like this:
+##### Example Response
 
 ```json
 [
@@ -136,7 +136,7 @@ For countries, ISO 3166-1 alpha-2 codes are used ([see here](https://en.wikipedi
   </TabItem>
 </Tabs>
 
-> The above command returns JSON structured like this (e.g., for nationalities):
+##### Example Response
 
 ```json
 {

@@ -61,7 +61,7 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 
-> The above command returns JSON structured like this:
+##### Example Response
 
 ```json
 [
@@ -113,13 +113,13 @@ mentions | array of objects | Includes type and ID of the mentioned object
 <Tabs groupId="api-examples">
   <TabItem value="curl" label="cURL" default>
     ```shell
-    curl "https://www.filmmakers.eu/api/v1/blog_posts/123" \
+    curl "https://www.filmmakers.eu/api/v1/blog_posts/{id}" \
       -H "Authorization: Token token=API_KEY"
     ```
   </TabItem>
   <TabItem value="javascript" label="JavaScript (Fetch)">
     ```javascript
-    fetch('https://www.filmmakers.eu/api/v1/blog_posts/123', {
+    fetch('https://www.filmmakers.eu/api/v1/blog_posts/{id}', {
       method: 'GET',
       headers: {
         'Authorization': 'Token token=API_KEY',
@@ -134,7 +134,7 @@ mentions | array of objects | Includes type and ID of the mentioned object
   <TabItem value="php" label="PHP (cURL)">
     ```php
     <?php
-    $blogPostId = 123; // Replace with the actual blog post ID
+    $blogPostId = '{id}'; // Replace with the actual blog post ID
     $apiKey = 'API_KEY'; // Replace with your actual API key
     $url = 'https://www.filmmakers.eu/api/v1/blog_posts/' . $blogPostId;
 
@@ -163,7 +163,9 @@ mentions | array of objects | Includes type and ID of the mentioned object
   </TabItem>
 </Tabs>
 
-> The above command returns JSON structured like this:
+Replace `{id}` with the ID of the blog post you want to retrieve.
+
+##### Example Response
 
 ```json
 {

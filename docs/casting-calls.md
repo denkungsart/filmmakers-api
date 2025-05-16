@@ -64,7 +64,7 @@ The Casting Calls endpoint allows you to retrieve information about casting call
   </TabItem>
 </Tabs>
 
-> The above command returns JSON structured like this:
+##### Example Response
 
 ```json
 [
@@ -151,9 +151,9 @@ name | string | Name of the casting call
   </TabItem>
 </Tabs>
 
-> Replace `{id}` with the ID of the casting call you want to retrieve.
+Replace `{id}` with the ID of the casting call you want to retrieve.
 
-> The above command returns JSON structured like this:
+##### Example Response
 
 ```json
 {

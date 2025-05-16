@@ -63,7 +63,7 @@ Here is an example request:
   </TabItem>
 </Tabs>
 
-> The above command returns JSON structured like this:
+##### Example Response
 
 ```json
 [
@@ -130,13 +130,13 @@ Example request:
 <Tabs groupId="api-examples">
   <TabItem value="curl" label="cURL" default>
     ```shell
-    curl "https://www.filmmakers.eu/api/v1/crew_profiles/123" \
+    curl "https://www.filmmakers.eu/api/v1/crew_profiles/{id}" \
       -H "Authorization: Token token=API_KEY"
     ```
   </TabItem>
   <TabItem value="javascript" label="JavaScript (Fetch)">
     ```javascript
-    fetch('https://www.filmmakers.eu/api/v1/crew_profiles/123', {
+    fetch('https://www.filmmakers.eu/api/v1/crew_profiles/{id}', {
       method: 'GET',
       headers: {
         'Authorization': 'Token token=API_KEY',
@@ -151,7 +151,7 @@ Example request:
   <TabItem value="php" label="PHP (cURL)">
     ```php
     <?php
-    $crewProfileId = 123; // Replace with the actual crew profile ID
+    $crewProfileId = '{id}'; // Replace with the actual crew profile ID
     $apiKey = 'API_KEY'; // Replace with your actual API key
     $url = 'https://www.filmmakers.eu/api/v1/crew_profiles/' . $crewProfileId;
 
@@ -180,7 +180,9 @@ Example request:
   </TabItem>
 </Tabs>
 
-> The above command returns JSON structured like this:
+Replace `{id}` with the ID of the crew profile you want to retrieve.
+
+##### Example Response
 
 ```json
 {

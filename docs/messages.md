@@ -67,7 +67,7 @@ The Messages endpoint allows you to retrieve messages such as casting invitation
   </TabItem>
 </Tabs>
 
-> The above command returns JSON structured like this:
+#### Example Response
 
 ```json
 [
@@ -157,9 +157,9 @@ subject | string | Subject of the message
   </TabItem>
 </Tabs>
 
-> Replace `{id}` with the ID of the message you want to retrieve.
+Replace `{id}` with the ID of the message you want to retrieve.
 
-> The above command returns JSON structured like this:
+#### Example Response
 
 ```json
 {
