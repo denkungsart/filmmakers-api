@@ -4,6 +4,7 @@ sidebar_label: 'Changelog'
 
 # Changelog
 
+- (2025-05-28) **TalentAgencies#show**: Add new employee fields `function`, `instagram_username`, `imdb_link` and `about_me`
 - (2025-04-01) **TalentAgencies#show**: Added new fields `facebook_page` and `instagram_username`.
 - (2025-03-18) **CrewProfiles#index**: Allowed filtering crew profiles by `professions` array.
 - (2025-03-17) **CrewProfiles#show**: Added web presence fields `imdb_link`, `imdb_id`, `facebook_page`, `instagram_username`, `wikipedia_url`.
