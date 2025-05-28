@@ -95,9 +95,13 @@ Replace `{id}` with the ID of the talent agency you want to retrieve.
       "first_name": "John",
       "last_name": "Doe",
       "phone": "49613163691950",
-      "email": "info@example.com",
-      "role": "role",
-      "picture_url": "https://imgproxy.filmmakers.eu/bfa9eb4c-c6ac-11ee-9015-f30db07efa43.jpg"
+      "email": "agent@example.com",
+      "role": "agent",
+      "function": null,
+      "instagram_username": "mypersonalprofile",
+      "imdb_link": "https://www.imdb.com/name/nm1234567",
+      "picture_url": "https://imgproxy.filmmakers.eu/bfa9eb4c-c6ac-11ee-9015-f30db07efa43.jpg",
+      "about_me": "This is a text about me"
     }
   ],
   "associations": [
@@ -123,5 +127,6 @@ ID | The ID of the talent agency to retrieve
 | Field | Type | Description |
 |-------|------|-------------|
 | associations | array of strings | Possible values are: `pma`, `sfaal`, `vda` |
+| employees[].about_me | string |Returned as plain text (stripped of any rich text formatting). This field is localized. If the `locale` query parameter is not provided, the API attempts to return the English (`en`) version of `about_me`. To request the `about_me` text in a specific language, use the `locale` query parameter (e.g., `?locale=de`). If the `about_me` content for the requested locale is not available, it will return null.|
 
 See the example response above for an overview of included fields.

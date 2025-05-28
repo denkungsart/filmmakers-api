@@ -119,6 +119,7 @@ This endpoint retrieves all crew profiles available with the access rights of th
 | picture_url           | string           | Profile picture URL of the specified version if `picture_version` is set |
 | picture_copyright     | string           | Copyright information |
 | representative        | JSON Object      | Contains "id" and "name" of the talent agency employee |
+| about_me              | string           | Returned as plain text (stripped of any rich text formatting). This field is localized. If the `locale` query parameter is not provided, the API attempts to return the English (`en`) version of `about_me`. To request the `about_me` text in a specific language, use the `locale` query parameter (e.g., `?locale=de`). If the `about_me` content for the requested locale is not available, it will return null.|
 | updated_at            | string           | Format ISO 8601 |
 
 ---
