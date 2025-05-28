@@ -122,6 +122,15 @@ const config = {
         darkTheme: prismThemes.dracula,
         additionalLanguages: ['ruby', 'php'],
       },
+      algolia: {
+        // The application ID provided by Algolia
+        appId: '509MVS2GVZ',
+
+        // Public API key: it is safe to commit it
+        apiKey: '9ac84610cef87e63c1280d777da35154',
+
+        indexName: 'api-filmmakers',
+      },
     }),
 };
 
