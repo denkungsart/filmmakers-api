@@ -127,6 +127,6 @@ ID | The ID of the talent agency to retrieve
 | Field | Type | Description |
 |-------|------|-------------|
 | associations | array of strings | Possible values are: `pma`, `sfaal`, `vda` |
-| employees[].about_me | string | This field is dependent on the locale. |
+| employees[].about_me | string | This field is dependent on the locale. If no locale is passed, it defaults to "en". |
 
 See the example response above for an overview of included fields.
