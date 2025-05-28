@@ -95,9 +95,13 @@ Replace `{id}` with the ID of the talent agency you want to retrieve.
       "first_name": "John",
       "last_name": "Doe",
       "phone": "49613163691950",
-      "email": "info@example.com",
-      "role": "role",
-      "picture_url": "https://imgproxy.filmmakers.eu/bfa9eb4c-c6ac-11ee-9015-f30db07efa43.jpg"
+      "email": "agent@example.com",
+      "role": "agent",
+      "function": null,
+      "instagram_username": "mypersonalprofile",
+      "imdb_link": "https://www.imdb.com/name/nm1234567",
+      "picture_url": "https://imgproxy.filmmakers.eu/bfa9eb4c-c6ac-11ee-9015-f30db07efa43.jpg",
+      "about_me": "This is a text about me"
     }
   ],
   "associations": [
