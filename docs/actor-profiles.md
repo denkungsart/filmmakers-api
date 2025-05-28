@@ -616,5 +616,5 @@ vita.x[].in_development | boolean | Indicates film projects that are still in de
 ethnic_background | Array | Contains general ethnicities or heritages of the actor. Visibility depends on the setting for `ethnic_appearances` (as described above under _attribute_visibility_).
 ethnic_background_details | Array | Contains specific ethnicities or heritages of the actor, e.g., specific countries.
 ethnic_background_description | string | Contains a custom description of ethnicities or heritages entered by the actor.
-about_me | string | This field is dependent on the locale, "de" and "en" are supported.
+about_me | string | This field is dependent on the locale.
 mentioned_in_blog_post_ids | Array | IDs of blog posts in which the profile was mentioned

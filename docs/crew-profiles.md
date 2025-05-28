@@ -119,7 +119,7 @@ This endpoint retrieves all crew profiles available with the access rights of th
 | picture_url           | string           | Profile picture URL of the specified version if `picture_version` is set |
 | picture_copyright     | string           | Copyright information |
 | representative        | JSON Object      | Contains "id" and "name" of the talent agency employee |
-| about_me              | string           | This field is dependent on the locale, "de" and "en" are supported. |
+| about_me              | string           | This field is dependent on the locale. |
 | updated_at            | string           | Format ISO 8601 |
 
 ---
