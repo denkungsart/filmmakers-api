@@ -616,5 +616,5 @@ vita.x[].in_development | boolean | Indicates film projects that are still in de
 ethnic_background | Array | Contains general ethnicities or heritages of the actor. Visibility depends on the setting for `ethnic_appearances` (as described above under _attribute_visibility_).
 ethnic_background_details | Array | Contains specific ethnicities or heritages of the actor, e.g., specific countries.
 ethnic_background_description | string | Contains a custom description of ethnicities or heritages entered by the actor.
-about_me | string | This field is dependent on the locale. If no locale is passed, it defaults to "en".
+about_me | string | Returned as plain text (stripped of any rich text formatting). This field is localized. If the `locale` query parameter is not provided, the API attempts to return the English (`en`) version of `about_me`. To request the `about_me` text in a specific language, use the `locale` query parameter (e.g., `?locale=de`). If the `about_me` content for the requested locale is not available, it will return null.
 mentioned_in_blog_post_ids | Array | IDs of blog posts in which the profile was mentioned
