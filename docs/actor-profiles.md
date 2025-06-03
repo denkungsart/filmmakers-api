@@ -601,7 +601,7 @@ talent_agency_connections[].talent_agency_id | integer | ID of the talent agency
 talent_agency_connections[].talent_agency_employee_id | integer | ID of the talent agency employee
 talent_agency_connections[].agency_profile_url | string | Actor profile URL on the website of their agency
 talent_agency_connections[].talent_agency_name | string | Name of the agency
-talent_agency_connections[].categories | Array | Indicates the areas in which the agency represents the client. Possible values are "acting_agency", "advertising", "artist_management", "model_agency", "people_agency", "pr", "voice_agency", or "young_talent_agency".
+talent_agency_connections[].categories | Array | Indicates the areas in which the agency represents the client. Possible values are "acting_agency", "advertising", "artist_management", "model_agency", "people_agency", "pr", "voice_agency", or "young_talent_agency". If the categories on the connection are empty, the categories of the talent agency are returned.
 talent_agency_connections[].connection_type | string | Indicates the type of agency connection, which can be either "primary_agency" (the main agency) or "secondary_agency". There can be multiple secondary agencies.
 agency_profile_url | string | Actor profile URL on the website of their agency **Note** Please use talent_agency_connections[].agency_profile_url instead
 talent_agency_id | integer | ID of the talent agency **Note** Please use talent_agency_connections[].talent_agency_id instead
