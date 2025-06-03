@@ -106,7 +106,8 @@ Replace `{id}` with the ID of the talent agency you want to retrieve.
   ],
   "associations": [
     "vda"
-  ]
+  ],
+  "about_me": "A text about our agency."
 }
 ```
 
@@ -127,6 +128,7 @@ ID | The ID of the talent agency to retrieve
 | Field | Type | Description |
 |-------|------|-------------|
 | associations | array of strings | Possible values are: `pma`, `sfaal`, `vda` |
+| about_me | string | Returned as plain text (stripped of any rich text formatting). This field is localized. If the `locale` query parameter is not provided, the API attempts to return the English (`en`) version of `about_me`. To request the `about_me` text in a specific language, use the `locale` query parameter (e.g., `?locale=de`). If the `about_me` content for the requested locale is not available, it will return null. |
 | employees[].about_me | string |Returned as plain text (stripped of any rich text formatting). This field is localized. If the `locale` query parameter is not provided, the API attempts to return the English (`en`) version of `about_me`. To request the `about_me` text in a specific language, use the `locale` query parameter (e.g., `?locale=de`). If the `about_me` content for the requested locale is not available, it will return null.|
 
 See the example response above for an overview of included fields.
