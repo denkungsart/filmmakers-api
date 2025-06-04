@@ -4,6 +4,7 @@ sidebar_label: 'Changelog'
 
 # Changelog
 
+- (2025-06-04) **ActorProfiles#index/CrewProfiles#index**: Add new parameter `direction`
 - (2025-06-03) **ActorProfiles#show**: Add new field `talent_agency_connections[].regions`
 - (2025-06-03) **TalentAgencies#show**: Add new field `about_me`
 - (2025-05-28) **TalentAgencies#show**: Add new employee fields `function`, `instagram_username`, `imdb_link` and `about_me`
