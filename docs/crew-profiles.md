@@ -99,6 +99,7 @@ This endpoint retrieves all crew profiles available with the access rights of th
 | picture_version   | null    | Can be set to `original`, `large`, `thumb`, or `thumb_large` to change the included picture version. The picture will be included in a field named `picture_url`. _(Only applies if `include_picture` is `true`.)_ |
 | fields            | name,gender | Can be used to modify the fields included in the response. Allowed fields are: `name`, `first_name`, `last_name`, `gender`, `professions`, `languages`, `representative`, `updated_at` |
 | order             | id      | Changes the order of returned results. Allowed values: `id`, `name`, `last_name`. |
+| direction         | asc     | Specifies the order direction of returned results. Possible values are: `asc` (ascending), `desc` (descending) |
 | professions[]     | null    | Filter crew profiles by professions – allows passing multiple profession names using array form of the parameter, e.g., `professions[]=regie&professions[]=kamera`. Allowed values: `regie`, `autor`, `kamera`, `komponist`, `dramaturg`, `schnitt`. |
 
 > **Note:**
