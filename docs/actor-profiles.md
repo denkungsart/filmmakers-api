@@ -332,6 +332,13 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
   "about_me": "This is a text about me",
   "locations": [
     {
+      "name": "Berlin",
+      "latitude": 52.52000659999999,
+      "longitude": 13.404954,
+      "place_id": "ChIJAVkDPzdOqEcRcDteW0YgIQQ",
+      "type": "place"
+    },
+    {
       "name": "Gdańsk",
       "latitude": 54.35202520000001,
       "longitude": 18.6466384,
@@ -365,13 +372,6 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
       "longitude": 13.404954,
       "place_id": "ChIJAVkDPzdOqEcRcDteW0YgIQQ",
       "type": "accommodation"
-    },
-    {
-      "name": "Berlin",
-      "latitude": 52.52000659999999,
-      "longitude": 13.404954,
-      "place_id": "ChIJAVkDPzdOqEcRcDteW0YgIQQ",
-      "type": "place"
     }
   ],
   "pictures": [
