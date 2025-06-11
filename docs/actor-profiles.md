@@ -332,6 +332,13 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
   "about_me": "This is a text about me",
   "locations": [
     {
+      "name": "Berlin",
+      "latitude": 52.52000659999999,
+      "longitude": 13.404954,
+      "place_id": "ChIJAVkDPzdOqEcRcDteW0YgIQQ",
+      "type": "place"
+    },
+    {
       "name": "Gdańsk",
       "latitude": 54.35202520000001,
       "longitude": 18.6466384,
@@ -365,13 +372,6 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
       "longitude": 13.404954,
       "place_id": "ChIJAVkDPzdOqEcRcDteW0YgIQQ",
       "type": "accommodation"
-    },
-    {
-      "name": "Berlin",
-      "latitude": 52.52000659999999,
-      "longitude": 13.404954,
-      "place_id": "ChIJAVkDPzdOqEcRcDteW0YgIQQ",
-      "type": "place"
     }
   ],
   "pictures": [
@@ -626,3 +626,4 @@ ethnic_background_details | Array | Contains specific ethnicities or heritages o
 ethnic_background_description | string | Contains a custom description of ethnicities or heritages entered by the actor.
 about_me | string | Returned as plain text (stripped of any rich text formatting). This field is localized. If the `locale` query parameter is not provided, the API attempts to return the English (`en`) version of `about_me`. To request the `about_me` text in a specific language, use the `locale` query parameter (e.g., `?locale=de`). If the `about_me` content for the requested locale is not available, it will return null.
 mentioned_in_blog_post_ids | Array | IDs of blog posts in which the profile was mentioned
+locations | Array | Places of residence (type: `place`) and housing options (type: `accommodation`). Places of residence are sorted on top.
