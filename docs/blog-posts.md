@@ -226,7 +226,7 @@ Field | Type | Description
 title | string | Title of the blog post
 note | string | Optional comment on the post
 body | string | Plain text representation of the blog post body with line breaks, **but no HTML markup**
-body_html | string | Blog post body with **HTML markup**, includes images with copyright information. Allowed HTML tags are `a, br, div, em, figcaption, figure, h1, img, li, ol, strong, ul`. Example CSS to show copyright over the image at the top left corner: `.image-wrapper { position: relative; } .image-caption { position: absolute; top: 0; left: 0; z-index: 1; }`
+body_html | string | Blog post body with **HTML markup**, includes images with copyright information. Content is automatically sanitized. Allowed HTML tags are `a, br, div, em, figcaption, figure, h1, img, li, ol, strong, ul`. Example CSS to show copyright over the image at the top left corner: `.image-wrapper { position: relative; } .image-caption { position: absolute; top: 0; left: 0; z-index: 1; }`
 publication_date | datetime | Publication date of this post
 source | string | Original source of the post – e.g., a newspaper in case an article was shared from an external URL. Will be null in case of internal posts, i.e., posts written by the entity themselves.
 source.url | string | URL of the source article
