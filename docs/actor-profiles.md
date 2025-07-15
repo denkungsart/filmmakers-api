@@ -330,6 +330,7 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
     "GB"
   ],
   "about_me": "This is a text about me",
+  "about_me_html": "<div>This is a text about me</div>",
   "locations": [
     {
       "name": "Berlin",
@@ -625,5 +626,6 @@ ethnic_background | Array | Contains general ethnicities or heritages of the act
 ethnic_background_details | Array | Contains specific ethnicities or heritages of the actor, e.g., specific countries.
 ethnic_background_description | string | Contains a custom description of ethnicities or heritages entered by the actor.
 about_me | string | Returned as plain text (stripped of any rich text formatting). This field is localized. If the `locale` query parameter is not provided, the API attempts to return the English (`en`) version of `about_me`. To request the `about_me` text in a specific language, use the `locale` query parameter (e.g., `?locale=de`). If the `about_me` content for the requested locale is not available, it will return null.
+about_me_html | string | Returns an HTML version of `about_me`
 mentioned_in_blog_post_ids | Array | IDs of blog posts in which the profile was mentioned
 locations | Array | Places of residence (type: `place`) and housing options (type: `accommodation`). Places of residence are sorted on top.

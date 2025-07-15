@@ -101,13 +101,15 @@ Replace `{id}` with the ID of the talent agency you want to retrieve.
       "instagram_username": "mypersonalprofile",
       "imdb_link": "https://www.imdb.com/name/nm1234567",
       "picture_url": "https://imgproxy.filmmakers.eu/bfa9eb4c-c6ac-11ee-9015-f30db07efa43.jpg",
-      "about_me": "This is a text about me"
+      "about_me": "This is a text about me",
+      "about_me_html": "<div>This is a text about me</div>"
     }
   ],
   "associations": [
     "vda"
   ],
-  "about_me": "A text about our agency."
+  "about_me": "A text about our agency.",
+  "about_me_html": "<div>A text about our agency.</div>"
 }
 ```
 
@@ -129,6 +131,7 @@ ID | The ID of the talent agency to retrieve
 |-------|------|-------------|
 | associations | array of strings | Possible values are: `pma`, `sfaal`, `vda` |
 | about_me | string | Returned as plain text (stripped of any rich text formatting). This field is localized. If the `locale` query parameter is not provided, the API attempts to return the English (`en`) version of `about_me`. To request the `about_me` text in a specific language, use the `locale` query parameter (e.g., `?locale=de`). If the `about_me` content for the requested locale is not available, it will return null. |
+| about_me_html | string | Returns an HTML version of `about_me` |
 | employees[].about_me | string |Returned as plain text (stripped of any rich text formatting). This field is localized. If the `locale` query parameter is not provided, the API attempts to return the English (`en`) version of `about_me`. To request the `about_me` text in a specific language, use the `locale` query parameter (e.g., `?locale=de`). If the `about_me` content for the requested locale is not available, it will return null.|
 
 See the example response above for an overview of included fields.
