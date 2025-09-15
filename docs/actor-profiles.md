@@ -115,8 +115,8 @@ gender_searchability | array of strings | List of genders the actor profile can 
 name | string | Full name (i.e., first & last name). _Name can be retrieved separately by using the fields parameter._
 first_name | string |
 last_name | string |
-main_profession | string | Main profession of the actor profile
-professions | array of strings | List of professions, e.g., `["schauspieler", "synchronsprecher"]`. _This includes the main_profession "schauspieler" or "nachwuchsdarsteller" when given._
+main_profession | string | Main profession of the actor profile. Possible values: `actor`, `young_actor`, `performer`.
+professions | array of strings | List of professions, e.g., `["schauspieler", "synchronsprecher"]`. _This includes the main_profession "schauspieler" (actor) or "nachwuchsdarsteller" (young_actor) when given._
 languages | JSON Object | Format `{ "language": "skill level" }`
 updated_at | string | Format ISO 8601
 main_picture_url_tile | string | Profile picture URL (thumbnail version)
