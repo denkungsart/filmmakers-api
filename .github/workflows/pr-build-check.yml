@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: '18' # Docusaurus recommends Node 18 or higher
+          node-version: '20'
           cache: 'npm'
           cache-dependency-path: package-lock.json # Or yarn.lock
 
