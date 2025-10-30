@@ -23,6 +23,10 @@ You must replace `API_KEY` with your personal API key.
 
 ## OAuth
 
+:::caution
+OAuth support is not yet generally available. If you are interested in using it, please contact our support.
+:::
+
 The Filmmakers API supports the OAuth flow with refresh tokens.
 
 ### Setting Up OAuth Access
