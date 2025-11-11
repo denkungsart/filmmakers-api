@@ -4,6 +4,7 @@ sidebar_label: 'Changelog'
 
 # Changelog
 
+- (2025-11-11) **ShowreelMedia/show**: Add new field `link_visible`
 - (2025-07-15) **ActorProfiles#show/CrewProfiles#show/TalentAgencies#show**: Add new field `about_me_html`
 - (2025-06-04) **ActorProfiles#index/CrewProfiles#index**: Add new parameter `direction`
 - (2025-06-03) **ActorProfiles#show**: Add new field `talent_agency_connections[].regions`
