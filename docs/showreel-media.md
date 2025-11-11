@@ -80,6 +80,7 @@ Replace `{id}` with the ID of the showreel media you want to retrieve.
     "languages/deutsch"
   ],
   "vita_entry_id": 300,
+  "link_visible": true,
   "skill": "languages/deutsch",
   "picture": "https://imgproxy.filmmakers.eu/8f7c74be-c696-11ee-85a8-4781e0bae8b1.jpg",
   "asset": null,
@@ -123,3 +124,4 @@ vita_entry_id | integer | ID of vita entry (credit) if any
 picture | string | Image URL to the thumbnail
 asset | string | Only filled in for type `ShowreelAudio`, may contain codecs `AAC` or `MP3`
 proxies | array | For the type `ShowreelVideo`, provides links to transcoded proxies in MP4 format (H.264). These proxies may include the following quality options:<br />- **sd**: 480p<br />- **hd**: 720p<br />- **full_hd**: 1080p<br /><br />Note that depending on the quality of the source file, `full_hd` and/or `hd` might not be available. Additionally, there might be two legacy proxies:<br />- **web_quality**: Roughly equivalent to 720p<br />- **portrait**: Media in portrait mode
+link_visible | boolean | Indicates if the user allows `vita_entry_id` and `skills` to be visible
