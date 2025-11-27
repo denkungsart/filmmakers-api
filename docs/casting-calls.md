@@ -207,10 +207,10 @@ id | integer | Unique ID of the casting call
 name | string | Name of the casting call
 description | string | Description of the casting call
 deadline | datetime | Application deadline
-visibility | string | Visibility of the casting call (e.g., `public`)
+visibility | string | Visibility of the casting call: `public` or `private`
 deadline_visible | boolean | Whether the deadline is visible
 production_format | string or null | Format of the production
-casting_type | string | Type of casting (e.g., `ecasting`)
+casting_type | string | Type of casting: `breakdown`, `ecasting` (Self Tape Request), `studio_casting` (scheduled audition at a site)
 production_id | integer | ID of the related production
 working_permits | array | Required working permits
 regions | array | Regions relevant to the casting call
