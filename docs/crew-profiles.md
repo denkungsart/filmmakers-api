@@ -259,6 +259,24 @@ Replace `{id}` with the ID of the crew profile you want to retrieve.
     "theatre": [],
     "award": []
   },
+  "locations": [
+    {
+      "name": "Berlin",
+      "latitude": 52.52000659999999,
+      "longitude": 13.404954,
+      "place_id": "ChIJAVkDPzdOqEcRcDteW0YgIQQ",
+      "type": "place",
+      "country": "DE"
+    },
+    {
+      "name": "Cologne",
+      "latitude": 50.937531,
+      "longitude": 6.9602786,
+      "place_id": "ChIJ5S-raZElv0cR8HcqSvxgJwQ",
+      "type": "accommodation",
+      "country": "DE"
+    }
+  ],
   "homepage_url": "https://www.example.com",
   "agency_profile_url": "https://www.my-agency/my-profile",
   "imdb_link": "https://www.imdb.com/name/nm1234",
@@ -307,3 +325,4 @@ The JSON structure will include relevant crew-related fields similar to those sh
 - **showreels**, **showreel_ids**, **showreel_medium_ids**: Showreels connected to the profile
 - **vita**: Structured data about film/theatre/TV credits, awards, etc.
 - **country**, **state**: Country and state codes (or translated values if `enum=translate` is used)
+- **locations**: Array of places of residence (type: `place`) and housing options (type: `accommodation`). Places of residence are sorted on top.
