@@ -41,7 +41,7 @@ const sidebars = {
         {
           type: 'doc',
           id: 'webhooks',
-          label: 'Webhooks',
+          label: 'Webhooks (Beta)',
         },
         {
           type: 'doc',
@@ -116,7 +116,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'Messages',
+          label: 'Messages (Beta)',
           link: { type: 'doc', id: 'messages' },
           items: [
             { type: 'link', label: 'Get all messages', href: '/messages#get-all-messages' },
@@ -125,7 +125,7 @@ const sidebars = {
         },
         {
           type: 'category',
-          label: 'Casting Calls',
+          label: 'Casting Calls (Beta)',
           link: { type: 'doc', id: 'casting-calls' },
           items: [
             { type: 'link', label: 'Get all casting calls', href: '/casting-calls#get-all-casting-calls' },
