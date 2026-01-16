@@ -10,9 +10,25 @@ const sidebars = {
   // But we want to create a custom sidebar
   apiSidebar: [
     {
-      type: 'doc',
-      id: 'introduction',
+      type: 'category',
       label: 'Getting Started',
+      items: [
+        {
+          type: 'doc',
+          id: 'introduction',
+          label: 'Introduction',
+        },
+        {
+          type: 'doc',
+          id: 'quickstart',
+          label: 'Quickstart',
+        },
+        {
+          type: 'doc',
+          id: 'authentication',
+          label: 'Authentication',
+        },
+      ],
     },
     {
       type: 'doc',
@@ -25,13 +41,8 @@ const sidebars = {
       items: [
         {
           type: 'doc',
-          id: 'authentication',
-          label: 'Authentication',
-        },
-        {
-          type: 'doc',
           id: 'cors',
-          label: 'Cross Origin Resource Sharing',
+          label: 'CORS',
         },
         {
           type: 'doc',
@@ -45,13 +56,13 @@ const sidebars = {
         },
         {
           type: 'doc',
-          id: 'webhooks',
-          label: 'Webhooks (Beta)',
+          id: 'errors',
+          label: 'Error Codes',
         },
         {
           type: 'doc',
-          id: 'errors',
-          label: 'Error Codes',
+          id: 'webhooks',
+          label: 'Webhooks (Beta)',
         },
       ],
     },
