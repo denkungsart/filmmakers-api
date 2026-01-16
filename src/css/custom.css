@@ -43,6 +43,29 @@
   background-color: var(--ifm-navbar-link-hover-color);
 }
 
+/* Sidebar Beta Badge */
+.sidebar-item-beta > .menu__link::after,
+.sidebar-item-beta > .menu__list-item-collapsible > .menu__link::after {
+  content: 'Beta';
+  margin-left: 8px;
+  padding: 2px 6px;
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  background-color: #e8e8e8;
+  color: #666;
+  border-radius: 4px;
+  display: inline-block;
+  transform: none !important;
+}
+
+[data-theme='dark'] .sidebar-item-beta > .menu__link::after,
+[data-theme='dark'] .sidebar-item-beta > .menu__list-item-collapsible > .menu__link::after {
+  background-color: #3a3a3a;
+  color: #aaa;
+}
+
 /* Algolia Search Customizations */
 .DocSearch {
   --docsearch-primary-color: var(--ifm-color-primary);
