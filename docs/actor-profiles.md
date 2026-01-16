@@ -59,6 +59,25 @@ import TabItem from '@theme/TabItem';
     ?>
     ```
   </TabItem>
+  <TabItem value="ruby" label="Ruby (Net::HTTP)">
+    ```ruby
+    require 'net/http'
+    require 'json'
+
+    api_key = 'API_KEY' # Replace with your actual API key
+    uri = URI('https://www.filmmakers.eu/api/v1/actor_profiles')
+
+    request = Net::HTTP::Get.new(uri)
+    request['Authorization'] = "Token token=#{api_key}"
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    data = JSON.parse(response.body)
+    puts data
+    ```
+  </TabItem>
 </Tabs>
 
 ##### Example Response
@@ -175,6 +194,26 @@ representative | JSON Object | "id" and "name" of the agent representing the act
 
     curl_close($ch);
     ?>
+    ```
+  </TabItem>
+  <TabItem value="ruby" label="Ruby (Net::HTTP)">
+    ```ruby
+    require 'net/http'
+    require 'json'
+
+    actor_profile_id = '{id}' # Replace with the actual actor profile ID
+    api_key = 'API_KEY' # Replace with your actual API key
+    uri = URI("https://www.filmmakers.eu/api/v1/actor_profiles/#{actor_profile_id}")
+
+    request = Net::HTTP::Get.new(uri)
+    request['Authorization'] = "Token token=#{api_key}"
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    data = JSON.parse(response.body)
+    puts data
     ```
   </TabItem>
 </Tabs>

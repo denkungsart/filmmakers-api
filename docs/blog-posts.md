@@ -59,6 +59,25 @@ import TabItem from '@theme/TabItem';
     ?>
     ```
   </TabItem>
+  <TabItem value="ruby" label="Ruby (Net::HTTP)">
+    ```ruby
+    require 'net/http'
+    require 'json'
+
+    api_key = 'API_KEY' # Replace with your actual API key
+    uri = URI('https://www.filmmakers.eu/api/v1/blog_posts')
+
+    request = Net::HTTP::Get.new(uri)
+    request['Authorization'] = "Token token=#{api_key}"
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    data = JSON.parse(response.body)
+    puts data
+    ```
+  </TabItem>
 </Tabs>
 
 ##### Example Response
@@ -159,6 +178,26 @@ mentions | array of objects | Includes type and ID of the mentioned object
 
     curl_close($ch);
     ?>
+    ```
+  </TabItem>
+  <TabItem value="ruby" label="Ruby (Net::HTTP)">
+    ```ruby
+    require 'net/http'
+    require 'json'
+
+    blog_post_id = '{id}' # Replace with the actual blog post ID
+    api_key = 'API_KEY' # Replace with your actual API key
+    uri = URI("https://www.filmmakers.eu/api/v1/blog_posts/#{blog_post_id}")
+
+    request = Net::HTTP::Get.new(uri)
+    request['Authorization'] = "Token token=#{api_key}"
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    data = JSON.parse(response.body)
+    puts data
     ```
   </TabItem>
 </Tabs>

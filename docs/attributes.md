@@ -59,6 +59,25 @@ import TabItem from '@theme/TabItem';
     ?>
     ```
   </TabItem>
+  <TabItem value="ruby" label="Ruby (Net::HTTP)">
+    ```ruby
+    require 'net/http'
+    require 'json'
+
+    api_key = 'API_KEY' # Replace with your actual API key
+    uri = URI('https://www.filmmakers.eu/api/v1/attributes/')
+
+    request = Net::HTTP::Get.new(uri)
+    request['Authorization'] = "Token token=#{api_key}"
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    data = JSON.parse(response.body)
+    puts data
+    ```
+  </TabItem>
 </Tabs>
 
 ##### Example Response
@@ -132,6 +151,27 @@ For countries, ISO 3166-1 alpha-2 codes are used ([see here](https://en.wikipedi
 
     curl_close($ch);
     ?>
+    ```
+  </TabItem>
+  <TabItem value="ruby" label="Ruby (Net::HTTP)">
+    ```ruby
+    require 'net/http'
+    require 'json'
+
+    # Replace 'xxx' with the specific attribute key, e.g., 'nationalities'
+    attribute_key = 'xxx'
+    api_key = 'API_KEY' # Replace with your actual API key
+    uri = URI("https://www.filmmakers.eu/api/v1/attributes/#{attribute_key}")
+
+    request = Net::HTTP::Get.new(uri)
+    request['Authorization'] = "Token token=#{api_key}"
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    data = JSON.parse(response.body)
+    puts data
     ```
   </TabItem>
 </Tabs>

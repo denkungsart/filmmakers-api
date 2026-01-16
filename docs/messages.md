@@ -65,6 +65,25 @@ The Messages endpoint allows you to retrieve messages such as casting invitation
     ?>
     ```
   </TabItem>
+  <TabItem value="ruby" label="Ruby (Net::HTTP)">
+    ```ruby
+    require 'net/http'
+    require 'json'
+
+    api_key = 'API_KEY' # Replace with your actual API key
+    uri = URI('https://www.filmmakers.eu/api/v1/messages')
+
+    request = Net::HTTP::Get.new(uri)
+    request['Authorization'] = "Token token=#{api_key}"
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    data = JSON.parse(response.body)
+    puts data
+    ```
+  </TabItem>
 </Tabs>
 
 #### Example Response
@@ -153,6 +172,26 @@ subject | string | Subject of the message
 
     curl_close($ch);
     ?>
+    ```
+  </TabItem>
+  <TabItem value="ruby" label="Ruby (Net::HTTP)">
+    ```ruby
+    require 'net/http'
+    require 'json'
+
+    message_id = '{id}' # Replace {id} with the actual message ID
+    api_key = 'API_KEY' # Replace with your actual API key
+    uri = URI("https://www.filmmakers.eu/api/v1/messages/#{message_id}")
+
+    request = Net::HTTP::Get.new(uri)
+    request['Authorization'] = "Token token=#{api_key}"
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    data = JSON.parse(response.body)
+    puts data
     ```
   </TabItem>
 </Tabs>

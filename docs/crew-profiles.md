@@ -61,6 +61,25 @@ Here is an example request:
     ?>
     ```
   </TabItem>
+  <TabItem value="ruby" label="Ruby (Net::HTTP)">
+    ```ruby
+    require 'net/http'
+    require 'json'
+
+    api_key = 'API_KEY' # Replace with your actual API key
+    uri = URI('https://www.filmmakers.eu/api/v1/crew_profiles')
+
+    request = Net::HTTP::Get.new(uri)
+    request['Authorization'] = "Token token=#{api_key}"
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    data = JSON.parse(response.body)
+    puts data
+    ```
+  </TabItem>
 </Tabs>
 
 ##### Example Response
@@ -179,6 +198,26 @@ Example request:
 
     curl_close($ch);
     ?>
+    ```
+  </TabItem>
+  <TabItem value="ruby" label="Ruby (Net::HTTP)">
+    ```ruby
+    require 'net/http'
+    require 'json'
+
+    crew_profile_id = '{id}' # Replace with the actual crew profile ID
+    api_key = 'API_KEY' # Replace with your actual API key
+    uri = URI("https://www.filmmakers.eu/api/v1/crew_profiles/#{crew_profile_id}")
+
+    request = Net::HTTP::Get.new(uri)
+    request['Authorization'] = "Token token=#{api_key}"
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    data = JSON.parse(response.body)
+    puts data
     ```
   </TabItem>
 </Tabs>

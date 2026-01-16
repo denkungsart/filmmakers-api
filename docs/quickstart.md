@@ -58,6 +58,25 @@ Once you have your API key, you can make your first API call. Let's retrieve a l
     print_r($data);
     ```
   </TabItem>
+  <TabItem value="ruby" label="Ruby (Net::HTTP)">
+    ```ruby
+    require 'net/http'
+    require 'json'
+
+    api_key = 'YOUR_API_KEY'
+    uri = URI('https://www.filmmakers.eu/api/v1/actor_profiles?per_page=5')
+
+    request = Net::HTTP::Get.new(uri)
+    request['Authorization'] = "Token token=#{api_key}"
+
+    response = Net::HTTP.start(uri.hostname, uri.port, use_ssl: true) do |http|
+      http.request(request)
+    end
+
+    data = JSON.parse(response.body)
+    puts data
+    ```
+  </TabItem>
 </Tabs>
 
 :::note
