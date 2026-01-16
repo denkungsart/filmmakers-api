@@ -15,6 +15,11 @@ const sidebars = {
       label: 'Getting Started',
     },
     {
+      type: 'doc',
+      id: 'api-reference',
+      label: 'API Reference',
+    },
+    {
       type: 'category',
       label: 'Core Concepts',
       items: [
