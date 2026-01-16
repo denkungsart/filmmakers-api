@@ -71,86 +71,15 @@ const sidebars = {
       type: 'category',
       label: 'Resources',
       items: [
-        {
-          type: 'category',
-          label: 'Attributes',
-          link: { type: 'doc', id: 'attributes' },
-          items: [
-            { type: 'link', label: 'Get all attributes', href: '/attributes#get-all-attributes' },
-            { type: 'link', label: 'Get key/value pairs for attributes', href: '/attributes#get-keyvalue-pairs-for-attributes' },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Actor Profiles',
-          link: { type: 'doc', id: 'actor-profiles' },
-          items: [
-            { type: 'link', label: 'Get all actor profiles', href: '/actor-profiles#get-all-actor-profiles' },
-            { type: 'link', label: 'Get a specific actor profile', href: '/actor-profiles#get-a-specific-actor-profile' },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Crew Profiles',
-          link: { type: 'doc', id: 'crew-profiles' },
-          items: [
-            { type: 'link', label: 'Get all crew profiles', href: '/crew-profiles#get-all-crew-profiles' },
-            { type: 'link', label: 'Get a specific crew profile', href: '/crew-profiles#get-a-specific-crew-profile' },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Talent Agencies',
-          link: { type: 'doc', id: 'talent-agencies' },
-          items: [
-            { type: 'link', label: 'Get talent agency data', href: '/talent-agencies#get-talent-agency-data' },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Blog Posts',
-          link: { type: 'doc', id: 'blog-posts' },
-          items: [
-            { type: 'link', label: 'Get all blog posts', href: '/blog-posts#get-all-blog-posts' },
-            { type: 'link', label: 'Get a specific blog post', href: '/blog-posts#get-a-specific-blog-post' },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Showreels',
-          link: { type: 'doc', id: 'showreels' },
-          items: [
-            { type: 'link', label: 'Get a specific showreel', href: '/showreels#get-a-specific-showreel' },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Showreel Media',
-          link: { type: 'doc', id: 'showreel-media' },
-          items: [
-            { type: 'link', label: 'Get specific showreel media', href: '/showreel-media#get-specific-showreel-media' },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Messages',
-          className: 'sidebar-item-beta',
-          link: { type: 'doc', id: 'messages' },
-          items: [
-            { type: 'link', label: 'Get all messages', href: '/messages#get-all-messages' },
-            { type: 'link', label: 'Get a specific message', href: '/messages#get-a-specific-message' },
-          ],
-        },
-        {
-          type: 'category',
-          label: 'Casting Calls',
-          className: 'sidebar-item-beta',
-          link: { type: 'doc', id: 'casting-calls' },
-          items: [
-            { type: 'link', label: 'Get all casting calls', href: '/casting-calls#get-all-casting-calls' },
-            { type: 'link', label: 'Get a specific casting call', href: '/casting-calls#get-a-specific-casting-call' },
-          ],
-        },
+        { type: 'doc', id: 'attributes', label: 'Attributes' },
+        { type: 'doc', id: 'actor-profiles', label: 'Actor Profiles' },
+        { type: 'doc', id: 'crew-profiles', label: 'Crew Profiles' },
+        { type: 'doc', id: 'talent-agencies', label: 'Talent Agencies' },
+        { type: 'doc', id: 'blog-posts', label: 'Blog Posts' },
+        { type: 'doc', id: 'showreels', label: 'Showreels' },
+        { type: 'doc', id: 'showreel-media', label: 'Showreel Media' },
+        { type: 'doc', id: 'messages', label: 'Messages', className: 'sidebar-item-beta' },
+        { type: 'doc', id: 'casting-calls', label: 'Casting Calls', className: 'sidebar-item-beta' },
       ],
     },
     {
