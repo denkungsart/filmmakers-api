@@ -207,6 +207,7 @@ Replace `{id}` with the ID of the message you want to retrieve.
   "body": "<html><body>Message content here...</body></html>",
   "message_id": "abc123xyz@cd.filmmakers.eu",
   "message_type": "project_notification",
+  "filmmakers_url": "https://www.filmmakers.eu/messages/1320154",
   "created_at": "2025-03-24T11:59:30.696+01:00",
   "updated_at": "2025-03-24T11:59:30.696+01:00",
   "in_reply_to_id": null,
@@ -230,6 +231,10 @@ Replace `{id}` with the ID of the message you want to retrieve.
 
 This endpoint retrieves a specific message by its ID, including all details and metadata.
 
+::::note
+`filmmakers_url` points to the Filmmakers web page for the message. It does not grant access by itself: the user must be authenticated and authorized on Filmmakers before the page can be opened. Use it as an authenticated redirect target, for example as the `redirect_to` payload in an SSO login flow.
+::::
+
 ### HTTP Request
 
 `GET https://www.filmmakers.eu/api/v1/messages/{id}`
@@ -245,6 +250,7 @@ subject | string | Subject of the message
 body | string | Message body (may contain HTML)
 message_id | string | Unique message identifier
 message_type | string | Type of message (e.g., `casting_invitation`)
+filmmakers_url | string | Authenticated Filmmakers web URL for the message. The URL does not grant access by itself; use it for authenticated and authorized users, for example as an SSO `redirect_to` target.
 created_at | datetime | Creation timestamp
 updated_at | datetime | Last update timestamp
 in_reply_to_id | integer or null | ID of the message this is in reply to, if any
