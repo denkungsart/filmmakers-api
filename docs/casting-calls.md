@@ -208,6 +208,7 @@ Replace `{id}` with the ID of the casting call you want to retrieve.
   "working_permits": [],
   "regions": ["dach"],
   "contract_type": null,
+  "filmmakers_url": "https://www.filmmakers.eu/casting_calls/549",
   "created_at": "2025-02-18T13:05:24.865+01:00",
   "updated_at": "2025-02-18T13:05:24.865+01:00",
   "roles": [
@@ -232,6 +233,10 @@ Replace `{id}` with the ID of the casting call you want to retrieve.
 
 This endpoint retrieves a specific casting call by its ID, including all production details and available roles.
 
+::::note
+`filmmakers_url` points to the Filmmakers web page for the casting call. It does not grant access by itself: the user must be authenticated and authorized on Filmmakers before the page can be opened. Use it as an authenticated redirect target, for example as the `redirect_to` payload in an SSO login flow.
+::::
+
 ### HTTP Request
 
 `GET https://www.filmmakers.eu/api/v1/casting_calls/{id}`
@@ -254,6 +259,7 @@ production_id | integer | ID of the related production
 working_permits | array | Required working permits
 regions | array | Regions relevant to the casting call
 contract_type | string or null | Contract type
+filmmakers_url | string | Authenticated Filmmakers web URL for the casting call. The URL does not grant access by itself; use it for authenticated and authorized users, for example as an SSO `redirect_to` target.
 created_at | datetime | Creation timestamp
 updated_at | datetime | Last update timestamp
 roles | array | List of roles available in the casting call
