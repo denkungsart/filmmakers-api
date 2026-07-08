@@ -269,6 +269,7 @@ Replace `{id}` with the ID of the crew profile you want to retrieve.
         "w": 357,
         "h": 357
       },
+      "position": 1,
       "main_picture": true,
       "year": 2020,
       "recorded_at": "2020-12-23T18:16:52+00:00"
@@ -365,3 +366,9 @@ The JSON structure will include relevant crew-related fields similar to those sh
 - **vita**: Structured data about film/theatre/TV credits, awards, etc.
 - **country**, **state**: Country and state codes (or translated values if `enum=translate` is used)
 - **locations**: Array of places of residence (type: `place`) and housing options (type: `accommodation`). Places of residence are sorted on top.
+
+### Picture Order
+
+| Field | Type | Description |
+|-------|------|-------------|
+| position | number | The normal picture order. It matches the order in which `pictures` is returned. |

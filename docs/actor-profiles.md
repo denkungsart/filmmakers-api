@@ -443,6 +443,9 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
         "w": 500,
         "h": 500
       },
+      "position": 1,
+      "landscape_position": 1,
+      "portrait_position": 2,
       "main_picture": true,
       "year": 2021,
       "recorded_at": "2020-06-22T11:51:51.363+02:00"
@@ -463,6 +466,9 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
         365,
         360
       ],
+      "position": 2,
+      "landscape_position": 2,
+      "portrait_position": 1,
       "main_picture": false,
       "year": 2021,
       "recorded_at": null
@@ -615,6 +621,20 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
 ```
 
 This endpoint retrieves a specific actor profile.
+
+### Picture Order Fields
+
+By default, use the order in which `pictures` is returned, or sort by `position`.
+Both represent the normal picture order.
+
+Each object in `pictures` also includes optional order fields for alternate
+display contexts:
+
+Field | Type | Description
+--------- | ------- | -----------
+position | number | The normal picture order.
+landscape_position | number | Sort by this field for landscape display.
+portrait_position | number | Sort by this field for portrait display, for example on mobile.
 
 ### HTTP Request
 

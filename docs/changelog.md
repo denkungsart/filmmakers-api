@@ -4,6 +4,7 @@ sidebar_label: 'Changelog'
 
 # Changelog
 
+- (2026-07-08) **ActorProfiles#show**: Added `position`, `landscape_position`, and `portrait_position` to picture objects.
 - (2026-05-21) **Messages#show**: Added `filmmakers_url`, an authenticated Filmmakers web URL intended for authorized redirects such as SSO `redirect_to` payloads.
 - (2026-05-21) **CastingCalls#show**: Added `filmmakers_url`, an authenticated Filmmakers web URL intended for authorized redirects such as SSO `redirect_to` payloads.
 - (2025-12-18) **CrewProfiles#show**: Add new field `locations`
