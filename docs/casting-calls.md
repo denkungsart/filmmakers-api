@@ -207,7 +207,6 @@ Replace `{id}` with the ID of the casting call you want to retrieve.
   "production_id": 123,
   "working_permits": [],
   "regions": ["dach"],
-  "contract_type": null,
   "filmmakers_url": "https://www.filmmakers.eu/casting_calls/549",
   "created_at": "2025-02-18T13:05:24.865+01:00",
   "updated_at": "2025-02-18T13:05:24.865+01:00",
@@ -216,7 +215,8 @@ Replace `{id}` with the ID of the casting call you want to retrieve.
       "id": 750,
       "name": "Jordan",
       "description": "A determined teenager facing new challenges.",
-      "contract_type": null,
+      "contract_type": 100004,
+      "contract_type_info": "<p>Negotiated fee and usage terms.</p>",
       "deadline": "2025-02-25T12:04:00.000+01:00",
       "gender": ["female"],
       "acting_age_from": 15,
@@ -258,7 +258,6 @@ casting_type | string | Type of casting: `breakdown`, `ecasting` (Self Tape Requ
 production_id | integer | ID of the related production
 working_permits | array | Required working permits
 regions | array | Regions relevant to the casting call
-contract_type | string or null | Contract type
 filmmakers_url | string | Authenticated Filmmakers web URL for the casting call. The URL does not grant access by itself; use it for authenticated and authorized users, for example as an SSO `redirect_to` target.
 created_at | datetime | Creation timestamp
 updated_at | datetime | Last update timestamp
@@ -271,7 +270,8 @@ Field | Type | Description
 id | integer | Unique ID of the role
 name | string | Name of the role
 description | string | Description of the role
-contract_type | string or null | Contract type for the role
+contract_type | integer or null | Contract type identifier that applies to the role. Labels are available from the [`contract_types` catalogue](/attributes#contract-types-catalogue).
+contract_type_info | string or null | Additional contract information for the role; may contain HTML
 deadline | datetime | Application deadline for the role
 gender | array | Accepted genders for the role
 acting_age_from | integer | Minimum acting age

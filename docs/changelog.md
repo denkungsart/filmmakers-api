@@ -4,6 +4,7 @@ sidebar_label: 'Changelog'
 
 # Changelog
 
+- (2026-07-23) **CastingCalls#show/Attributes#show**: Added integer `contract_type` identifiers and `contract_type_info` to casting-call roles, plus the localized `contract_types` catalogue.
 - (2026-07-08) **ActorProfiles#show**: Added `position`, `landscape_position`, and `portrait_position` to picture objects.
 - (2026-05-21) **Messages#show**: Added `filmmakers_url`, an authenticated Filmmakers web URL intended for authorized redirects such as SSO `redirect_to` payloads.
 - (2026-05-21) **CastingCalls#show**: Added `filmmakers_url`, an authenticated Filmmakers web URL intended for authorized redirects such as SSO `redirect_to` payloads.

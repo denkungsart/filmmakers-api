@@ -86,6 +86,7 @@ import TabItem from '@theme/TabItem';
 [
   "accent_skill",
   "accents",
+  "contract_types",
   "dances",
   "dialect_skill",
   "dialects",
@@ -195,3 +196,25 @@ For countries, ISO 3166-1 alpha-2 codes are used ([see here](https://en.wikipedi
 ```
 
 This endpoint retrieves all possible key/value pairs for one of the attributes. Pass one of the supported locales (see above) as a parameter to retrieve localized values.
+
+### Contract Types Catalogue
+
+Contract types use stable integer identifiers. Retrieve their localized display
+labels from the `contract_types` attribute:
+
+`GET https://www.filmmakers.eu/api/v1/attributes/contract_types?locale=en`
+
+##### Example Response
+
+```json
+{
+  "100001": "DE - Theatrical",
+  "100002": "DE - ARD",
+  "100004": "DE - ZDF",
+  "5228": "SAG - AFTRA"
+}
+```
+
+The optional `locale` parameter controls the labels and defaults to English.
+JSON object keys are always strings; their numeric values correspond to the
+integer `contract_type` identifiers returned by the Casting Calls API.
