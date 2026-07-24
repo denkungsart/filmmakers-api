@@ -207,6 +207,10 @@ Replace `{id}` with the ID of the casting call you want to retrieve.
   "production_id": 123,
   "working_permits": [],
   "regions": ["dach"],
+  "casting_director": {
+    "id": 123,
+    "name": "Caster ABC"
+  },
   "production_locations": [
     {
       "name": "Berlin",
@@ -266,11 +270,19 @@ casting_type | string | Type of casting: `breakdown`, `ecasting` (Self Tape Requ
 production_id | integer | ID of the related production
 working_permits | array | Required working permits
 regions | array | Regions relevant to the casting call
+casting_director | object | Casting director associated with the casting call
 production_locations | array | Locations where the production takes place
 filmmakers_url | string | Authenticated Filmmakers web URL for the casting call. The URL does not grant access by itself; use it for authenticated and authorized users, for example as an SSO `redirect_to` target.
 created_at | datetime | Creation timestamp
 updated_at | datetime | Last update timestamp
 roles | array | List of roles available in the casting call
+
+#### Casting Director Object Fields
+
+Field | Type | Description
+----- | ---- | -----------
+id | integer | Unique Filmmakers ID of the casting director entity
+name | string | Name of the casting director
 
 #### Production Location Object Fields
 
