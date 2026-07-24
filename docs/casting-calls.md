@@ -207,6 +207,14 @@ Replace `{id}` with the ID of the casting call you want to retrieve.
   "production_id": 123,
   "working_permits": [],
   "regions": ["dach"],
+  "production_locations": [
+    {
+      "name": "Berlin",
+      "country": "DE",
+      "longitude": 13.404954,
+      "latitude": 52.5200066
+    }
+  ],
   "filmmakers_url": "https://www.filmmakers.eu/casting_calls/549",
   "created_at": "2025-02-18T13:05:24.865+01:00",
   "updated_at": "2025-02-18T13:05:24.865+01:00",
@@ -258,10 +266,20 @@ casting_type | string | Type of casting: `breakdown`, `ecasting` (Self Tape Requ
 production_id | integer | ID of the related production
 working_permits | array | Required working permits
 regions | array | Regions relevant to the casting call
+production_locations | array | Locations where the production takes place
 filmmakers_url | string | Authenticated Filmmakers web URL for the casting call. The URL does not grant access by itself; use it for authenticated and authorized users, for example as an SSO `redirect_to` target.
 created_at | datetime | Creation timestamp
 updated_at | datetime | Last update timestamp
 roles | array | List of roles available in the casting call
+
+#### Production Location Object Fields
+
+Field | Type | Description
+----- | ---- | -----------
+name | string | Name of the location
+country | string | ISO 3166-1 alpha-2 country code
+longitude | number | Longitude of the location
+latitude | number | Latitude of the location
 
 #### Role Object Fields
 
