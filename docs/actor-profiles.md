@@ -443,7 +443,7 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
         "w": 500,
         "h": 500
       },
-      "position": 1,
+      "position": 2,
       "landscape_position": 1,
       "portrait_position": 2,
       "main_picture": true,
@@ -466,7 +466,7 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
         365,
         360
       ],
-      "position": 2,
+      "position": 1,
       "landscape_position": 2,
       "portrait_position": 1,
       "main_picture": false,
@@ -624,17 +624,25 @@ This endpoint retrieves a specific actor profile.
 
 ### Picture Order Fields
 
-By default, use the order in which `pictures` is returned, or sort by `position`.
-Both represent the normal picture order.
+The `pictures` array is returned in desktop/landscape order. Use the array as
+returned, or sort by `landscape_position`, for desktop display. Sort by
+`portrait_position` for mobile/portrait display.
 
-Each object in `pictures` also includes optional order fields for alternate
-display contexts:
+:::caution
+
+Do not sort by `position` for viewport-specific gallery display. It represents
+the base gallery order before rotation and may not begin with the configured
+start image. Use it only when you explicitly need the base gallery order.
+
+:::
+
+Each object in `pictures` includes these order fields:
 
 Field | Type | Description
 --------- | ------- | -----------
-position | number | The normal picture order.
-landscape_position | number | Sort by this field for landscape display.
-portrait_position | number | Sort by this field for portrait display, for example on mobile.
+position | number | The base gallery order before viewport-specific rotation.
+landscape_position | number | The desktop/landscape order; this matches the order of the returned `pictures` array.
+portrait_position | number | The mobile/portrait order.
 
 ### HTTP Request
 
