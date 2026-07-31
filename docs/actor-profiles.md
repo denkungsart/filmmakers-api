@@ -447,6 +447,7 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
       "landscape_position": 1,
       "portrait_position": 2,
       "main_picture": true,
+      "main_picture_portrait": false,
       "year": 2021,
       "recorded_at": "2020-06-22T11:51:51.363+02:00"
     },
@@ -470,6 +471,7 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
       "landscape_position": 2,
       "portrait_position": 1,
       "main_picture": false,
+      "main_picture_portrait": true,
       "year": 2021,
       "recorded_at": null
     }
@@ -622,7 +624,25 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
 
 This endpoint retrieves a specific actor profile.
 
-### Picture Order Fields
+### Pictures
+
+Each object in `pictures` contains the source URL in `url` and resized URLs in
+`versions`. To select the main picture for a display context:
+
+- For desktop/landscape display, use the picture with `landscape_position: 1`.
+  This picture also has `main_picture: true`.
+- For mobile/portrait display, use the picture with `portrait_position: 1`.
+  This picture also has `main_picture_portrait: true`.
+
+The desktop and portrait main pictures can be different. There is no separate
+top-level portrait picture URL; use `url` or the required `versions` URL from
+the picture selected by `portrait_position: 1`.
+
+On `ActorProfiles#index`, `main_picture_url_tile` (or `picture_url` when a
+`picture_version` is requested) always refers to the desktop/landscape main
+picture. Use `ActorProfiles#show` when the portrait main picture is required.
+
+#### Picture Order Fields
 
 The `pictures` array is returned in desktop/landscape order. Use the array as
 returned, or sort by `landscape_position`, for desktop display. Sort by
