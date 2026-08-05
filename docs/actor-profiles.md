@@ -109,8 +109,8 @@ Parameter | Default | Description
 --------- | ------- | -----------
 page | 1 | Page to display – see "Pagination" section
 per_page | 250 | Items per page – see "Pagination" section
-include_picture | false | If set to true, the result will include the profile picture thumbnail in a field named `main_picture_url_tile`.
-picture_version | null | Can be set to `original`, `large`, `thumb`, or `thumb_large` to change the included picture version. The picture will be included in a field named `picture_url`. _(Only applies if `include_picture` is true)_
+include_picture | false | If set to true, the result will include the desktop/landscape main picture thumbnail in `main_picture_url_tile`.
+picture_version | null | Can be set to `original`, `large`, `thumb`, `thumb_large`, or `thumb_portrait` to change the included desktop/landscape main picture version. The picture will be included in `picture_url`. _(Only applies if `include_picture` is true)_
 fields | name,gender | Can be used to modify the fields included in the response. Possible values are: `age`, `gender`, `gender_new`, `first_name`, `last_name`, `name`, `main_profession`, `professions`, `languages`, `representative`, `updated_at`.
 order | id | Changes the order of returned results. Possible values are: `id`, `name`, `last_name`
 direction | asc | Specifies the order direction of returned results. Possible values are: `asc` (ascending), `desc` (descending)
@@ -138,9 +138,9 @@ main_profession | string | Main profession of the actor profile. Possible values
 professions | array of strings | List of professions, e.g., `["schauspieler", "synchronsprecher"]`. _This includes the main_profession "schauspieler" (actor) or "nachwuchsdarsteller" (young_actor) when given._
 languages | JSON Object | Format `{ "language": "skill level" }`
 updated_at | string | Format ISO 8601
-main_picture_url_tile | string | Profile picture URL (thumbnail version)
-picture_url | string | Profile picture URL of specified version
-picture_copyright | string | Copyright information for the profile picture
+main_picture_url_tile | string | Thumbnail URL of the desktop/landscape main picture
+picture_url | string | URL of the requested desktop/landscape main picture version
+picture_copyright | string | Copyright information for the desktop/landscape main picture
 representative | JSON Object | "id" and "name" of the agent representing the actor
 
 ## Get a Specific Actor Profile
@@ -626,43 +626,20 @@ This endpoint retrieves a specific actor profile.
 
 ### Pictures
 
-Each object in `pictures` contains the source URL in `url` and resized URLs in
-`versions`. To select the main picture for a display context:
-
-- For desktop/landscape display, use the picture with `landscape_position: 1`.
-  This picture also has `main_picture: true`.
-- For mobile/portrait display, use the picture with `portrait_position: 1`.
-  This picture also has `main_picture_portrait: true`.
-
-The desktop and portrait main pictures can be different. There is no separate
-top-level portrait picture URL; use `url` or the required `versions` URL from
-the picture selected by `portrait_position: 1`.
-
-On `ActorProfiles#index`, `main_picture_url_tile` (or `picture_url` when a
-`picture_version` is requested) always refers to the desktop/landscape main
-picture. Use `ActorProfiles#show` when the portrait main picture is required.
-
-#### Picture Order Fields
-
-The `pictures` array is returned in desktop/landscape order. Use the array as
-returned, or sort by `landscape_position`, for desktop display. Sort by
-`portrait_position` for mobile/portrait display.
-
-:::caution
-
-Do not sort by `position` for viewport-specific gallery display. It represents
-the base gallery order before rotation and may not begin with the configured
-start image. Use it only when you explicitly need the base gallery order.
-
-:::
-
-Each object in `pictures` includes these order fields:
+The `pictures` array is returned in desktop/landscape order. Sort it by
+`portrait_position` for mobile/portrait display. The two display contexts can
+use different main pictures.
 
 Field | Type | Description
 --------- | ------- | -----------
-position | number | The base gallery order before viewport-specific rotation.
-landscape_position | number | The desktop/landscape order; this matches the order of the returned `pictures` array.
-portrait_position | number | The mobile/portrait order.
+position | number | The picture's position in the overall base gallery order, before the display-specific main picture is moved first.
+landscape_position | number | The picture's position in the overall desktop/landscape order. The returned `pictures` array uses this order.
+portrait_position | number | The picture's position in the overall mobile/portrait order.
+main_picture | boolean | `true` for the desktop/landscape main picture (`landscape_position: 1`).
+main_picture_portrait | boolean | `true` for the mobile/portrait main picture (`portrait_position: 1`).
+
+Use `url` or an entry from `versions` on the selected picture. There is no
+separate top-level URL for the portrait main picture.
 
 ### HTTP Request
 
