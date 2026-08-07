@@ -517,7 +517,11 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
     "primary_education": [
       {
         "name": "ABC School",
-        "year_from": 2012
+        "month_from": 9,
+        "year_from": 2012,
+        "month_to": 6,
+        "year_to": 2015,
+        "qualification": "diploma"
       }
     ],
     "award": [
@@ -533,8 +537,11 @@ Replace `{id}` with the ID of the actor profile you want to retrieve.
       {
         "info": null,
         "name": "123 School",
+        "month_from": 10,
         "year_from": 2013,
-        "year_to": 2014
+        "month_to": 3,
+        "year_to": 2014,
+        "qualification": "certification"
       }
     ],
     "film": [
@@ -655,8 +662,8 @@ ID | The ID of the actor profile to retrieve
 
 Parameter | Default | Description
 --------- | ------- | -----------
-enum | null | If set to `translate`, attributes are translated if possible (e.g., gender will be `male` or `männlich` instead of `m`). _Note that hash and array attributes (e.g., dances / sports) will be joined to a comma-separated string when translating attributes._
-locale | en | Translates attributes with closed lists; free text fields are only available in the entry language. Possible values are: `en`, `de`, `fr`, `it`, `es`, `pl`, `ro`, `ru`, `tr`. _This parameter only has an effect when `enum` is set to `translate`._
+enum | null | Controls the representation of attributes with closed lists. Omit it to receive stable keys, set it to `translate` for localized strings, or set it to `v2` for objects containing `key` and `translation`. _Note that hash and array attributes (e.g., dances / sports) will be joined to a comma-separated string when using `translate`._
+locale | en | Selects the language for localized fields and enum labels. Possible values are: `en`, `de`, `fr`, `it`, `es`, `pl`, `ro`, `uk`, `ru`, `tr`. It controls enum labels when `enum` is set to `translate` or `v2`; free text vita fields are only available in the entry language.
 
 ### Response Fields
 
@@ -691,6 +698,13 @@ profile_visibility | string | Visibility of the profile on Filmmakers (`public` 
 showreel_ids | Array | IDs of showreels (see `showreels` endpoint)
 showreel_medium_ids | Array | IDs of showreel media that are either connected to a showreel or credits/skills (see also `showreel_media` endpoint)
 vita | hash | A collection of credits, where each entry contains structured data related to a specific credit. The entries are sorted by the following criteria: `in_development` (entries with `true` are prioritized), `year_to`/`year_from` (in descending chronological order), `position` (manually sorted by the user), and `id`. The credits are grouped by type, such as `education`, `television`, `theatre`, etc.
+vita.primary_education | Array | The primary professional acting education. Acting-school entries include the date and qualification fields below. Autodidact entries contain `name` and `info` instead and omit those fields.
+vita.education | Array | Other professional training. Entries include the common vita fields plus the date and qualification fields below.
+vita.primary_education[].month_from, vita.education[].month_from | integer or null | Start month from `1` (January) through `12` (December). A null month with a year represents year-only precision.
+vita.primary_education[].year_from, vita.education[].year_from | integer or null | Start year.
+vita.primary_education[].month_to, vita.education[].month_to | integer or null | End month from `1` (January) through `12` (December). A null month with a year represents year-only precision.
+vita.primary_education[].year_to, vita.education[].year_to | integer or null | End year. It is required when saving an acting-school entry but may be null on other professional training or legacy records.
+vita.primary_education[].qualification, vita.education[].qualification | string, object, or null | Qualification. By default this is one of the stable keys from the [qualification catalogue](/attributes#qualification-catalogue). With `enum=translate` it is a localized string; with `enum=v2` it is an object containing `key` and `translation`.
 vita.x[].in_development | boolean | Indicates film projects that are still in development, meaning it has not been completed or released yet
 ethnic_background | Array | Contains general ethnicities or heritages of the actor. Visibility depends on the setting for `ethnic_appearances` (as described above under _attribute_visibility_).
 ethnic_background_details | Array | Contains specific ethnicities or heritages of the actor, e.g., specific countries.

@@ -4,6 +4,7 @@ sidebar_label: 'Changelog'
 
 # Changelog
 
+- (2026-08-07) **ActorProfiles#show/Attributes#show**: Added optional month precision and qualification fields for primary and other professional training, plus the localized qualification catalogue.
 - (2026-07-31) **ActorProfiles#show**: Added `main_picture_portrait` to picture objects.
 - (2026-07-24) **CastingCalls#show**: Added the `casting_director` object with the casting director's Filmmakers `id` and `name`.
 - (2026-07-23) **CastingCalls#show/Attributes#show**: Added integer `contract_type` identifiers and `contract_type_info` to casting-call roles, plus the localized `contract_types` catalogue.
