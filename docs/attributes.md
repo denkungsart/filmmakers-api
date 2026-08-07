@@ -91,6 +91,7 @@ import TabItem from '@theme/TabItem';
   "dialect_skill",
   "dialects",
   "drivers_licenses",
+  "qualification",
   ...
 ]
 ```
@@ -218,3 +219,27 @@ labels from the `contract_types` attribute:
 The optional `locale` parameter controls the labels and defaults to English.
 JSON object keys are always strings; their numeric values correspond to the
 integer `contract_type` identifiers returned by the Casting Calls API.
+
+### Qualification Catalogue
+
+Qualifications use stable string keys. Retrieve their localized display labels
+from the `qualification` attribute:
+
+`GET https://www.filmmakers.eu/api/v1/attributes/qualification?locale=en`
+
+##### Example Response
+
+```json
+{
+  "certification": "Certification",
+  "diploma": "Diploma",
+  "bachelors_degree": "Bachelor's degree",
+  "masters_degree": "Master's degree",
+  "magister": "Magister",
+  "other": "Other"
+}
+```
+
+The optional `locale` parameter controls the labels and defaults to English.
+The keys are returned as `qualification` values for primary and other
+professional training in the Actor Profiles API.
