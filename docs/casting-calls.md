@@ -106,7 +106,21 @@ Parameter | Default | Description
 --------- | ------- | -----------
 page | 1 | Page to display – see "Pagination" section
 per_page | 250 | Items per page – see "Pagination" section
+current | false | Set to `true` or `1` to return only casting calls with a current opportunity. Omit this parameter, or pass an empty value, `false`, or `0`, to include both current and expired casting calls.
 fields | name | Can be used to limit the fields included in the response. Possible values are: `name`, `casting_type`, `description`, `production_format`, `deadline`, `deadline_visible`. Multiple fields can be specified as a comma-separated list.
+
+### Current Casting Calls
+
+To retrieve only current casting calls:
+
+```shell
+curl "https://www.filmmakers.eu/api/v1/casting_calls?current=true" \
+  -H "Authorization: Token token=API_KEY"
+```
+
+The filter uses the same deadline rules as the website's casting opportunities. A casting call is current when at least one active, non-deleted role has no effective deadline or has a deadline at or after the current time. A role's own deadline takes precedence over the casting call's deadline; if the role has no deadline, it inherits the casting call's deadline. If there are no active, non-deleted roles, the casting call's deadline determines whether it is current.
+
+For example, a casting call with an expired overall deadline is still included if a role remains open. Conversely, a future overall deadline does not qualify a casting call whose active roles have all expired. Hidden deadlines are still used for filtering. Each qualifying casting call appears once, and results remain limited to the API key's existing access rights.
 
 ### Response Fields
 
