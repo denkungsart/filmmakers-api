@@ -22,10 +22,6 @@ const config = {
   baseUrl: '/',
   trailingSlash: false,
 
-  organizationName: 'denkungsart',
-  projectName: 'filmmakers-api',
-  deploymentBranch: 'gh-pages',
-
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
   markdown: {
