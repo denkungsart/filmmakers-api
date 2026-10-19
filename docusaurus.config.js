@@ -27,9 +27,10 @@ const config = {
   deploymentBranch: 'gh-pages', // Explicitly set deployment branch
 
   onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
   markdown: {
     hooks: {
-      onBrokenMarkdownLinks: 'warn',
+      onBrokenMarkdownLinks: 'throw',
     },
   },
 
