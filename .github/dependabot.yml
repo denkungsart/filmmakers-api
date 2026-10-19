@@ -19,3 +19,13 @@ updates:
     commit-message:
       prefix: "npm"
       include: "scope"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    groups:
+      actions:
+        patterns:
+          - "*"
+    commit-message:
+      prefix: "actions"
