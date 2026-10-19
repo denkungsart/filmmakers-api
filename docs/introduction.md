@@ -7,7 +7,7 @@ slug: /
 
 Filmmakers provides a RESTful JSON API with OAuth and token-based authentication. You can request an API key through [our support page](https://www.filmmakers.eu/contact/new). The permission scope of the API key varies depending on the use case, so when contacting us, be sure to specify the desired use case (e.g., if you plan on using Filmmakers data for a website).
 
-# API Updates and Backwards Compatibility
+## API Updates and Backwards Compatibility
 
 While we do not plan to introduce any major breaking changes, we will add new features and endpoints over time. Below is a list of changes that we consider backwards compatible:
 
