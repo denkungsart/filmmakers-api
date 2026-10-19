@@ -1,7 +1,4 @@
 // @ts-check
-// `@type` JSDoc annotations allow editor autocompletion and type checking
-// (when paired with `@ts-check`).
-// There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
 import {themes as prismThemes} from 'prism-react-renderer';
@@ -14,17 +11,13 @@ const config = {
   tagline: 'Comprehensive documentation for the Filmmakers API.',
   favicon: 'img/favicon.png',
 
-  // Set the production url of your site here
-  url: 'https://api.filmmakers.eu', // Updated to api.filmmakers.eu
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/', // Updated baseUrl to root
-  trailingSlash: false, // Consider setting to true if you face routing issues on GitHub Pages
+  url: 'https://api.filmmakers.eu',
+  baseUrl: '/',
+  trailingSlash: false,
 
-  // GitHub pages deployment config.
-  organizationName: 'denkungsart', // Your GitHub org/user name.
-  projectName: 'filmmakers-api', // Updated repository name
-  deploymentBranch: 'gh-pages', // Explicitly set deployment branch
+  organizationName: 'denkungsart',
+  projectName: 'filmmakers-api',
+  deploymentBranch: 'gh-pages',
 
   onBrokenLinks: 'throw',
   onBrokenAnchors: 'throw',
@@ -34,15 +27,10 @@ const config = {
     },
   },
 
-  // Even if you don't use internationalization, you can use this field to set
-  // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
-  plugins: [],
 
   presets: [
     [
@@ -51,8 +39,7 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          routeBasePath: '/', // Make docs the root after baseUrl
-          // Update this to your repo.
+          routeBasePath: '/',
           editUrl:
             'https://github.com/denkungsart/filmmakers-api/tree/main/',
         },

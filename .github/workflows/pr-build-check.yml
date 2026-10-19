@@ -3,7 +3,7 @@ name: PR Build Check
 on:
   pull_request:
     branches:
-      - main # Or your default branch
+      - main
 
 permissions:
   contents: read
@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: package-lock.json # Or yarn.lock
+          cache-dependency-path: package-lock.json
 
       - name: Install dependencies
         run: npm ci
