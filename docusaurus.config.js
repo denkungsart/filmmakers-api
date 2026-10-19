@@ -11,6 +11,13 @@ const config = {
   tagline: 'Comprehensive documentation for the Filmmakers API.',
   favicon: 'img/favicon.png',
 
+  future: {
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true,
+    },
+    faster: true,
+  },
+
   url: 'https://api.filmmakers.eu',
   baseUrl: '/',
   trailingSlash: false,
